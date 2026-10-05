@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { servicios, getServicio } from "@/lib/servicios";
 import styles from "./servicio.module.css";
+import { IconoCheck } from "@/components/Iconos";
 
 export function generateStaticParams() {
   return servicios.map((s) => ({ slug: s.slug }));
@@ -67,7 +68,6 @@ export default async function ServicioDetalle({
 
       {/* HERO */}
       <section className={styles.hero}>
-        <div className={styles.heroGrid} />
         <div className="wrap">
           <Breadcrumbs
             items={[
@@ -128,7 +128,7 @@ export default async function ServicioDetalle({
                 <ul>
                   {s.beneficios.map((b) => (
                     <li key={b}>
-                      <span className={styles.check}>✦</span>
+                      <span className={styles.check}><IconoCheck /></span>
                       {b}
                     </li>
                   ))}

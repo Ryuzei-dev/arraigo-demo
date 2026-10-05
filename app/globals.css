@@ -4,37 +4,75 @@
    ============================================================ */
 
 :root {
-  /* Neutros */
+  /*
+   * Identidad "Arena" (2026-10-05): base clara arena para leer, secciones oscuras
+   * de obsidiana para dar peso, oro y vino de acento. Los nombres de las variables
+   * se conservan (todo el sitio ya las usa) pero ahora son ROLES:
+   *   --obsidiana / --obsidiana-2  fondo de página
+   *   --grafito / --grafito-2      superficies (tarjetas, campos)
+   *   --hueso / --marfil           texto y titulares
+   *   --arena / --arena-2          texto secundario
+   *   --oro                        acento de acción y cifras (contraste AA sobre arena)
+   *   --oro-claro                  acento de texto (vino en claro, oro claro en oscuro)
+   * Las bandas .on-light quedan invertidas: ahora son secciones oscuras.
+   */
+  color-scheme: light;
+  --obsidiana: #f5efe6;
+  --obsidiana-2: #efe8dc;
+  --grafito: #ebe3d6;
+  --grafito-2: #e1d8c9;
+  --arena: #574e45;
+  --arena-2: #776d63;
+  --hueso: #1b1714;
+  --marfil: #14110f;
+  --marfil-2: #0e0c0b;
+
+  --oro: #8f6a23;
+  --oro-claro: #7e2c39;
+  --oro-hondo: #6f511a;
+  --vino: #7e2c39;
+  --vino-claro: #9a3b49;
+  --verde: #2f4a3c;
+
+  --linea: rgba(27, 23, 20, 0.12);
+  --linea-fuerte: rgba(27, 23, 20, 0.24);
+  --linea-clara: rgba(27, 23, 20, 0.12);
+
+  /* Newsreader (eje óptico) para titulares; Hanken Grotesk para todo lo demás */
+  --font-display: var(--font-serif), Georgia, serif;
+  --font-display-italic: var(--font-serif), Georgia, serif;
+  --font-body: var(--font-sans), system-ui, sans-serif;
+  --font-body-italic: var(--font-serif), Georgia, serif;
+  --font-data: var(--font-sans), system-ui, sans-serif;
+
+  --maxw: 1280px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Paleta oscura: modo oscuro, secciones .tono-oscuro y bandas .on-light */
+:root[data-tema="oscuro"],
+.tono-oscuro,
+.on-light {
+  color-scheme: dark;
   --obsidiana: #14110f;
   --obsidiana-2: #191512;
   --grafito: #211c18;
   --grafito-2: #2b2420;
-  --arena: #9c9085;
-  --arena-2: #6b6157;
+  --arena: #b3a798;
+  --arena-2: #8a7f73;
   --hueso: #efe9df;
   --marfil: #f7f2e9;
   --marfil-2: #fbf8f1;
-
-  /* Acentos */
   --oro: #c79a47;
   --oro-claro: #e2bf72;
   --oro-hondo: #a37e2f;
-  --vino: #7e2c39;
-  --vino-claro: #a3454f;
-  --verde: #2f4a3c;
-
-  --linea: rgba(199, 154, 71, 0.16);
-  --linea-fuerte: rgba(199, 154, 71, 0.32);
-  --linea-clara: rgba(20, 17, 15, 0.12);
-
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-display-italic: var(--font-fraunces-italic), Georgia, serif;
-  --font-body: var(--font-newsreader), Georgia, serif;
-  --font-body-italic: var(--font-newsreader-italic), Georgia, serif;
-  --font-data: var(--font-grotesk), system-ui, sans-serif;
-
-  --maxw: 1280px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --linea: rgba(241, 235, 225, 0.12);
+  --linea-fuerte: rgba(241, 235, 225, 0.24);
+  --linea-clara: rgba(241, 235, 225, 0.12);
+}
+.tono-oscuro {
+  background: var(--obsidiana);
+  color: var(--hueso);
 }
 
 *,
@@ -55,25 +93,23 @@ a,
 button {
   -webkit-tap-highlight-color: transparent;
 }
+::selection {
+  background: var(--oro);
+  color: var(--obsidiana);
+}
+:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 3px;
+}
 
 body {
   font-family: var(--font-body);
   background: var(--obsidiana);
   color: var(--hueso);
   line-height: 1.65;
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
   overflow-x: hidden;
-}
-
-/* Grano/textura sutil sobre todo el sitio */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
 
 h1,
@@ -83,6 +119,8 @@ h4,
 h5 {
   font-family: var(--font-display);
   font-weight: 400;
+  font-optical-sizing: auto;
+  text-wrap: balance;
   line-height: 1.02;
   letter-spacing: -0.02em;
 }
@@ -182,17 +220,12 @@ img {
   position: relative;
 }
 .on-light {
-  background: var(--marfil);
-  color: var(--obsidiana);
+  background: var(--obsidiana);
+  color: var(--hueso);
 }
-.on-light p {
-  color: #3a332c;
-}
-.on-light .num-label {
-  color: var(--vino);
-}
+.on-light .num-label,
 .on-light .eyebrow {
-  color: var(--vino);
+  color: var(--oro-claro);
 }
 
 /* Reveal on scroll */
@@ -208,9 +241,8 @@ img {
 
 /* Utilidades tipográficas */
 .italic-gold {
-  font-family: var(--font-display-italic);
-  font-style: italic;
-  color: var(--oro);
+  font-style: normal;
+  color: inherit;
 }
 .display-xl {
   font-size: clamp(3.2rem, 9vw, 9rem);
@@ -275,6 +307,7 @@ html.js [data-reveal].visible {
 em,
 i {
   font-family: var(--font-body-italic);
+  font-style: italic;
 }
 
 /* Impresión: papel blanco y solo el contenido (cabecera, pie y asistente fuera) */

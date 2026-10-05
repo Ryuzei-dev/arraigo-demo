@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import styles from "./nosotros.module.css";
+import { IconoCheck } from "@/components/Iconos";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -34,7 +35,6 @@ export default function NosotrosPage() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.heroGrid} />
         <div className="wrap">
           <h1 className={`display-xl ${styles.title}`}>
             Detrás de cada<br />
@@ -98,7 +98,7 @@ export default function NosotrosPage() {
             {valores.map((v, i) => (
               <Reveal key={v.t} delay={i * 80}>
                 <div className={styles.value}>
-                  <span className={styles.valueMark}>✦</span>
+                  <span className={styles.valueMark}><IconoCheck /></span>
                   <h3>{v.t}</h3>
                   <p>{v.d}</p>
                 </div>

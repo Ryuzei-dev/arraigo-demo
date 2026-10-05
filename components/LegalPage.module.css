@@ -2,11 +2,7 @@
   position: relative;
   padding: 200px 0 60px;
   overflow: hidden;
-  background: radial-gradient(
-    90% 100% at 25% 0%,
-    rgba(199, 154, 71, 0.09),
-    transparent 55%
-  );
+  background: none;
 }
 .grid {
   position: absolute;

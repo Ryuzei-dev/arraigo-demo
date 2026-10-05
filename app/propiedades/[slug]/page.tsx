@@ -20,6 +20,7 @@ import {
 import { getAsesor, whatsappAsesor, type Asesor } from "@/lib/asesores";
 import { getPropiedad, getPropiedades } from "@/lib/queries";
 import styles from "./detalle.module.css";
+import { IconoCheck, IconoPin } from "@/components/Iconos";
 
 export const dynamicParams = true;
 
@@ -250,7 +251,7 @@ export default async function PropiedadDetalle({
                   <ul className={styles.amenities}>
                     {p.amenidades.map((a) => (
                       <li key={a}>
-                        <span className={styles.amenDot} aria-hidden="true">✦</span>
+                        <span className={styles.amenDot} aria-hidden="true"><IconoCheck /></span>
                         {a}
                       </li>
                     ))}
@@ -292,7 +293,7 @@ export default async function PropiedadDetalle({
                   />
                 ) : (
                   <div className={styles.map}>
-                    <div className={styles.mapPin} aria-hidden="true">◈</div>
+                    <div className={styles.mapPin} aria-hidden="true"><IconoPin /></div>
                     <div>
                       <strong>{p.colonia}</strong>
                       <span>{p.ubicacion}</span>

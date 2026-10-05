@@ -30,7 +30,14 @@
   margin-bottom: 8px;
 }
 .razones h2::before {
-  content: "✦ ";
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.3em;
+  margin-right: 0.5em;
+  border-left: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.2em) rotate(-45deg);
   color: var(--oro);
   font-size: 0.8em;
 }
@@ -289,7 +296,7 @@
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  color: var(--obsidiana);
+  color: var(--marfil);
   text-decoration: underline;
   text-decoration-color: rgba(20, 17, 15, 0.25);
   text-underline-offset: 4px;
@@ -299,7 +306,7 @@
 }
 .tabla td {
   font-family: var(--font-data);
-  color: #3a332c;
+  color: var(--arena);
   white-space: nowrap;
 }
 .masColonias {

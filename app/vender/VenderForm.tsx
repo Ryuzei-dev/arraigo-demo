@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import { track } from "@/lib/analytics";
 import { IconoWhatsapp } from "@/components/IconosContacto";
 import styles from "./vender.module.css";
+import { IconoCheck } from "@/components/Iconos";
 
 type Estado = "idle" | "enviando" | "ok" | "error";
 type Operacion = "vender" | "rentar";
@@ -77,9 +78,7 @@ export default function VenderForm({ operacionInicial = "vender" }: { operacionI
   if (estado === "ok") {
     return (
       <div className={styles.exito} role="status">
-        <span className={styles.exitoMarca} aria-hidden="true">
-          ✦
-        </span>
+        <span className={styles.exitoMarca} aria-hidden="true"><IconoCheck /></span>
         <h3>¡Gracias, {d.nombre.split(" ")[0] || "listo"}!</h3>
         <p>
           Recibimos los datos de tu propiedad. Un asesor te contactará para agendar la visita y

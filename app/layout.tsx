@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Newsreader, Space_Grotesk } from "next/font/google";
+import { Newsreader, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,46 +11,21 @@ import Analytics from "@/components/Analytics";
 import RouteProgress from "@/components/RouteProgress";
 import SiteJsonLd from "@/components/SiteJsonLd";
 
-// Titulares. La cursiva va en una instancia aparte sin precarga: solo aparece en una palabra
-// del hero y en números de sección, y así no compite con el CSS al cargar.
-const fraunces = Fraunces({
+// Titulares: Newsreader con eje óptico (fina en grande, firme en chico), con cursiva
+const serif = Newsreader({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "900"],
-  style: ["normal"],
-  variable: "--font-fraunces",
+  weight: "variable",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-serif",
   display: "swap",
 });
-const frauncesItalic = Fraunces({
+// Texto, datos, botones y etiquetas: grotesca de alta legibilidad
+const sans = Hanken_Grotesk({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "900"],
-  style: ["italic"],
-  variable: "--font-fraunces-italic",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
-  preload: false,
-});
-
-// Datos: etiquetas, precios, specs y botones (según el documento de marca)
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-grotesk",
-  display: "swap",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal"],
-  variable: "--font-newsreader",
-  display: "swap",
-});
-const newsreaderItalic = Newsreader({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["italic"],
-  variable: "--font-newsreader-italic",
-  display: "swap",
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -102,8 +77,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#14110f",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5efe6" },
+    { media: "(prefers-color-scheme: dark)", color: "#14110f" },
+  ],
+  colorScheme: "light dark",
 };
 
 export default async function RootLayout({
@@ -116,10 +94,16 @@ export default async function RootLayout({
   const paraComparar = propiedades.map((p) => ({ slug: p.slug, titulo: p.titulo, imagen: p.imagenes[0] }));
 
   return (
-    <html lang="es" className={`${fraunces.variable} ${frauncesItalic.variable} ${newsreader.variable} ${newsreaderItalic.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+    <html lang="es" className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
       <head>
         {/* Marca que hay JavaScript antes de pintar: así las apariciones no parpadean */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Tema: claro por defecto; el oscuro solo si la persona lo eligió. Antes de pintar, sin parpadeo */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');try{if(localStorage.getItem('tema')==='oscuro')document.documentElement.dataset.tema='oscuro'}catch(e){}",
+          }}
+        />
       </head>
       <body>
         <SiteJsonLd />

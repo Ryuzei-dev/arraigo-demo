@@ -2,21 +2,7 @@
   position: relative;
   padding: 200px 0 70px;
   overflow: hidden;
-  background: radial-gradient(
-    90% 100% at 20% 0%,
-    rgba(199, 154, 71, 0.1),
-    transparent 55%
-  );
-}
-.heroGrid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--linea) 1px, transparent 1px),
-    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
-  background-size: 90px 90px;
-  -webkit-mask-image: radial-gradient(60% 80% at 30% 0%, #000, transparent 80%);
-  mask-image: radial-gradient(60% 80% at 30% 0%, #000, transparent 80%);
-  opacity: 0.4;
+  background: none;
 }
 .title {
   margin: 22px 0 24px;

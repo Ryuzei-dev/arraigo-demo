@@ -2,21 +2,7 @@
   position: relative;
   padding: 200px 0 100px;
   overflow: hidden;
-  background: radial-gradient(
-    90% 100% at 80% 0%,
-    rgba(199, 154, 71, 0.1),
-    transparent 55%
-  );
-}
-.heroGrid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--linea) 1px, transparent 1px),
-    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
-  background-size: 90px 90px;
-  -webkit-mask-image: radial-gradient(60% 80% at 70% 0%, #000, transparent 80%);
-  mask-image: radial-gradient(60% 80% at 70% 0%, #000, transparent 80%);
-  opacity: 0.4;
+  background: none;
 }
 .title {
   margin: 22px 0 26px;
@@ -53,7 +39,7 @@
 }
 
 .values {
-  background: var(--marfil);
+  background: var(--obsidiana);
 }
 .valuesGrid {
   display: grid;
@@ -71,7 +57,7 @@
 .value h3 {
   font-size: 1.9rem;
   margin: 16px 0 12px;
-  color: var(--obsidiana);
+  color: var(--marfil);
 }
 .value p {
   color: #4a423a;
@@ -110,11 +96,7 @@
 
 .quote {
   text-align: center;
-  background: radial-gradient(
-    110% 90% at 50% 0%,
-    rgba(199, 154, 71, 0.07),
-    transparent 55%
-  );
+  background: none;
 }
 .quote blockquote {
   font-family: var(--font-display-italic);

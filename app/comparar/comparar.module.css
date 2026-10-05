@@ -1,7 +1,7 @@
 .head {
   position: relative;
   padding: 130px 0 24px;
-  background: radial-gradient(100% 100% at 80% 0%, rgba(199, 154, 71, 0.1), transparent 55%);
+  background: none;
 }
 .navegacion {
   display: flex;

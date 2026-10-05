@@ -1,7 +1,7 @@
 .head {
   position: relative;
   padding: 180px 0 30px;
-  background: radial-gradient(100% 100% at 80% 0%, rgba(199, 154, 71, 0.1), transparent 55%);
+  background: none;
 }
 .title {
   margin-bottom: 18px;

@@ -151,7 +151,14 @@
   opacity: 0.9;
 }
 .seccion li::before {
-  content: "✦";
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.3em;
+  margin-right: 0.5em;
+  border-left: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.2em) rotate(-45deg);
   position: absolute;
   left: 0;
   top: 0.15em;

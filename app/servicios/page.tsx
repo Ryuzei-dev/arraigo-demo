@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import Faq from "@/components/Faq";
 import { servicios } from "@/lib/servicios";
 import styles from "./servicios.module.css";
+import { IconoCheck } from "@/components/Iconos";
 
 export const metadata: Metadata = {
   title: "Servicios inmobiliarios",
@@ -48,7 +49,7 @@ export default function ServiciosPage() {
                   <ul>
                     {s.beneficios.slice(0, 3).map((it) => (
                       <li key={it}>
-                        <span>✦</span>
+                        <span><IconoCheck /></span>
                         {it}
                       </li>
                     ))}

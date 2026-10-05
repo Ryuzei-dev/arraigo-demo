@@ -2,11 +2,7 @@
   position: relative;
   padding: 200px 0 90px;
   overflow: hidden;
-  background: radial-gradient(
-    90% 100% at 20% 0%,
-    rgba(199, 154, 71, 0.1),
-    transparent 55%
-  );
+  background: none;
 }
 .headGrid {
   position: absolute;
@@ -107,7 +103,7 @@
 }
 
 .process {
-  background: var(--marfil);
+  background: var(--obsidiana);
 }
 .steps {
   display: grid;
@@ -127,7 +123,7 @@
 .step h4 {
   font-size: 1.6rem;
   margin: 12px 0 10px;
-  color: var(--obsidiana);
+  color: var(--marfil);
 }
 .step p {
   color: #4a423a;
@@ -141,11 +137,7 @@
 
 .cta {
   text-align: center;
-  background: radial-gradient(
-    110% 90% at 50% 100%,
-    rgba(126, 44, 57, 0.16),
-    transparent 60%
-  );
+  background: none;
 }
 .cta h2 {
   margin: 0 auto;

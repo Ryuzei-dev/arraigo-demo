@@ -7,11 +7,12 @@
   padding: 120px 0 100px;
   text-align: center;
   border-bottom: 1px solid var(--linea);
-  background: radial-gradient(
-    110% 90% at 50% 0%,
-    rgba(199, 154, 71, 0.1),
-    transparent 60%
-  );
+}
+.ctaTexto {
+  max-width: 48ch;
+  margin: 20px auto 0;
+  color: var(--arena);
+  font-size: 1.05rem;
 }
 .ctaBtns {
   display: flex;

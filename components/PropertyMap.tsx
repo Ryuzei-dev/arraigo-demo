@@ -1,4 +1,5 @@
 import styles from "./PropertyMap.module.css";
+import { IconoPin } from "@/components/Iconos";
 
 export default function PropertyMap({
   lat,
@@ -30,7 +31,7 @@ export default function PropertyMap({
       </div>
       <div className={styles.bar}>
         <div className={styles.info}>
-          <span className={styles.pin}>◈</span>
+          <span className={styles.pin}><IconoPin /></span>
           <div>
             <strong>{colonia}</strong>
             <span>{ubicacion}</span>

@@ -28,6 +28,30 @@ const secundarios = [
 const esActivo = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
+function CambioTema() {
+  const [oscuro, setOscuro] = useState(false);
+  useEffect(() => setOscuro(document.documentElement.dataset.tema === "oscuro"), []);
+  const cambiar = () => {
+    const nuevo = !oscuro;
+    setOscuro(nuevo);
+    if (nuevo) document.documentElement.dataset.tema = "oscuro";
+    else delete document.documentElement.dataset.tema;
+    try {
+      if (nuevo) localStorage.setItem("tema", "oscuro");
+      else localStorage.removeItem("tema");
+    } catch {}
+  };
+  return (
+    <button type="button" className={styles.tema} onClick={cambiar} aria-pressed={oscuro} aria-label={oscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro"} title={oscuro ? "Modo claro" : "Modo oscuro"}>
+      {oscuro ? (
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.6" /><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+      ) : (
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg>
+      )}
+    </button>
+  );
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -68,16 +92,11 @@ export default function Header() {
 
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+      {/* En el inicio, sobre la foto del hero, la barra va en claro (tono oscuro de fondo) */}
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${pathname === "/" && !scrolled ? "tono-oscuro " + styles.sobreFoto : ""}`}>
         <div className={styles.inner}>
           <Link prefetch={false} href="/" className={styles.brand}>
-            <span className={styles.mark} aria-hidden="true">
-              A
-            </span>
-            <span className={styles.name}>
-              Arraigo
-              <small>Asesoría &amp; Venta</small>
-            </span>
+            <span className={styles.name}>Arraigo</span>
           </Link>
 
           <nav className={styles.nav} aria-label="Principal">
@@ -98,6 +117,7 @@ export default function Header() {
           </nav>
 
           <div className={styles.right}>
+            <CambioTema />
             <a href="tel:+524520000000" className={styles.phone}>
               (452) 000 0000
             </a>

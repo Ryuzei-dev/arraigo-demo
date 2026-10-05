@@ -9,15 +9,19 @@ export default function Footer() {
   if (pathname.startsWith("/studio")) return null;
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} tono-oscuro`}>
       {/* En contacto el cierre sobra: la página entera ya es el formulario */}
       {!pathname.startsWith("/contacto") && (
       <div className={styles.cta}>
         <div className="wrap">
           <h2 className="display-l" style={{ marginTop: 24 }}>
-            ¿Listo para dar el<br />
-            siguiente <span className="italic-gold">paso</span>?
+            Antes de firmar,
+            <br />
+            una segunda opinión.
           </h2>
+          <p className={styles.ctaTexto}>
+            La primera asesoría no tiene costo y no te compromete a nada. Cuéntanos qué estás pensando y te decimos lo que haríamos.
+          </p>
           <div className={styles.ctaBtns}>
             <Link prefetch={false} href="/contacto" className="btn btn-gold">
               Agenda una asesoría <span className="arrow">→</span>
@@ -39,10 +43,9 @@ export default function Footer() {
         <div className={styles.grid}>
           <div className={styles.brandCol}>
             <div className={styles.brand}>
-              <span className={styles.mark}>A</span>
               <span>Arraigo</span>
             </div>
-            <p className={styles.tagline}>Raíces firmes para tu patrimonio.</p>
+            <p className={styles.tagline}>Asesoría inmobiliaria en Uruapan, Michoacán. Compra, venta y renta.</p>
           </div>
 
           <nav className={styles.col} aria-label="Navega">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./contacto.module.css";
+import { IconoCheck } from "@/components/Iconos";
 
 type Estado = "idle" | "enviando" | "ok" | "error";
 
@@ -55,7 +56,7 @@ Mi teléfono: ${data.telefono}`;
   if (estado === "ok") {
     return (
       <div className={styles.success}>
-        <span className={styles.successMark}>✦</span>
+        <span className={styles.successMark}><IconoCheck /></span>
         <h3>¡Gracias, {data.nombre.split(" ")[0] || "listo"}!</h3>
         <p>
           Recibimos tu solicitud. Un asesor de Arraigo te contactará muy

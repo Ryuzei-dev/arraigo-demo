@@ -13,7 +13,6 @@ export default function ContactoPage() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.heroGrid} />
         <div className="wrap">
           <h1 className={`display-xl ${styles.title}`}>
             Hablemos de tu<br />

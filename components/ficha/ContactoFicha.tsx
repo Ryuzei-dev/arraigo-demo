@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { track } from "@/lib/analytics";
 import styles from "./ficha.module.css";
+import { IconoCheck } from "@/components/Iconos";
 
 const HORARIOS = ["10:00", "12:00", "16:00", "18:00"];
 
@@ -210,7 +211,7 @@ function FormVisita({ slug, titulo, asesorNombre, asesorTelefono, operacion, cat
     const primerNombre = asesorNombre.split(" ")[0];
     return (
       <div className={styles.exito} ref={exito} tabIndex={-1} role="status">
-        <span className={styles.exitoMarca} aria-hidden="true">✦</span>
+        <span className={styles.exitoMarca} aria-hidden="true"><IconoCheck /></span>
         <h3>Visita solicitada</h3>
         <p>
           {nombre.split(" ")[0]}, recibimos tu solicitud para el {fechaTexto} a las {hora}.{" "}
@@ -384,7 +385,7 @@ function FormMensaje({ slug, titulo, operacion, categoria, asesorNombre, asesorT
     const primerNombre = asesorNombre.split(" ")[0];
     return (
       <div className={styles.exito} ref={exito} tabIndex={-1} role="status">
-        <span className={styles.exitoMarca} aria-hidden="true">✦</span>
+        <span className={styles.exitoMarca} aria-hidden="true"><IconoCheck /></span>
         <h3>Mensaje enviado</h3>
         <p>Gracias, {nombre.split(" ")[0]}. {primerNombre} te contacta muy pronto.</p>
         <a
