@@ -76,6 +76,17 @@ export default function Header() {
     setOpen(false);
   }, [pathname]);
 
+  // Publica la altura real del encabezado para lo que se pega debajo (barra de filtros)
+  useEffect(() => {
+    const el = document.querySelector<HTMLElement>("[data-encabezado]");
+    if (!el) return;
+    const fijar = () => document.documentElement.style.setProperty("--alto-header", `${Math.round(el.offsetHeight) - 1}px`);
+    fijar();
+    const ro = new ResizeObserver(fijar);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [pathname]);
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -100,7 +111,7 @@ export default function Header() {
   return (
     <>
       {/* En el inicio, sobre la foto del hero, la barra va en claro (tono oscuro de fondo) */}
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${pathname === "/" && !scrolled ? "tono-oscuro " + styles.sobreFoto : ""}`}>
+      <header data-encabezado className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${pathname === "/" && !scrolled ? "tono-oscuro " + styles.sobreFoto : ""}`}>
         <div className={styles.inner}>
           <Link prefetch={false} href="/" className={styles.brand}>
             <span className={styles.name}>Arraigo</span>
