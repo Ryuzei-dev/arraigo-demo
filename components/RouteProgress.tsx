@@ -81,7 +81,7 @@ export default function RouteProgress() {
   return (
     <div
       className={`${styles.bar} ${active ? styles.active : ""}`}
-      style={{ width: `${width}%` }}
+      style={{ transform: `scaleX(${width / 100})` }}
       aria-hidden="true"
     />
   );

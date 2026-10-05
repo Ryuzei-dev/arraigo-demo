@@ -4,16 +4,6 @@
   overflow: hidden;
   background: none;
 }
-.headGrid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--linea) 1px, transparent 1px),
-    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
-  background-size: 90px 90px;
-  -webkit-mask-image: radial-gradient(60% 80% at 70% 0%, #000, transparent 80%);
-  mask-image: radial-gradient(60% 80% at 70% 0%, #000, transparent 80%);
-  opacity: 0.4;
-}
 .title {
   margin: 20px 0 18px;
   position: relative;

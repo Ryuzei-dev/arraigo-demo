@@ -18,7 +18,6 @@ export default function HeroPagina({
 }) {
   return (
     <section className={`${styles.hero} ${compacta ? styles.compacta : ""}`}>
-      <div className={styles.grid} aria-hidden="true" />
       <div className="wrap">
         <Breadcrumbs items={migas} />
         <h1 className={`${compacta ? "display-l" : "display-xl"} ${styles.titulo}`}>{titulo}</h1>
