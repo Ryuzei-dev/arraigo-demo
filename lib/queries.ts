@@ -1,7 +1,8 @@
 import "server-only";
 import { client } from "@/sanity/lib/client";
 import { propiedadesMock, slugColonia, type Propiedad } from "./properties";
-import { asesorPorDefecto, extras } from "./extras";
+import { asesorPorDefecto } from "./asesores";
+import { projectId } from "@/sanity/env";
 
 // Campos GROQ mapeados 1:1 con el tipo Propiedad.
 const FIELDS = `
@@ -15,48 +16,60 @@ const FIELDS = `
   asesor, estado, precioAnterior, tourUrl
 `;
 
+/**
+ * Caché: las consultas no se repiten por tiempo. Se guardan con la etiqueta "propiedad" y se
+ * renuevan cuando Sanity avisa al publicar (app/api/revalidate). Como red de seguridad, si el
+ * aviso fallara, se renuevan una vez al día con la siguiente visita.
+ */
+export const ETIQUETA = "propiedad";
+const CACHE = { next: { tags: [ETIQUETA], revalidate: 86400 } };
+
+/** Lo que dice Sanity es lo que se muestra. Solo el asesor tiene un valor por omisión. */
 function normalize(d: Partial<Propiedad>): Propiedad {
   const base = d as Propiedad;
-  // Los campos de Sanity mandan; si vienen vacíos se usan los datos de demostración
-  const ex = extras[base.slug];
   return {
     ...base,
     imagenes: (d.imagenes ?? []).filter(Boolean),
     descripcion: d.descripcion ?? [],
     amenidades: d.amenidades ?? [],
-    asesor: d.asesor || ex?.asesor || asesorPorDefecto(base.categoria, base.operacion),
-    estado: d.estado || ex?.estado,
-    precioAnterior: d.precioAnterior || ex?.precioAnterior,
-    tourUrl: d.tourUrl || ex?.tourUrl,
+    asesor: d.asesor || asesorPorDefecto(base.categoria, base.operacion),
+    estado: d.estado || undefined,
+    precioAnterior: d.precioAnterior || undefined,
+    tourUrl: d.tourUrl || undefined,
   };
 }
 
-/** Todas las propiedades. Si Sanity está vacío o falla, usa los datos demo. */
+/** Todas las propiedades. Los datos demo solo se usan sin proyecto de Sanity o si Sanity no responde. */
 export async function getPropiedades(): Promise<Propiedad[]> {
+  if (!projectId) return propiedadesMock.map(normalize);
   try {
     const data = await client.fetch<Propiedad[]>(
       `*[_type == "propiedad"] | order(destacada desc, _createdAt desc){ ${FIELDS} }`,
       {},
-      { next: { revalidate: 30 } }
+      CACHE
     );
-    if (data && data.length) return data.map(normalize);
+    return (data ?? []).map(normalize);
   } catch (e) {
     console.warn("[sanity] usando datos demo:", (e as Error).message);
   }
   return propiedadesMock.map(normalize);
 }
 
-/** Una propiedad por slug (con fallback a demo). */
+/** Una propiedad por slug. Si Sanity responde que no existe, no existe (404). */
 export async function getPropiedad(
   slug: string
 ): Promise<Propiedad | undefined> {
+  if (!projectId) {
+    const m = propiedadesMock.find((p) => p.slug === slug);
+    return m ? normalize(m) : undefined;
+  }
   try {
     const data = await client.fetch<Propiedad | null>(
       `*[_type == "propiedad" && slug.current == $slug][0]{ ${FIELDS} }`,
       { slug },
-      { next: { revalidate: 30 } }
+      CACHE
     );
-    if (data) return normalize(data);
+    return data ? normalize(data) : undefined;
   } catch (e) {
     console.warn("[sanity] usando datos demo:", (e as Error).message);
   }

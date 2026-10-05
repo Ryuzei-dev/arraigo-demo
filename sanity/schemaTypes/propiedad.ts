@@ -165,7 +165,7 @@ export const propiedad = defineType({
       type: "geopoint",
       group: "media",
     }),
-    // Campos opcionales: si se dejan vacíos, el sitio usa lib/extras.ts
+    // Campos opcionales: vacío = sin etiqueta, sin tour, asesor según el tipo de inmueble
     defineField({
       name: "asesor",
       title: "Asesor asignado",

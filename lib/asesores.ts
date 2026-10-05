@@ -1,5 +1,5 @@
 // Asesores de Arraigo. Datos ficticios de demostración (nombres, teléfonos y correos no son reales).
-// Cada propiedad tiene un asesor asignado (lib/extras.ts o el campo "asesor" en Sanity).
+// Cada propiedad tiene un asesor asignado (campo "asesor" en Sanity; si falta, asesorPorDefecto).
 
 export interface Asesor {
   slug: string;
@@ -62,4 +62,11 @@ export function getAsesor(slug?: string): Asesor | undefined {
 /** Enlace de WhatsApp al asesor con un mensaje ya escrito */
 export function whatsappAsesor(a: Asesor, mensaje: string) {
   return `https://wa.me/${a.telefono}?text=${encodeURIComponent(mensaje)}`;
+}
+
+/** Asesor por defecto según el tipo de inmueble, para propiedades nuevas sin asignar */
+export function asesorPorDefecto(categoria: string, operacion: string): string {
+  if (["Terreno", "Bodega", "Local"].includes(categoria)) return "andres-villalobos";
+  if (operacion === "renta") return "sofia-cardenas";
+  return "laura-mendez";
 }

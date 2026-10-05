@@ -40,7 +40,7 @@ export interface Propiedad {
   descripcion: string[];
   amenidades: string[];
   imagenes: string[];
-  // Campos opcionales (Sanity o lib/extras.ts)
+  // Campos opcionales (Sanity)
   asesor?: string;
   estado?: EstadoPropiedad;
   precioAnterior?: number;
