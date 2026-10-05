@@ -1,3 +1,5 @@
+// Estilos de Leaflet con la página: si llegan después de armar el mapa, las teselas se desacomodan
+import "leaflet/dist/leaflet.css";
 import Link from "next/link";
 import { Suspense } from "react";
 import type { Metadata } from "next";

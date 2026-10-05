@@ -1,6 +1,5 @@
 "use client";
 
-import "leaflet/dist/leaflet.css";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./MapaCatalogo.module.css";
@@ -39,6 +38,9 @@ export default function MapaCatalogo({ puntos }: { puntos: PuntoMapa[] }) {
     if (!nodo || !conGeo.length) return;
     let mapa: import("leaflet").Map | undefined;
     let cancelado = false;
+    // 2) Si la caja cambia de tamaño (estilos que llegan tarde, barra de scroll, giro del celular),
+    //    Leaflet vuelve a medir y reacomoda las teselas
+    const medida = new ResizeObserver(() => mapa?.invalidateSize({ pan: false }));
 
     import("leaflet")
       .then((mod) => {
@@ -85,13 +87,25 @@ export default function MapaCatalogo({ puntos }: { puntos: PuntoMapa[] }) {
         });
 
         const grupo = L.featureGroup(marcas);
-        if (marcas.length === 1) mapa.setView([conGeo[0].lat, conGeo[0].lng], 15);
-        else mapa.fitBounds(grupo.getBounds(), { padding: [60, 60], maxZoom: 15 });
+        const encuadrar = () => {
+          if (!mapa) return;
+          if (marcas.length === 1) mapa.setView([conGeo[0].lat, conGeo[0].lng], 15);
+          else mapa.fitBounds(grupo.getBounds(), { padding: [60, 60], maxZoom: 15 });
+        };
+        encuadrar();
+        medida.observe(nodo);
+        // Un cuadro después ya están los estilos y el tamaño final: se mide y encuadra otra vez
+        requestAnimationFrame(() => {
+          if (cancelado || !mapa) return;
+          mapa.invalidateSize({ pan: false });
+          encuadrar();
+        });
       })
       .catch(() => setError(true));
 
     return () => {
       cancelado = true;
+      medida.disconnect();
       mapa?.remove();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
