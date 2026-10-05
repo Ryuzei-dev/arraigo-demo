@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Caslon_Display, Public_Sans, Schibsted_Grotesk, Spline_Sans_Mono, Familjen_Grotesk, Onest } from "next/font/google";
+import { Hanken_Grotesk, Albert_Sans, Source_Serif_4, Source_Sans_3 } from "next/font/google";
 import { propiedadesMock, formatoPrecio, precioM2, formatoMoneda, superficie } from "@/lib/properties";
 import CambioVariante from "./CambioVariante";
 import s from "./variantes.module.css";
@@ -10,12 +10,11 @@ import s from "./variantes.module.css";
  */
 export const metadata: Metadata = { title: "Variantes de identidad · Arraigo", robots: { index: false, follow: false } };
 
-const caslon = Libre_Caslon_Display({ subsets: ["latin"], weight: "400", variable: "--v-caslon", display: "swap" });
-const publicSans = Public_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--v-public", display: "swap" });
-const schibsted = Schibsted_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--v-schibsted", display: "swap" });
-const splineMono = Spline_Sans_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--v-mono", display: "swap" });
-const familjen = Familjen_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--v-familjen", display: "swap" });
-const onest = Onest({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--v-onest", display: "swap" });
+// Familias de alta legibilidad: aperturas amplias, x-height alta y números claros
+const hanken = Hanken_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--v-a", display: "swap" });
+const albert = Albert_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--v-b", display: "swap" });
+const sourceSerif = Source_Serif_4({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--v-c-titulo", display: "swap" });
+const sourceSans = Source_Sans_3({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--v-c-texto", display: "swap" });
 
 const casas = propiedadesMock.slice(0, 3);
 const portada = propiedadesMock[0].imagenes[0];
@@ -28,7 +27,7 @@ function Datos({ i }: { i: number }) {
 }
 
 export default function Variantes() {
-  const fuentes = [caslon, publicSans, schibsted, splineMono, familjen, onest].map((f) => f.variable).join(" ");
+  const fuentes = [hanken, albert, sourceSerif, sourceSans].map((f) => f.variable).join(" ");
   return (
     <div className={`${s.pagina} ${fuentes}`}>
       <CambioVariante />
@@ -65,7 +64,7 @@ export default function Variantes() {
                 <span className={s.aNombre}>{p.titulo}</span>
                 <span className={s.aDato}>{p.colonia}</span>
                 <span className={s.aDato}>{m2 ? `${m2} m²` : "—"}</span>
-                <span className={s.aDato}>{pm2 && p.operacion === "venta" ? `${formatoMoneda(pm2)}/m²` : p.operacion}</span>
+                <span className={s.aDato}>{pm2 && p.operacion === "venta" ? `${formatoMoneda(pm2)}/m²` : "En renta"}</span>
                 <span className={s.aPrecio}>{formatoPrecio(p)}</span>
               </li>
             );
@@ -141,7 +140,7 @@ export default function Variantes() {
 
       {/* ============ C · ESCRITURA ============ */}
       <section id="escritura" className={`${s.var} ${s.c}`} data-variante>
-        <p className={s.etiquetaVar}>C · Escritura: serif de documento oficial y texto que se narra con el scroll</p>
+        <p className={s.etiquetaVar}>C · Escritura: serif de documento legible y texto que se narra con el scroll</p>
         <div className={s.cHero}>
           <h1 className={s.cTitulo}>
             Tu patrimonio, <span>por escrito.</span>

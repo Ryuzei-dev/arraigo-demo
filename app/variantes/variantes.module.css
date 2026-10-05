@@ -78,20 +78,22 @@
    la sección oscura. Grotesca sobria + mono para folios y cifras.
    ===================================================================== */
 .a {
+  font-size: 17px;
+  line-height: 1.6;
   --fondo: #f1f0ed;
   --papel: #fbfbf9;
   --tinta: #191816;
-  --suave: #5c5853;
+  --suave: #47433e;
   --regla: rgb(25 24 22 / 0.14);
   background: var(--fondo);
   color: var(--tinta);
-  font-family: var(--v-schibsted), system-ui, sans-serif;
+  font-family: var(--v-a), system-ui, sans-serif;
 }
 :global([data-var-tema="oscuro"]) .a {
   --fondo: #141312;
   --papel: #1c1b19;
   --tinta: #f0eee9;
-  --suave: #a39e96;
+  --suave: #c4bfb7;
   --regla: rgb(240 238 233 / 0.14);
 }
 .aHero {
@@ -111,7 +113,7 @@
 }
 .aTitulo {
   margin: 0;
-  font-family: var(--v-schibsted), system-ui, sans-serif;
+  font-family: var(--v-a), system-ui, sans-serif;
   font-size: clamp(2.4rem, 5vw, 4.4rem);
   font-weight: 600;
   line-height: 1;
@@ -183,7 +185,7 @@
   font-size: 0.9rem;
 }
 .aFolio {
-  font-family: var(--v-mono), monospace;
+  font-family: var(--v-a), system-ui, sans-serif;
   color: var(--oro);
 }
 /* Registro de propiedades: filas como un libro de folios */
@@ -207,7 +209,7 @@
   background: var(--papel);
 }
 .aNum {
-  font-family: var(--v-mono), monospace;
+  font-family: var(--v-a), system-ui, sans-serif;
   font-size: 0.85rem;
   color: var(--oro);
 }
@@ -224,14 +226,16 @@
   font-weight: 600;
 }
 .aDato {
-  font-family: var(--v-mono), monospace;
-  font-size: 0.85rem;
+  font-family: var(--v-a), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
   color: var(--suave);
-  text-transform: capitalize;
 }
 .aPrecio {
-  font-family: var(--v-mono), monospace;
-  font-weight: 500;
+  font-family: var(--v-a), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
 }
 @media (max-width: 760px) {
   .aFila {
@@ -255,7 +259,7 @@
 }
 .aOscura h2 {
   margin: 0 0 28px;
-  font-family: var(--v-schibsted), system-ui, sans-serif;
+  font-family: var(--v-a), system-ui, sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -308,19 +312,21 @@
    acción, oro en cifras. Grotesca amable de producto.
    ===================================================================== */
 .b {
+  font-size: 17px;
+  line-height: 1.6;
   --fondo: #ffffff;
   --fondo-2: #f4f3f1;
   --tinta: #141414;
-  --suave: #626262;
+  --suave: #4a4a4a;
   background: var(--fondo);
   color: var(--tinta);
-  font-family: var(--v-onest), system-ui, sans-serif;
+  font-family: var(--v-b), system-ui, sans-serif;
 }
 :global([data-var-tema="oscuro"]) .b {
   --fondo: #0f0f10;
   --fondo-2: #19191b;
   --tinta: #f2f2f2;
-  --suave: #a5a5a8;
+  --suave: #c6c6c9;
 }
 .bHero {
   position: relative;
@@ -359,7 +365,7 @@
 }
 .bTitulo {
   margin: 0;
-  font-family: var(--v-familjen), sans-serif;
+  font-family: var(--v-b), sans-serif;
   font-size: clamp(2rem, 4vw, 3.3rem);
   font-weight: 600;
   line-height: 1.02;
@@ -468,7 +474,7 @@
   font-weight: 600;
 }
 .bPrecio {
-  font-family: var(--v-familjen), sans-serif;
+  font-family: var(--v-b), sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
 }
@@ -497,7 +503,7 @@
 .bOscura h2 {
   margin: 0;
   color: #fff;
-  font-family: var(--v-familjen), sans-serif;
+  font-family: var(--v-b), sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   letter-spacing: -0.03em;
 }
@@ -516,7 +522,7 @@
 }
 .bCifras strong {
   display: block;
-  font-family: var(--v-familjen), sans-serif;
+  font-family: var(--v-b), sans-serif;
   font-size: 2.2rem;
   color: var(--oro-claro);
 }
@@ -528,18 +534,20 @@
    vino en la sección oscura. Narración fija con el scroll.
    ===================================================================== */
 .c {
+  font-size: 17px;
+  line-height: 1.6;
   --fondo: #f6f5f2;
   --tinta: #1a1714;
-  --suave: #5e5750;
+  --suave: #4a443e;
   --regla: rgb(26 23 20 / 0.16);
   background: var(--fondo);
   color: var(--tinta);
-  font-family: var(--v-public), system-ui, sans-serif;
+  font-family: var(--v-c-texto), system-ui, sans-serif;
 }
 :global([data-var-tema="oscuro"]) .c {
   --fondo: #13110f;
   --tinta: #efeae2;
-  --suave: #a69d92;
+  --suave: #c7beb3;
   --regla: rgb(239 234 226 / 0.16);
 }
 .cHero {
@@ -558,10 +566,10 @@
 }
 .cTitulo {
   margin: 0;
-  font-family: var(--v-caslon), Georgia, serif;
-  font-size: clamp(3rem, 7.5vw, 6rem);
-  font-weight: 400;
-  line-height: 0.95;
+  font-family: var(--v-c-titulo), Georgia, serif;
+  font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+  font-weight: 600;
+  line-height: 1;
   letter-spacing: -0.02em;
 }
 .cTitulo span {
@@ -632,7 +640,8 @@
 }
 .cFijo {
   margin: 0;
-  font-family: var(--v-caslon), Georgia, serif;
+  font-weight: 600;
+  font-family: var(--v-c-titulo), Georgia, serif;
   font-size: clamp(2.2rem, 4vw, 3.6rem);
 }
 .cNarra ol {
@@ -657,15 +666,15 @@
 }
 .cNum {
   grid-row: span 2;
-  font-family: var(--v-caslon), Georgia, serif;
+  font-family: var(--v-c-titulo), Georgia, serif;
   font-size: 1.6rem;
   color: var(--oro);
 }
 .cNarra h3 {
   margin: 0;
-  font-family: var(--v-caslon), Georgia, serif;
-  font-size: 2rem;
-  font-weight: 400;
+  font-family: var(--v-c-titulo), Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 600;
 }
 .cNarra p {
   margin: 8px 0 0;
@@ -713,8 +722,9 @@
   transform: none;
 }
 .cNombre {
-  font-family: var(--v-caslon), Georgia, serif;
-  font-size: 1.6rem;
+  font-family: var(--v-c-titulo), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 .cFila {
   display: flex;
