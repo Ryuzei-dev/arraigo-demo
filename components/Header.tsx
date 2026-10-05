@@ -28,7 +28,7 @@ const secundarios = [
 const esActivo = (pathname: string, href: string) =>
   href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
-function CambioTema() {
+function CambioTema({ enMenu = false }: { enMenu?: boolean }) {
   const [oscuro, setOscuro] = useState(false);
   useEffect(() => setOscuro(document.documentElement.dataset.tema === "oscuro"), []);
   const cambiar = () => {
@@ -41,6 +41,13 @@ function CambioTema() {
       else localStorage.removeItem("tema");
     } catch {}
   };
+  if (enMenu)
+    return (
+      <button type="button" className={styles.temaMenu} onClick={cambiar} role="switch" aria-checked={oscuro}>
+        <span>Modo oscuro</span>
+        <span className={styles.interruptor} aria-hidden="true" />
+      </button>
+    );
   return (
     <button type="button" className={styles.tema} onClick={cambiar} aria-pressed={oscuro} aria-label={oscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro"} title={oscuro ? "Modo claro" : "Modo oscuro"}>
       {oscuro ? (
@@ -123,7 +130,7 @@ export default function Header() {
             </a>
             <Link prefetch={false}
               href="/favoritos"
-              className={`${styles.fav} ${esActivo(pathname, "/favoritos") ? styles.favActivo : ""}`}
+              className={`${styles.fav} ${nFav > 0 ? styles.favConN : ""} ${esActivo(pathname, "/favoritos") ? styles.favActivo : ""}`}
               aria-label={nFav ? `Favoritos, ${nFav} guardadas` : "Favoritos"}
               title="Favoritos"
             >
@@ -157,12 +164,13 @@ export default function Header() {
         inert={!open}
       >
         <div className={styles.mobileInner}>
-          {links.map((l) => (
+          {links.map((l, i) => (
             <Link prefetch={false}
               key={l.href}
               href={l.href}
               className={`${styles.mobileLink} ${esActivo(pathname, l.href) ? styles.mobileActivo : ""}`}
               aria-current={esActivo(pathname, l.href) ? "page" : undefined}
+              style={{ transitionDelay: open ? `${60 + i * 35}ms` : "0ms" }}
             >
               {l.label}
             </Link>
@@ -180,9 +188,18 @@ export default function Header() {
               </Link>
             ))}
           </div>
-          <a href="tel:+524520000000" className={styles.mobilePhone}>
-            Llámanos: (452) 000 0000
-          </a>
+          <div className={styles.mobileAcciones}>
+            <Link prefetch={false} href="/contacto" className="btn btn-gold">
+              Agendar asesoría sin costo
+            </Link>
+            <a href="tel:+524520000000" className={styles.mobilePhone}>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+              </svg>
+              (452) 000 0000
+            </a>
+          </div>
+          <CambioTema enMenu />
         </div>
       </nav>
     </>

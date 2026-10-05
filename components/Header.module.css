@@ -8,7 +8,7 @@
   border-bottom: 1px solid transparent;
 }
 .scrolled {
-  background: color-mix(in srgb, var(--obsidiana) 92%, transparent);
+  background: var(--obsidiana);
   border-bottom-color: var(--linea);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -212,8 +212,7 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 96px 28px 40px;
+  padding: 92px 22px calc(24px + env(safe-area-inset-bottom));
 }
 .mobileOpen {
   opacity: 1;
@@ -222,15 +221,24 @@
 }
 .mobileLink {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 7vw, 2.1rem);
-  line-height: 1.15;
-  padding: 12px 0;
-  min-height: 52px;
+  font-size: clamp(1.45rem, 6.4vw, 1.9rem);
+  line-height: 1.1;
+  padding: 6px 0;
+  min-height: 50px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--linea);
   color: var(--hueso);
-  transition: color 0.3s var(--ease);
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    color 0.3s var(--ease),
+    opacity 0.4s var(--ease),
+    transform 0.4s var(--ease);
+}
+.mobileOpen .mobileLink {
+  opacity: 1;
+  transform: none;
 }
 .mobileLink:active,
 .mobileSec:active {
@@ -240,10 +248,10 @@
   color: var(--oro);
 }
 .mobileSecundarios {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 22px;
-  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+  margin-top: 12px;
 }
 .mobileSec {
   display: inline-flex;
@@ -267,13 +275,73 @@
   font-size: 0.7rem;
   font-weight: 600;
 }
+/* Acciones al pie del menú: asesoría, llamada y tema */
+.mobileAcciones {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.mobileAcciones :global(.btn) {
+  justify-content: center;
+}
 .mobilePhone {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  margin-top: 20px;
-  color: var(--oro);
-  font-size: 1.1rem;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 100px;
+  color: var(--hueso);
+  font-size: 1rem;
+}
+.temaMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  margin-top: 14px;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--linea);
+  background: none;
+  color: var(--arena);
+  font-family: var(--font-data);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.interruptor {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 100px;
+  background: var(--grafito-2);
+  border: 1px solid var(--linea-fuerte);
+  transition: background 0.3s var(--ease);
+}
+.interruptor::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--hueso);
+  transition: transform 0.3s var(--ease);
+}
+.temaMenu[aria-checked="true"] .interruptor {
+  background: var(--oro);
+}
+.temaMenu[aria-checked="true"] .interruptor::after {
+  transform: translateX(18px);
+  background: var(--obsidiana);
+}
+.temaMenu:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 3px;
 }
 
 @media (max-width: 1240px) {
@@ -283,7 +351,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mobile {
+  .mobile,
+  .mobileLink {
     transform: none;
     transition: opacity 0.2s linear;
   }
@@ -292,8 +361,15 @@
 @media (max-width: 1080px) {
   .nav,
   .phone,
-  .fav {
+  .fav,
+  .tema {
     display: none;
+  }
+  .favConN {
+    display: grid;
+  }
+  .right {
+    gap: 10px;
   }
   .burger {
     display: flex;
@@ -323,9 +399,9 @@
 .tema {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--linea-fuerte);
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent;
   border-radius: 50%;
   background: none;
   color: var(--hueso);
@@ -335,4 +411,30 @@
 .tema:hover {
   color: var(--oro-claro);
   border-color: var(--oro);
+}
+
+/* En celular el tema vive dentro del menú, no en la barra */
+@media (max-width: 1080px) {
+  .right .tema {
+    display: none;
+  }
+}
+/* Pantallas bajas: menú más compacto para que quepa sin desplazarse */
+@media (max-width: 1080px) and (max-height: 780px) {
+  .mobileInner {
+    padding-top: 84px;
+  }
+  .mobileLink {
+    min-height: 44px;
+    font-size: 1.3rem;
+  }
+  .mobileSec {
+    min-height: 40px;
+  }
+  .mobileAcciones {
+    padding-top: 16px;
+  }
+  .mobilePhone {
+    min-height: 46px;
+  }
 }
