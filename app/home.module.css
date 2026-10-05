@@ -346,69 +346,105 @@
   font-size: 0.92rem;
 }
 
-/* Lista "lo que de verdad compras" */
-.compras {
-  margin-top: 40px;
-  list-style: none;
-  border-top: 1px solid var(--linea);
-}
-.compras li {
+/* Revisiones antes de firmar */
+/* Revisiones: cuatro columnas con foto fija; en móvil se deslizan */
+.revisiones {
+  position: relative;
   display: grid;
-  grid-template-columns: 48px minmax(0, 1.2fr) minmax(0, 1fr);
-  align-items: baseline;
-  gap: 16px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--linea);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 44px;
+  list-style: none;
 }
-.compras li > * {
-  transition: transform 0.5s var(--salida);
+.revision {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
-.compras li:hover > * {
-  transform: translateX(12px);
+.revFoto {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--grafito);
 }
-.num {
+.revFoto img {
+  object-fit: cover;
+  transition: transform 0.9s var(--salida);
+}
+.revision:hover .revFoto img {
+  transform: scale(1.04);
+}
+.revNum {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgb(250 247 241 / 0.94);
+  color: #1b1714;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--oro-claro);
   font-variant-numeric: tabular-nums;
 }
-.comprasT {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-variation-settings: "opsz" 36;
+.revT {
+  margin-top: 22px;
+  font-size: clamp(1.3rem, 1.7vw, 1.55rem);
+  font-variation-settings: "opsz" 30;
   line-height: 1.15;
   color: var(--marfil);
 }
-.comprasD {
+.revD {
+  margin-top: 12px;
   color: var(--arena);
+  line-height: 1.6;
+}
+.revPide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+.revPide span {
+  padding: 5px 12px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--hueso);
+}
+@media (max-width: 1100px) {
+  .revisiones {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 48px;
+  }
 }
 @media (max-width: 760px) {
-  .compras li {
-    grid-template-columns: 36px minmax(0, 1fr);
+  .revisiones {
+    display: flex;
+    gap: 16px;
+    margin-inline: -22px;
+    padding: 0 22px 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 22px;
+    scrollbar-width: none;
   }
-  .comprasD {
-    grid-column: 2;
+  .revisiones::-webkit-scrollbar {
+    display: none;
   }
-}
-.seguidor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 40;
-  width: 220px;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 6px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(-400px, 0, 0);
-  transition:
-    opacity 0.3s,
-    transform 0.45s var(--salida);
-  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.5);
-}
-.seguidor:global(.on) {
-  opacity: 1;
+  .revision {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+  .revFoto {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 /* ---------- Proceso (sección oscura) ---------- */
@@ -685,4 +721,11 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+.num {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--oro-claro);
+  font-variant-numeric: tabular-nums;
 }

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 /**
  * Comportamiento del inicio, con listeners pasivos y un solo rAF por cuadro:
  * cifras que cuentan, declaración que se enciende con el scroll, número fijo del proceso,
- * desplazamiento suave de la foto del hero, filtro del carril y foto que sigue al cursor.
+ * desplazamiento suave de la foto del hero y filtro del carril.
  */
 export default function InicioVivo() {
   useEffect(() => {
@@ -108,40 +108,6 @@ export default function InicioVivo() {
       return () => b.removeEventListener("click", h);
     });
     limpiar.push(...manejadores);
-
-    // Lista: la foto sigue al cursor (solo con mouse)
-    const lista = document.querySelector<HTMLElement>("[data-compras]");
-    const seguidor = document.querySelector<HTMLImageElement>("[data-seguidor]");
-    if (lista && seguidor && matchMedia("(pointer: fine)").matches) {
-      let x = 0;
-      let y = 0;
-      let cola = false;
-      const mover = (e: PointerEvent) => {
-        x = e.clientX;
-        y = e.clientY;
-        if (cola) return;
-        cola = true;
-        requestAnimationFrame(() => {
-          cola = false;
-          seguidor.style.transform = `translate3d(${x + 24}px, ${y - 120}px, 0)`;
-        });
-      };
-      const entrar = (e: PointerEvent) => {
-        const li = (e.target as HTMLElement).closest<HTMLElement>("li");
-        if (!li) return;
-        if (!seguidor.src.endsWith(li.dataset.foto!)) seguidor.src = li.dataset.foto!;
-        seguidor.classList.add("on");
-      };
-      const salir = () => seguidor.classList.remove("on");
-      lista.addEventListener("pointermove", mover);
-      lista.addEventListener("pointerover", entrar);
-      lista.addEventListener("pointerleave", salir);
-      limpiar.push(() => {
-        lista.removeEventListener("pointermove", mover);
-        lista.removeEventListener("pointerover", entrar);
-        lista.removeEventListener("pointerleave", salir);
-      });
-    }
 
     return () => limpiar.forEach((f) => f());
   }, []);

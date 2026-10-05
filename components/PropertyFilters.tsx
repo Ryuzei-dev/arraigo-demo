@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { categorias, type Categoria, type Operacion } from "@/lib/properties";
 import styles from "./PropertyFilters.module.css";
 
@@ -124,12 +124,18 @@ export default function PropertyFilters({
     const sufijo = movil ? "m" : "d";
     const cerrar = movil ? () => setOpen(false) : undefined;
     return (
-      <>
+      <FormFiltros
+        formId={`filtros-${sufijo}`}
+        filtros={filtros}
+        zonas={zonas}
+        onSubmit={movil ? enviarMovil : enviarEscritorio}
+        escritorio={!movil}
+      >
         <div className={styles.group}>
           <span className={styles.groupLabel} id={`f-op-${sufijo}`}>
             Operación
           </span>
-          <div className={styles.chips} role="group" aria-labelledby={`f-op-${sufijo}`}>
+          <div className={styles.segmento} role="group" aria-labelledby={`f-op-${sufijo}`}>
             {chip("Todas", !operacion, urlCatalogo(filtros, { operacion: null }), cerrar)}
             {chip("Venta", operacion === "venta", urlCatalogo(filtros, { operacion: "venta" }), cerrar)}
             {chip("Renta", operacion === "renta", urlCatalogo(filtros, { operacion: "renta" }), cerrar)}
@@ -146,14 +152,7 @@ export default function PropertyFilters({
             )}
           </div>
         </div>
-        <FormFiltros
-          formId={`filtros-${sufijo}`}
-          filtros={filtros}
-          zonas={zonas}
-          onSubmit={movil ? enviarMovil : enviarEscritorio}
-          conBoton={!movil}
-        />
-      </>
+      </FormFiltros>
     );
   };
 
@@ -170,9 +169,6 @@ export default function PropertyFilters({
           )}
         </div>
         {grupos(false)}
-        <p className={styles.sidebarCount}>
-          {total} propiedad{total !== 1 ? "es" : ""}
-        </p>
       </aside>
 
       {/* Móvil: botón que abre el bottom-sheet */}
@@ -261,14 +257,20 @@ function FormFiltros({
   filtros,
   zonas,
   onSubmit,
-  conBoton,
+  escritorio,
+  children,
 }: {
   formId: string;
   filtros: FiltrosCatalogo;
   zonas: OpcionZona[];
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  conBoton: boolean;
+  escritorio: boolean;
+  children: ReactNode;
 }) {
+  // En escritorio, los selects aplican al cambiar; en móvil se aplica con el botón de la hoja
+  const alCambiar = escritorio
+    ? (e: { currentTarget: HTMLSelectElement }) => e.currentTarget.form?.requestSubmit()
+    : undefined;
   const id = (n: string) => `${formId}-${n}`;
   // La clave fuerza a React a reiniciar los valores cuando cambia la URL
   const clave = urlCatalogo(filtros);
@@ -289,20 +291,28 @@ function FormFiltros({
       {filtros.vista && <input type="hidden" name="vista" value={filtros.vista} />}
 
       <div className={styles.campo}>
-        <label htmlFor={id("q")} className={styles.groupLabel}>
-          Buscar
+        <label htmlFor={id("q")} className={styles.sr}>
+          Buscar por colonia, tipo o palabra
         </label>
-        <input
-          id={id("q")}
-          name="q"
-          type="search"
-          className={styles.input}
-          defaultValue={filtros.q ?? ""}
-          placeholder="Colonia, tipo o palabra"
-          autoComplete="off"
-          enterKeyHint="search"
-        />
+        <div className={styles.buscar}>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.6" fill="none" />
+            <path d="M16 16l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+          <input
+            id={id("q")}
+            name="q"
+            type="search"
+            className={styles.input}
+            defaultValue={filtros.q ?? ""}
+            placeholder="Colonia, tipo o palabra"
+            autoComplete="off"
+            enterKeyHint="search"
+          />
+        </div>
       </div>
+
+      {children}
 
       <div className={styles.campo}>
         <label htmlFor={id("zona")} className={styles.groupLabel}>
@@ -313,6 +323,7 @@ function FormFiltros({
           name="zona"
           className={styles.input}
           defaultValue={filtros.zona ?? ""}
+          onChange={alCambiar}
         >
           <option value="">Todas las zonas</option>
           {zonas.map((z) => (
@@ -371,6 +382,7 @@ function FormFiltros({
             name="recamaras"
             className={styles.input}
             defaultValue={filtros.recamaras ? String(filtros.recamaras) : ""}
+            onChange={alCambiar}
           >
             <option value="">Cualquiera</option>
             {OPCIONES_RECAMARAS.map((n) => (
@@ -398,9 +410,9 @@ function FormFiltros({
         </div>
       </div>
 
-      {conBoton && (
+      {escritorio && (
         <button type="submit" className={`btn btn-gold ${styles.aplicar}`}>
-          Aplicar filtros
+          Aplicar precio y superficie
         </button>
       )}
     </form>

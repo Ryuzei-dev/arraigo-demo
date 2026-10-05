@@ -1,11 +1,6 @@
 /* ============================ SIDEBAR (desktop) ============================ */
+/* Sin scroll interno: la barra crece con su contenido y baja con la página */
 .sidebar {
-  position: sticky;
-  top: 104px;
-  max-height: calc(100vh - 124px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
   align-self: start;
   padding: 28px 26px;
   background: var(--grafito);
@@ -25,6 +20,13 @@
   font-size: 1.4rem;
   color: var(--hueso);
 }
+.sidebarTotal {
+  margin-left: 6px;
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--arena);
+}
 .clear {
   font-size: 0.85rem;
   color: var(--arena);
@@ -43,8 +45,19 @@
   color: var(--arena);
 }
 
-.group + .group {
-  margin-top: 26px;
+.buscar {
+  position: relative;
+}
+.buscar svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--arena);
+  pointer-events: none;
+}
+.buscar .input {
+  padding-left: 42px;
 }
 .groupLabel {
   display: block;
@@ -82,6 +95,24 @@
 .filterBtn:active {
   transform: scale(0.97);
 }
+/* Operación: tres opciones iguales en una sola línea */
+.segmento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 100px;
+}
+.segmento .chip {
+  justify-content: center;
+  min-height: 38px;
+  padding: 6px 8px;
+  border-color: transparent;
+}
+.panelBody .segmento .chip {
+  min-height: 44px;
+}
 .chipActive {
   background: var(--oro);
   border-color: var(--oro);
@@ -91,7 +122,6 @@
 
 /* ============================ FORMULARIO ============================ */
 .form {
-  margin-top: 26px;
   display: flex;
   flex-direction: column;
   gap: 20px;

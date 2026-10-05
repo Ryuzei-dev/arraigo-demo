@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 /*
  * Inicio con la identidad "Arena": hero sobre foto, declaración que se enciende con el scroll,
- * carril de propiedades con filtro, "lo que de verdad compras", proceso con número fijo en
+ * carril de propiedades con filtro, revisiones antes de firmar, proceso con número fijo en
  * oscuro, preguntas y colonias con su precio por m². El cierre lo pone el pie del sitio.
  */
 
@@ -22,21 +22,25 @@ const compras = [
     t: "Escrituras y predial revisados antes de la visita",
     d: "Pedimos escrituras, predial al corriente y certificado de libertad de gravamen. Si algo falta, lo sabes antes de ver la casa, no el día de la firma.",
     foto: "/fotos/compra.jpg",
+    pide: ["Escrituras", "Predial", "Libertad de gravamen"],
   },
   {
     t: "Precio comparado con la misma colonia",
     d: "Contrastamos lo que piden con el precio por m² de la zona y con inmuebles parecidos. Llegas a negociar con un número que puedes defender.",
     foto: "/fotos/avaluos.jpg",
+    pide: ["Precio por m²", "Inmuebles parecidos"],
   },
   {
     t: "Cada acuerdo firmado antes de pagar",
     d: "Precio, forma de pago, fechas y condiciones de entrega quedan por escrito antes de que entregues dinero. Nada depende de una llamada.",
     foto: "/fotos/interiores.jpg",
+    pide: ["Forma de pago", "Fechas", "Entrega"],
   },
   {
     t: "El mismo asesor hasta la entrega de llaves",
     d: "Te acompaña con el banco, coordina con el notario y está en la firma. Si surge una duda a la mitad, sabes a quién llamar.",
     foto: "/fotos/patios.jpg",
+    pide: ["Banco", "Notario", "Llaves"],
   },
 ];
 
@@ -202,18 +206,24 @@ export default async function Home() {
           <p className={styles.entrada}>
             Una casa se compra pocas veces en la vida. Estas cuatro revisiones son las que evitan sorpresas en la notaría.
           </p>
-          <ol className={styles.compras} data-compras>
+          <ol className={styles.revisiones}>
             {compras.map((c, i) => (
-              <li key={c.t} data-foto={c.foto}>
-                <span className={styles.num}>0{i + 1}</span>
-                <span className={styles.comprasT}>{c.t}</span>
-                <span className={styles.comprasD}>{c.d}</span>
+              <li key={c.t} className={styles.revision}>
+                <span className={styles.revFoto}>
+                  <Image src={c.foto} alt="" fill sizes="(max-width: 760px) 78vw, (max-width: 1100px) 45vw, 300px" />
+                  <span className={styles.revNum}>0{i + 1}</span>
+                </span>
+                <h3 className={styles.revT}>{c.t}</h3>
+                <p className={styles.revD}>{c.d}</p>
+                <p className={styles.revPide}>
+                  {c.pide.map((x) => (
+                    <span key={x}>{x}</span>
+                  ))}
+                </p>
               </li>
             ))}
           </ol>
         </div>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={styles.seguidor} src={compras[0].foto} alt="" aria-hidden="true" data-seguidor />
       </section>
 
       {/* ===================== PROCESO ===================== */}
