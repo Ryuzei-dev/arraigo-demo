@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, Hanken_Grotesk } from "next/font/google";
-import { propiedadesMock, formatoPrecio, superficie } from "@/lib/properties";
+import { propiedadesMock, formatoPrecio, superficie, precioM2, formatoMoneda } from "@/lib/properties";
 import CambioVariante from "./CambioVariante";
 import Vivo from "./Vivo";
 import s from "./variantes.module.css";
@@ -215,7 +215,29 @@ export default function Prototipo() {
           <p>Asesoría inmobiliaria en Uruapan, Michoacán. Compra, venta y renta.</p>
           <p>Sitio de demostración hecho por LumikaStudio</p>
         </div>
-        <p className={s.pieMarca} aria-hidden>Arraigo</p>
+        {/* En lugar del nombre gigante: dónde trabajamos, con el dato que importa en cada colonia */}
+        <div className={s.pieColonias}>
+          <h2>Dónde trabajamos</h2>
+          <ul>
+            {propiedadesMock.map((p) => {
+              const pm2 = precioM2(p);
+              return (
+                <li key={p.slug}>
+                  <a href="#">
+                    <span className={s.pieColonia}>{p.colonia}</span>
+                    <span className={s.pieTipo}>{p.categoria} en {p.operacion}</span>
+                    <span className={s.pieDato}>
+                      {p.operacion === "venta" && pm2 ? `${formatoMoneda(pm2)} por m²` : formatoPrecio(p)}
+                    </span>
+                    <span className={s.pieFlecha} aria-hidden>→</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <p className={s.pieNota}>Precios de las propiedades publicadas hoy. Datos de demostración.</p>
+        </div>
+        <p className={s.pieLegal}>© 2026 Arraigo · Uruapan, Michoacán</p>
       </footer>
     </div>
   );

@@ -105,20 +105,41 @@
   transform: scale(0.97);
 }
 
-.tema {
+.revision {
   position: fixed;
   right: 16px;
   bottom: 16px;
   z-index: 90;
-  min-height: 44px;
-  padding: 0 16px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.5);
+}
+.revision button {
+  min-height: 40px;
+  padding: 0 14px;
   border: 0;
   border-radius: 999px;
-  background: var(--tinta);
-  color: var(--arena);
-  font: 600 14px var(--sans);
+  background: none;
+  color: #1b1714;
+  font: 600 13px system-ui, sans-serif;
   cursor: pointer;
-  box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.5);
+}
+.revision button[aria-pressed="true"] {
+  background: #1b1714;
+  color: #fff;
+}
+@media (max-width: 560px) {
+  .revision {
+    left: 12px;
+    right: 12px;
+    justify-content: space-between;
+  }
+  .revision button {
+    padding: 0 8px;
+  }
 }
 
 /* ---------- Barra ---------- */
@@ -793,7 +814,7 @@
 
 /* ---------- Pie con el nombre gigante ---------- */
 .pie {
-  padding: 56px clamp(20px, 4vw, 48px) 0;
+  padding: 72px clamp(20px, 4vw, 48px) 0;
   background: var(--obsidiana-2);
   color: var(--hueso-suave);
   overflow: hidden;
@@ -808,16 +829,251 @@
 .pieFila p {
   margin: 0;
 }
-.pieMarca {
-  margin: 40px 0 0;
+.pieColonias {
+  margin-top: 48px;
+}
+.pieColonias h2 {
+  margin: 0 0 16px;
   font-family: var(--serif);
-  font-size: 23vw;
-  font-variation-settings: "opsz" 72;
-  line-height: 0.75;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  color: var(--hueso);
+}
+.pieColonias ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgb(241 235 225 / 0.14);
+}
+.pieColonias a {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr) 24px;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgb(241 235 225 / 0.14);
+  color: var(--hueso-suave);
+  text-decoration: none;
+  transition:
+    color 0.3s,
+    padding 0.5s var(--salida);
+}
+.pieColonias a:hover {
+  padding-left: 12px;
+  color: var(--hueso);
+}
+.pieColonia {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  color: var(--hueso);
+}
+.pieDato {
+  font-variant-numeric: tabular-nums;
+  color: var(--oro-claro);
+}
+.pieFlecha {
+  color: var(--oro);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--salida);
+}
+.pieColonias a:hover .pieFlecha {
+  opacity: 1;
+  transform: none;
+}
+.pieNota {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+}
+.pieLegal {
+  margin: 40px 0 0;
+  padding: 20px 0 28px;
+  border-top: 1px solid rgb(241 235 225 / 0.14);
+  font-size: 0.85rem;
+}
+@media (max-width: 760px) {
+  .pieColonias a {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .pieTipo {
+    grid-column: 1;
+    font-size: 0.9rem;
+  }
+  .pieDato {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .pieFlecha {
+    display: none;
+  }
+}
+
+/* =====================================================================
+   VARIANTE 2 · NOCHE
+   Domina lo oscuro: obsidiana y vino profundo; la arena solo para la
+   lista y las preguntas. El oro manda en titulares cortos y cifras.
+   ===================================================================== */
+:global([data-variante="noche"]) .pagina {
+  --arena: #14110f;
+  --arena-2: #1f1a17;
+  --tinta: #f1ebe1;
+  --suave: #c4b9ab;
+  --regla: rgb(241 235 225 / 0.14);
+  --obsidiana: #3a131b;
+  --obsidiana-2: #0e0c0b;
+}
+:global([data-variante="noche"]) .pagina .titulo2,
+:global([data-variante="noche"]) .pagina .cifras dt {
+  color: var(--oro-claro);
+}
+:global([data-variante="noche"]) .pagina .comprasNum {
+  color: var(--oro);
+}
+:global([data-variante="noche"]) .pagina .pastillas button[aria-pressed="true"] {
+  background: var(--oro);
+  color: #14110f;
+}
+/* Hero de noche: velo vino profundo, titular en oro, cinta vino */
+:global([data-variante="noche"]) .pagina .heroVelo {
+  background:
+    linear-gradient(to top, rgb(42 14 20 / 0.95) 0%, rgb(42 14 20 / 0.6) 45%, rgb(14 12 11 / 0.35) 80%),
+    linear-gradient(to right, rgb(14 12 11 / 0.7), transparent 65%);
+}
+:global([data-variante="noche"]) .pagina .heroFoto {
+  filter: saturate(0.6) contrast(1.05);
+}
+:global([data-variante="noche"]) .pagina .heroTitulo {
+  color: var(--oro-claro);
+}
+:global([data-variante="noche"]) .pagina .heroTitulo em {
+  color: #fff;
+}
+:global([data-variante="noche"]) .pagina .cinta {
+  background: #3a131b;
+}
+/* Proceso en vino: la sección de más peso cambia de color */
+:global([data-variante="noche"]) .pagina .oscuro {
+  background: linear-gradient(180deg, #3a131b, #2a0e14);
+}
+:global([data-variante="noche"]) .pagina .avance span {
+  background: var(--oro);
+}
+:global([data-variante="noche"][data-var-tema="claro"]) .pagina .preguntasClaras {
+  background: #f5efe6;
+}
+
+/* =====================================================================
+   VARIANTE 3 · PIEDRA
+   Gris piedra frío, titulares en sans moderna apretada (serif solo en
+   cifras y en la palabra de acento), esquinas suaves y hero partido con
+   la foto enmarcada. La más dinámica.
+   ===================================================================== */
+:global([data-variante="piedra"]) .pagina {
+  --arena: #ecebe7;
+  --arena-2: #e0deda;
+  --tinta: #151515;
+  --suave: #4c4a47;
+  --regla: rgb(21 21 21 / 0.12);
+  --obsidiana: #151515;
+  --obsidiana-2: #0f0f0f;
+}
+:global([data-variante="piedra"][data-var-tema="oscuro"]) .pagina {
+  --arena: #121212;
+  --arena-2: #1c1c1c;
+  --tinta: #efefec;
+  --suave: #b9b7b2;
+  --regla: rgb(239 239 236 / 0.14);
+}
+:global([data-variante="piedra"]) .pagina .heroTitulo,
+:global([data-variante="piedra"]) .pagina .titulo2,
+:global([data-variante="piedra"]) .pagina .declaracion,
+:global([data-variante="piedra"]) .pagina .comprasT,
+:global([data-variante="piedra"]) .pagina .paso h3,
+:global([data-variante="piedra"]) .pagina .faq summary,
+:global([data-variante="piedra"]) .pagina .cierreTexto h2,
+:global([data-variante="piedra"]) .pagina .fichaNombre,
+:global([data-variante="piedra"]) .pagina .procesoLema,
+:global([data-variante="piedra"]) .pagina .marca {
+  font-family: var(--sans);
+  font-weight: 600;
   letter-spacing: -0.04em;
-  color: rgb(241 235 225 / 0.08);
-  white-space: nowrap;
-  transform: translateY(0.12em);
+}
+:global([data-variante="piedra"]) .pagina .heroTitulo em {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+/* Hero partido: la foto vive en un marco a la derecha */
+@media (min-width: 960px) {
+  :global([data-variante="piedra"]) .pagina .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-content: stretch;
+    background: var(--arena);
+    color: var(--tinta);
+    padding-top: 96px;
+  }
+  :global([data-variante="piedra"]) .pagina .heroFoto {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    width: calc(100% - 48px);
+    height: calc(100svh - 200px);
+    border-radius: 18px;
+  }
+  :global([data-variante="piedra"]) .pagina .heroVelo {
+    display: none;
+  }
+  :global([data-variante="piedra"]) .pagina .heroTexto {
+    grid-column: 1;
+    grid-row: 1;
+    align-content: end;
+    padding-bottom: 48px;
+  }
+  :global([data-variante="piedra"]) .pagina .heroTitulo {
+    font-size: clamp(3rem, 5.6vw, 5.6rem);
+  }
+  :global([data-variante="piedra"]) .pagina .heroPie {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :global([data-variante="piedra"]) .pagina .heroPie p {
+    color: var(--suave);
+  }
+  :global([data-variante="piedra"]) .pagina .heroTitulo em {
+    color: var(--vino);
+  }
+  :global([data-variante="piedra"]) .pagina .botonVidrio {
+    border-color: var(--tinta);
+    color: var(--tinta);
+  }
+  :global([data-variante="piedra"]) .pagina .cinta {
+    grid-column: 1 / -1;
+    background: var(--obsidiana);
+    color: #fff;
+  }
+  :global([data-variante="piedra"]) .pagina .barra:not(:global(.solida)) {
+    color: var(--tinta);
+  }
+  :global([data-variante="piedra"]) .pagina .barra::before {
+    opacity: 0;
+  }
+}
+:global([data-variante="piedra"]) .pagina .fichaFoto {
+  border-radius: 14px;
+}
+:global([data-variante="piedra"]) .pagina .compras li {
+  border-radius: 12px;
+}
+:global([data-variante="piedra"]) .pagina .compras li:hover {
+  background: var(--arena-2);
+}
+:global([data-variante="piedra"]) .pagina .numero {
+  color: var(--vino);
+  -webkit-text-stroke: 0;
+}
+:global([data-variante="piedra"]) .pagina .oscuro .numero {
+  color: var(--oro);
 }
 
 @media (prefers-reduced-motion: reduce) {
