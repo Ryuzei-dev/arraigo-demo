@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 };
 
 const pasos = [
-  { n: "01", t: "Escuchamos", d: "Entendemos tu objetivo, tu presupuesto y tus tiempos." },
-  { n: "02", t: "Proponemos", d: "Diseñamos una estrategia y opciones concretas a tu medida." },
-  { n: "03", t: "Negociamos", d: "Cuidamos tus intereses en cada punto de la operación." },
-  { n: "04", t: "Cerramos", d: "Acompañamos trámites, notaría y entrega hasta el final." },
+  { n: "01", t: "Primera reunión sin costo", d: "Entendemos tu objetivo, tu presupuesto y tus tiempos, y te damos la lista de documentos para tu caso." },
+  { n: "02", t: "Propuesta por escrito", d: "Opciones concretas o una estrategia de venta, con precio sustentado en datos de la zona." },
+  { n: "03", t: "Negociación en tu nombre", d: "Cuidamos precio, condiciones y cláusulas. Tú apruebas cada acuerdo antes de firmar." },
+  { n: "04", t: "Cierre en notaría", d: "Acompañamos trámites, notaría y entrega. Cobramos comisión solo si la operación se concreta." },
 ];
 
 export default function ServiciosPage() {
@@ -68,7 +68,7 @@ export default function ServiciosPage() {
         <div className="wrap">
           <Reveal>
             <h2 className="display-l" style={{ margin: "18px 0 60px", maxWidth: "16ch" }}>
-              Un proceso <span className="italic-gold">claro</span>, sin sorpresas.
+              De la primera reunión a la <span className="italic-gold">notaría</span>, en cuatro pasos.
             </h2>
           </Reveal>
           <div className={styles.steps}>
@@ -89,7 +89,7 @@ export default function ServiciosPage() {
         <div className="wrap">
           <Reveal>
             <h2 className="display-m" style={{ margin: "16px 0 44px" }}>
-              Antes de empezar
+              Preguntas antes de contratarnos
             </h2>
           </Reveal>
           <Reveal>

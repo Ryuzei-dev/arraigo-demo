@@ -14,19 +14,19 @@ export const metadata: Metadata = {
 
 const valores = [
   {
-    t: "Honestidad",
+    t: "Te decimos el precio real",
     d: "Te decimos lo que necesitas saber del precio y del inmueble, aunque no sea lo que esperabas oír.",
   },
   {
-    t: "Cercanía",
+    t: "Un asesor que te responde",
     d: "Un asesor asignado que responde, acompaña y da la cara en cada etapa de tu operación.",
   },
   {
-    t: "Experiencia",
+    t: "Criterio local para valuar",
     d: "Conocemos las colonias, los precios y las notarías de Uruapan. Eso nos da criterio para valuar y negociar.",
   },
   {
-    t: "Discreción",
+    t: "Tus datos, en reserva",
     d: "Manejamos patrimonio y datos con la reserva y el cuidado que merecen.",
   },
 ];
@@ -37,8 +37,8 @@ export default function NosotrosPage() {
       <section className={styles.hero}>
         <div className="wrap">
           <h1 className={`display-xl ${styles.title}`}>
-            Detrás de cada<br />
-            casa, una <span className="italic-gold">familia</span>.
+            Una inmobiliaria de Uruapan<br />
+            que revisa <span className="italic-gold">antes de vender</span>.
           </h1>
           <p className={styles.lead}>
             Arraigo nació para que comprar, vender o rentar en Uruapan sea un
@@ -65,8 +65,8 @@ export default function NosotrosPage() {
             <Reveal delay={120}>
               <div className={styles.storyText}>
                 <h2 className="display-m" style={{ margin: "18px 0 24px" }}>
-                  Raíces firmes<br />
-                  para <span className="italic-gold">tu patrimonio.</span>
+                  Conocemos las colonias, los precios<br />
+                  y las <span className="italic-gold">notarías de Uruapan.</span>
                 </h2>
                 <p>
                   Somos una inmobiliaria de Uruapan, Michoacán, especializada en
@@ -90,8 +90,8 @@ export default function NosotrosPage() {
       <section className={`section on-light ${styles.values}`}>
         <div className="wrap">
           <Reveal>
-            <h2 className="display-l" style={{ margin: "18px 0 60px", maxWidth: "14ch" }}>
-              Nuestros <span className="italic-gold">valores</span>.
+            <h2 className="display-l" style={{ margin: "18px 0 60px", maxWidth: "18ch" }}>
+              Cuatro compromisos que puedes <span className="italic-gold">exigirnos</span>.
             </h2>
           </Reveal>
           <div className={styles.valuesGrid}>

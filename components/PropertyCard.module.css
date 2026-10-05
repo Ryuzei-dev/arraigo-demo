@@ -56,33 +56,47 @@
   gap: 8px;
   pointer-events: none;
 }
+/* Sobre la foto: colores fijos, iguales en claro y oscuro.
+   Operación = dato neutro (claro con punto); estado = significado (verde bueno, oro nuevo, gris cerrado). */
 .op,
 .estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-data);
   font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 7px 14px;
   border-radius: 100px;
-  color: var(--marfil);
   white-space: nowrap;
+  box-shadow: 0 2px 10px rgb(14 12 11 / 0.18);
 }
-.op[data-op="venta"] {
-  background: rgba(126, 44, 57, 0.9);
+.op {
+  background: rgb(250 247 241 / 0.95);
+  color: #1b1714;
 }
-.op[data-op="renta"] {
-  background: rgba(47, 74, 60, 0.92);
+.op::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8f6a23;
+}
+.op[data-op="renta"]::before {
+  background: #2f5d7c;
 }
 .estado {
-  background: rgba(20, 17, 15, 0.82);
-  border: 1px solid var(--linea-fuerte);
-  color: var(--oro-claro);
+  background: #3f3934;
+  color: #fff;
 }
-.estado[data-estado="rebajada"],
+.estado[data-estado="rebajada"] {
+  background: #2f6b4f;
+}
 .estado[data-estado="nueva"] {
-  background: var(--oro);
-  border-color: var(--oro);
-  color: var(--obsidiana);
+  background: #e2bf72;
+  color: #1b1714;
 }
 .acciones {
   position: absolute;

@@ -302,7 +302,7 @@
   text-underline-offset: 4px;
 }
 .tabla tbody th a:hover {
-  color: var(--vino);
+  color: var(--oro-claro);
 }
 .tabla td {
   font-family: var(--font-data);
@@ -313,8 +313,8 @@
   margin-top: 22px;
 }
 .masColonias a {
-  color: var(--vino);
-  text-decoration-color: rgba(126, 44, 57, 0.4);
+  color: var(--oro-claro);
+  text-decoration-color: color-mix(in srgb, var(--oro-claro) 40%, transparent);
 }
 .srOnly {
   position: absolute;

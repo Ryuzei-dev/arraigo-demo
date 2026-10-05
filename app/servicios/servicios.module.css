@@ -101,14 +101,14 @@
   gap: 28px;
 }
 .step {
-  border-top: 2px solid var(--vino);
+  border-top: 2px solid var(--oro-claro);
   padding-top: 24px;
 }
 .stepN {
   font-family: var(--font-display-italic);
   font-style: italic;
   font-size: 2.4rem;
-  color: var(--vino);
+  color: var(--oro-claro);
 }
 .step h4 {
   font-size: 1.6rem;

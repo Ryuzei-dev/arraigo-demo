@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { getColonias, getPropiedades } from "@/lib/queries";
 import { formatoPrecio, formatoMoneda, superficie } from "@/lib/properties";
 import InicioVivo from "./InicioVivo";
+import { IconoCheck } from "@/components/Iconos";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -17,24 +18,56 @@ export const metadata: Metadata = {
  */
 
 const compras = [
-  { t: "Papeles en orden, antes de la primera visita", d: "Escrituras, predial y libertad de gravamen revisados.", foto: "/fotos/compra.jpg" },
-  { t: "Un precio que se sostiene", d: "Comparado contra ventas reales de la misma colonia.", foto: "/fotos/avaluos.jpg" },
-  { t: "Condiciones por escrito", d: "Lo que se acuerda queda en papel, no en una llamada.", foto: "/fotos/interiores.jpg" },
-  { t: "Alguien contigo en la notaría", d: "Hasta la firma y la entrega de llaves.", foto: "/fotos/patios.jpg" },
+  {
+    t: "Escrituras y predial revisados antes de la visita",
+    d: "Pedimos escrituras, predial al corriente y certificado de libertad de gravamen. Si algo falta, lo sabes antes de ver la casa, no el día de la firma.",
+    foto: "/fotos/compra.jpg",
+  },
+  {
+    t: "Precio comparado con la misma colonia",
+    d: "Contrastamos lo que piden con el precio por m² de la zona y con inmuebles parecidos. Llegas a negociar con un número que puedes defender.",
+    foto: "/fotos/avaluos.jpg",
+  },
+  {
+    t: "Cada acuerdo firmado antes de pagar",
+    d: "Precio, forma de pago, fechas y condiciones de entrega quedan por escrito antes de que entregues dinero. Nada depende de una llamada.",
+    foto: "/fotos/interiores.jpg",
+  },
+  {
+    t: "El mismo asesor hasta la entrega de llaves",
+    d: "Te acompaña con el banco, coordina con el notario y está en la firma. Si surge una duda a la mitad, sabes a quién llamar.",
+    foto: "/fotos/patios.jpg",
+  },
 ];
 
 const pasos = [
-  { t: "Escuchamos", d: "Qué buscas, cuánto puedes invertir y para cuándo lo necesitas. Si vendes, cuánto vale de verdad tu propiedad hoy.", a: "1 reunión", b: "sin costo" },
-  { t: "Filtramos", d: "Solo te mostramos lo que cumple y tiene papeles en orden. Menos visitas, mejores visitas.", a: "Papeles", b: "revisados antes" },
-  { t: "Negociamos", d: "Precio y condiciones por escrito, sin presión. Tú decides con la información completa.", a: "Por escrito", b: "cada acuerdo" },
-  { t: "Firmamos", d: "Te acompañamos con el crédito, el notario y la entrega. Cobramos comisión solo si se concreta.", a: "Comisión", b: "solo al cerrar" },
+  {
+    t: "Escuchamos qué necesitas",
+    d: "En una primera reunión sin costo definimos zona, tipo de inmueble, presupuesto y para cuándo lo necesitas. Si vas a vender, revisamos cuánto vale tu propiedad hoy.",
+    recibes: ["Asesoría inicial sin costo ni compromiso", "Precalificación de crédito, si la necesitas", "La lista exacta de documentos para tu caso"],
+  },
+  {
+    t: "Filtramos el mercado por ti",
+    d: "Descartamos lo que no cumple con tu perfil o tiene papeles incompletos. Visitas menos inmuebles, y cada uno ya pasó por nuestra revisión.",
+    recibes: ["Solo opciones dentro de tu presupuesto", "Papeles del inmueble revisados antes de la visita", "Precio comparado con la colonia"],
+  },
+  {
+    t: "Negociamos precio y condiciones",
+    d: "Presentamos la oferta y negociamos en tu nombre, sin presión. Tú apruebas cada paso, y lo acordado queda firmado antes de que entregues dinero.",
+    recibes: ["Oferta sustentada en precios de la zona", "Revisión de cláusulas y contrato", "Acuerdos por escrito, nunca de palabra"],
+  },
+  {
+    t: "Firmamos en notaría",
+    d: "Damos seguimiento al crédito, coordinamos con el notario y te acompañamos en la firma y la entrega de llaves. Cobramos comisión solo si la operación se concreta.",
+    recibes: ["Seguimiento del crédito hasta la firma", "Acompañamiento en notaría y escrituración", "Comisión solo al cerrar"],
+  },
 ];
 
 const preguntas = [
-  ["¿Cuánto cobran?", "La primera asesoría no tiene costo. Cobramos comisión solo cuando la operación se concreta, y el porcentaje queda por escrito desde el inicio."],
-  ["¿Me ayudan con el crédito?", "Sí. Precalificamos y comparamos opciones de bancos, Infonavit y Fovissste antes de que elijas."],
-  ["¿Cuánto tarda una compra?", "De contado, unas semanas. Con crédito, de uno a tres meses según el banco y los papeles."],
-  ["¿Qué necesito para vender?", "Escrituras, identificación y predial y servicios al corriente. Te damos la lista exacta en la primera reunión."],
+  ["¿Cuánto cobran por asesorarme?", "La primera asesoría no tiene costo ni compromiso. Cobramos comisión solo cuando la operación se concreta, y el porcentaje queda por escrito desde el inicio, antes de empezar a buscar o a promover."],
+  ["¿Me ayudan a sacar el crédito?", "Sí. Te precalificamos sin costo y comparamos opciones de distintos bancos, Infonavit, Fovissste y esquemas combinados. Te ayudamos a reunir los documentos y damos seguimiento al trámite hasta la firma."],
+  ["¿Cuánto tarda comprar una casa?", "De contado, una compra puede cerrarse en unas semanas. Con crédito suele tomar de uno a tres meses, según el banco y el estado de los papeles. Te damos tiempos realistas desde la primera reunión."],
+  ["¿Qué documentos necesito para vender?", "Por lo general escrituras, identificación oficial, predial y boletas de servicios al corriente. En la primera reunión revisamos tu caso y te damos la lista exacta."],
 ];
 
 export default async function Home() {
@@ -57,8 +90,8 @@ export default async function Home() {
           </h1>
           <div className={styles.heroPie}>
             <p>
-              Compra, venta y renta en Uruapan. Revisamos precio, papeles y condiciones antes de que firmes; la primera asesoría no
-              tiene costo.
+              Compra, venta y renta de casas, departamentos y terrenos en Uruapan. Revisamos precio, papeles y condiciones antes de
+              que firmes. La primera asesoría no tiene costo.
             </p>
             <div className={styles.heroAcciones}>
               <Link href="/propiedades" className="btn btn-gold">
@@ -115,7 +148,13 @@ export default async function Home() {
       <section className={styles.claro} id="propiedades">
         <div className="wrap">
           <div className={styles.cabeza}>
-            <h2 className={styles.titulo2}>Lo que hay disponible hoy.</h2>
+            <div>
+              <h2 className={styles.titulo2}>Propiedades en venta y renta en Uruapan</h2>
+              <p className={styles.entrada}>
+                Cada ficha trae precio, superficie, colonia, fotos y ubicación en el mapa. Filtra por operación aquí o abre el catálogo
+                para buscar por zona y presupuesto.
+              </p>
+            </div>
             <div className={styles.cabezaLado}>
               <div className={styles.pastillas} role="group" aria-label="Filtrar por operación" data-filtro>
                 <button type="button" aria-pressed="true" data-op="todas">
@@ -159,7 +198,10 @@ export default async function Home() {
       {/* ===================== LO QUE DE VERDAD COMPRAS ===================== */}
       <section className={styles.claro}>
         <div className="wrap">
-          <h2 className={styles.titulo2}>Lo que de verdad estás comprando.</h2>
+          <h2 className={styles.titulo2}>Lo que revisamos antes de que firmes</h2>
+          <p className={styles.entrada}>
+            Una casa se compra pocas veces en la vida. Estas cuatro revisiones son las que evitan sorpresas en la notaría.
+          </p>
           <ol className={styles.compras} data-compras>
             {compras.map((c, i) => (
               <li key={c.t} data-foto={c.foto}>
@@ -185,7 +227,8 @@ export default async function Home() {
                 </span>
               ))}
             </div>
-            <p className={styles.procesoLema}>Cuatro pasos, y en todos alguien responde por ti.</p>
+            <h2 className={styles.procesoLema}>Cómo compras con nosotros, en cuatro pasos</h2>
+            <p className={styles.procesoNota}>De contado, unas semanas. Con crédito, de uno a tres meses.</p>
             <div className={styles.avance}>
               <span data-avance />
             </div>
@@ -196,12 +239,15 @@ export default async function Home() {
                 <span className={styles.pasoCuenta}>{String(i + 1).padStart(2, "0")} / 04</span>
                 <h3>{p.t}</h3>
                 <p>{p.d}</p>
-                <dl>
-                  <div>
-                    <dt>{p.a}</dt>
-                    <dd>{p.b}</dd>
-                  </div>
-                </dl>
+                <p className={styles.pasoRecibes}>Qué recibes</p>
+                <ul>
+                  {p.recibes.map((r) => (
+                    <li key={r}>
+                      <IconoCheck />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ol>
@@ -212,7 +258,10 @@ export default async function Home() {
       <section className={styles.claro} id="preguntas">
         <div className="wrap">
           <div className={styles.cabeza}>
-            <h2 className={styles.titulo2}>Lo que nos preguntan antes de la primera visita.</h2>
+            <div>
+              <h2 className={styles.titulo2}>Cuánto cobramos, cuánto tarda y qué necesitas</h2>
+              <p className={styles.entrada}>Las cuatro preguntas que más nos hacen antes de la primera visita.</p>
+            </div>
             <Link prefetch={false} href="/preguntas" className={styles.enlace}>
               Todas las preguntas <span aria-hidden="true">→</span>
             </Link>
@@ -236,7 +285,12 @@ export default async function Home() {
       <section className={styles.claro}>
         <div className="wrap">
           <div className={styles.cabeza}>
-            <h2 className={styles.titulo2}>Dónde trabajamos.</h2>
+            <div>
+              <h2 className={styles.titulo2}>Precio por m² en las colonias donde trabajamos</h2>
+              <p className={styles.entrada}>
+                Promedio de las propiedades en venta de nuestro catálogo. Te sirve para saber si un precio está en rango antes de visitar.
+              </p>
+            </div>
             <Link prefetch={false} href="/colonias" className={styles.enlace}>
               Guía de colonias <span aria-hidden="true">→</span>
             </Link>

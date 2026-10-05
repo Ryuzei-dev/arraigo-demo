@@ -21,6 +21,7 @@
   border-radius: 50%;
   border: 1px solid rgba(239, 233, 223, 0.25);
   background: rgba(20, 17, 15, 0.62);
+  color: #f7f2e9;
 }
 .icono:hover:not(:disabled) {
   border-color: var(--oro);
@@ -45,6 +46,6 @@
   border-color: var(--oro);
 }
 .icono.activo {
-  color: var(--oro);
+  color: #e2bf72;
   background: rgba(20, 17, 15, 0.82);
 }

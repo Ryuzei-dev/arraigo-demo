@@ -144,7 +144,7 @@ export default async function ServicioDetalle({
         <div className="wrap">
           <Reveal>
             <h2 className="display-m" style={{ margin: "16px 0 56px" }}>
-              El proceso, paso a paso
+              Cómo trabajamos tu {s.titulo.toLowerCase()}, paso a paso
             </h2>
           </Reveal>
           <div className={styles.steps}>

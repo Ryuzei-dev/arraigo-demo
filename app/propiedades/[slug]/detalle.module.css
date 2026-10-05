@@ -345,14 +345,14 @@
   background: rgba(199, 154, 71, 0.1);
 }
 .estado[data-estado="nueva"] {
-  color: #8cc5a8;
-  border-color: rgba(111, 174, 143, 0.4);
-  background: rgba(47, 74, 60, 0.35);
+  color: light-dark(#6f511a, #e2bf72);
+  border-color: color-mix(in srgb, currentColor 40%, transparent);
+  background: color-mix(in srgb, currentColor 10%, transparent);
 }
 .estado[data-estado="rebajada"] {
-  color: #e8a0a8;
-  border-color: rgba(163, 69, 79, 0.5);
-  background: rgba(126, 44, 57, 0.28);
+  color: light-dark(#2f6b4f, #8cc5a8);
+  border-color: color-mix(in srgb, currentColor 40%, transparent);
+  background: color-mix(in srgb, currentColor 10%, transparent);
 }
 .estado[data-estado="apartada"],
 .estado[data-estado="vendida"],

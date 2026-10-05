@@ -29,7 +29,7 @@
   font-family: var(--font-display-italic);
   font-style: italic;
   font-size: 1.2rem;
-  color: var(--marfil);
+  color: #f7f2e9;
   background: rgba(20, 17, 15, 0.78);
   padding: 6px 16px;
   border-radius: 100px;
@@ -99,7 +99,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: var(--marfil);
+  color: #f7f2e9;
   background: rgba(20, 17, 15, 0.6);
   pointer-events: none;
 }
@@ -121,7 +121,7 @@
   padding: 0;
   border: 0;
   background: rgba(12, 10, 9, 0.96);
-  color: var(--marfil);
+  color: #f7f2e9;
   overscroll-behavior: contain;
 }
 .visor:not([open]) {
@@ -167,7 +167,7 @@
   font-variant-numeric: tabular-nums;
   font-size: 0.95rem;
   letter-spacing: 0.06em;
-  color: var(--marfil);
+  color: #f7f2e9;
   background: rgba(20, 17, 15, 0.7);
   padding: 6px 14px;
   border-radius: 100px;
@@ -182,7 +182,7 @@
   border-radius: 50%;
   border: 1px solid rgba(239, 233, 223, 0.25);
   background: rgba(20, 17, 15, 0.75);
-  color: var(--marfil);
+  color: #f7f2e9;
   cursor: pointer;
   transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
 }

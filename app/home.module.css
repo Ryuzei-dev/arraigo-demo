@@ -12,7 +12,7 @@
 .hero {
   position: relative;
   display: grid;
-  align-content: end;
+  grid-template-rows: minmax(0, 1fr) auto;
   min-height: 100svh;
   overflow: hidden;
   color: #fff;
@@ -42,8 +42,9 @@
   gap: 32px;
   width: 100%;
   max-width: var(--maxw);
+  align-self: center;
   margin: 0 auto;
-  padding: 120px 40px 40px;
+  padding: 130px 40px 64px;
 }
 .heroTitulo {
   font-size: clamp(3.2rem, 8.4vw, 7.5rem);
@@ -148,6 +149,17 @@
   font-variation-settings: "opsz" 60;
   line-height: 1.02;
   color: var(--marfil);
+}
+.entrada {
+  max-width: 56ch;
+  margin-top: 16px;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--arena);
+}
+.procesoNota {
+  margin-top: 16px;
+  color: var(--arena);
 }
 .cabeza {
   display: flex;
@@ -443,7 +455,7 @@
   opacity: 1;
 }
 .procesoLema {
-  max-width: 18ch;
+  max-width: 14ch;
   margin-top: 20px;
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.6vw, 2.2rem);
@@ -460,7 +472,7 @@
 .avance span {
   display: block;
   height: 100%;
-  background: var(--vino-claro);
+  background: var(--oro-claro);
   transform-origin: left;
   transform: scaleX(0);
 }
@@ -494,17 +506,34 @@
   color: var(--arena);
   font-size: 1.05rem;
 }
-.paso dl {
+.paso p.pasoRecibes {
   margin-top: 28px;
-}
-.paso dt {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--oro-claro);
 }
-.paso dd {
-  color: var(--arena);
-  font-size: 0.9rem;
+.paso ul {
+  max-width: 44ch;
+  margin-top: 10px;
+  list-style: none;
+  border-top: 1px solid var(--linea);
+}
+.paso li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--linea);
+  color: var(--hueso);
+}
+.paso li svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--oro-claro);
+  transform: translateY(2px);
 }
 @media (max-width: 959px) {
   .paso {
