@@ -21,7 +21,7 @@ const links = [
 const secundarios = [
   { href: "/colonias", label: "Colonias" },
   { href: "/nosotros", label: "Nosotros" },
-  { href: "/preguntas", label: "Preguntas frecuentes" },
+  { href: "/preguntas", label: "Preguntas" },
   { href: "/favoritos", label: "Favoritos" },
 ];
 
