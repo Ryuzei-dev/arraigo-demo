@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { categorias, type Categoria, type Operacion } from "@/lib/properties";
+import { ORDENES } from "./CatalogSort";
 import styles from "./PropertyFilters.module.css";
 
 /** Filtros del catálogo tal como llegan en la URL */
@@ -90,6 +91,7 @@ export default function PropertyFilters({
   const [open, setOpen] = useState(false);
   const activos = filtrosActivos(filtros);
   const { operacion, categoria } = filtros;
+  const esMapa = filtros.vista === "mapa";
   const limpiar = urlCatalogo({ sort: filtros.sort, vista: filtros.vista });
   const enviarEscritorio = useEnviar();
   const enviarMovil = useEnviar(() => setOpen(false));
@@ -194,8 +196,36 @@ export default function PropertyFilters({
           )}
         </button>
         <span className={styles.mobileCount}>
-          {total} resultado{total !== 1 ? "s" : ""}
+          <strong>{total}</strong> <span className={styles.palabra}>resultado{total !== 1 ? "s" : ""}</span>
         </span>
+        <nav className={styles.vistaMovil} aria-label="Modo de vista">
+          <Link
+            href={urlCatalogo(filtros, { vista: null })}
+            scroll={false}
+            aria-current={!esMapa ? "page" : undefined}
+            aria-label="Ver en lista"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path d="M8 7h12M8 12h12M8 17h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              <circle cx="4.5" cy="7" r="1" fill="currentColor" />
+              <circle cx="4.5" cy="12" r="1" fill="currentColor" />
+              <circle cx="4.5" cy="17" r="1" fill="currentColor" />
+            </svg>
+            <span>Lista</span>
+          </Link>
+          <Link
+            href={urlCatalogo(filtros, { vista: "mapa" })}
+            scroll={false}
+            aria-current={esMapa ? "page" : undefined}
+            aria-label="Ver en mapa"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+              <circle cx="12" cy="10" r="2.3" stroke="currentColor" strokeWidth="1.6" fill="none" />
+            </svg>
+            <span>Mapa</span>
+          </Link>
+        </nav>
       </div>
 
       {/* Bottom-sheet móvil */}
@@ -287,7 +317,7 @@ function FormFiltros({
       {/* Se conservan los filtros de chips, el orden y la vista */}
       {filtros.operacion && <input type="hidden" name="operacion" value={filtros.operacion} />}
       {filtros.categoria && <input type="hidden" name="categoria" value={filtros.categoria} />}
-      {filtros.sort && <input type="hidden" name="sort" value={filtros.sort} />}
+      {escritorio && filtros.sort && <input type="hidden" name="sort" value={filtros.sort} />}
       {filtros.vista && <input type="hidden" name="vista" value={filtros.vista} />}
 
       <div className={styles.campo}>
@@ -409,6 +439,21 @@ function FormFiltros({
           />
         </div>
       </div>
+
+      {!escritorio && (
+        <div className={styles.campo}>
+          <label htmlFor={id("sort")} className={styles.groupLabel}>
+            Ordenar por
+          </label>
+          <select id={id("sort")} name="sort" className={styles.input} defaultValue={filtros.sort ?? ""}>
+            {ORDENES.map((o) => (
+              <option key={o.valor} value={o.valor === "recientes" ? "" : o.valor}>
+                {o.etiqueta}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {escritorio && (
         <button type="submit" className={`btn btn-gold ${styles.aplicar}`}>

@@ -165,8 +165,20 @@
 }
 
 @media (max-width: 900px) {
-  .conteo {
+  /* En móvil, vista y orden viven en la barra fija y en la hoja de filtros */
+  .barra {
     display: none;
+  }
+  .activos {
+    position: relative;
+    flex-wrap: nowrap;
+    margin-inline: -22px;
+    padding-inline: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .activos li {
+    flex: none;
   }
   .vista a,
   .activo,
@@ -191,5 +203,12 @@
   .controles {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+/* Cabecera compacta en móvil: la lista empieza antes */
+@media (max-width: 900px) {
+  .head {
+    padding: 120px 0 8px;
   }
 }
