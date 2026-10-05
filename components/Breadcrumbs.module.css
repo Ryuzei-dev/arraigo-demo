@@ -1,0 +1,31 @@
+.crumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.link {
+  color: var(--arena);
+  transition: color 0.25s var(--ease);
+}
+.link:hover {
+  color: var(--oro-claro);
+}
+.link:active {
+  color: var(--oro);
+}
+.sep {
+  color: var(--arena-2);
+  margin: 0 6px;
+}
+.current {
+  color: var(--hueso);
+  opacity: 0.75;
+}

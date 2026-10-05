@@ -1,0 +1,100 @@
+.wrap {
+  position: relative;
+}
+/* Scroll nativo con imán: lo mueve el compositor, sin JavaScript en cada cuadro */
+.pista {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(300px, calc((100% - 52px) / 3), 420px);
+  column-gap: 26px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  scrollbar-width: none;
+  padding: 8px 0 12px;
+  margin: -8px 0 -12px;
+}
+.pista::-webkit-scrollbar {
+  display: none;
+}
+.pista:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 4px;
+  border-radius: 20px;
+}
+.slide {
+  min-width: 0;
+  scroll-snap-align: start;
+  display: flex;
+}
+.slide > * {
+  flex: 1;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 36px;
+}
+.hint {
+  font-family: var(--font-data);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+.btns {
+  display: flex;
+  gap: 12px;
+}
+.arrow {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid var(--linea-fuerte);
+  background: transparent;
+  color: var(--hueso);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease),
+    opacity 0.3s var(--ease);
+  display: grid;
+  place-items: center;
+}
+.arrow:hover:not(:disabled) {
+  background: var(--oro);
+  border-color: var(--oro);
+  color: var(--obsidiana);
+}
+.arrow:active:not(:disabled) {
+  transform: scale(0.92);
+}
+.arrow:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 2px;
+}
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Táctil: se desliza con el dedo, sin flechas */
+@media (hover: none), (pointer: coarse) {
+  .controls {
+    display: none;
+  }
+}
+@media (max-width: 680px) {
+  .pista {
+    grid-auto-columns: 84%;
+    column-gap: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pista {
+    scroll-behavior: auto;
+  }
+}

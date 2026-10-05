@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo Milkasa · Personalidad & Estrategia de Rediseño</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   GRUPO MILKASA · DOCUMENTO DE PERSONALIDAD (tema claro)
+   ============================================================ */
+
+:root{
+  /* --- Fondos claros --- */
+  --bg:        #FBF8F1;   /* fondo principal */
+  --bg-2:      #F4EEE2;   /* secciones alternas / respiro */
+  --card:      #FFFFFF;   /* tarjetas y bloques */
+
+  /* --- Tinta / texto --- */
+  --ink:       #221C17;   /* texto principal */
+  --ink-soft:  #5C5347;   /* texto secundario / muted */
+
+  /* --- Acentos de marca --- */
+  --oro:       #C79A47;   /* acento (fondos de chip, detalles) */
+  --oro-ink:   #98741F;   /* oro legible sobre claro (texto/eyebrow) */
+  --vino:      #7E2C39;   /* acento secundario / acción */
+  --verde:     #2F4A3C;   /* apoyo, confianza */
+
+  /* referencia de la paleta oscura de la web (para swatches) */
+  --obsidiana: #14110F;
+  --grafito:   #1E1A17;
+
+  --line:      rgba(34,28,23,.12);
+  --line-soft: rgba(34,28,23,.07);
+
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', system-ui, -apple-system, sans-serif;
+  --grotesk: 'Space Grotesk', var(--sans);
+
+  --maxw: 1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+section{position:relative}
+
+/* --- Tipografía base --- */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.02em;color:var(--ink)}
+.eyebrow{
+  font-family:var(--grotesk);
+  font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--oro-ink);display:inline-block;
+}
+p{color:var(--ink-soft)}
+a{color:var(--oro-ink);text-decoration:none}
+strong{color:var(--ink)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 0 80px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 82% -10%, rgba(199,154,71,.20), transparent 55%),
+    radial-gradient(90% 60% at 0% 110%, rgba(126,44,57,.10), transparent 60%),
+    var(--bg);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:80px 80px;opacity:.9;
+  mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 90%);
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 90%);
+}
+.hero .wrap{position:relative;z-index:2}
+.brandmark{display:flex;align-items:center;gap:14px;margin-bottom:64px}
+.brandmark .logo{
+  width:46px;height:46px;border:1.5px solid var(--oro);border-radius:10px;
+  display:grid;place-items:center;font-family:var(--serif);font-weight:700;color:var(--oro-ink);
+  font-size:1.2rem;background:#fff;
+}
+.brandmark .name{font-family:var(--grotesk);font-weight:600;letter-spacing:.04em;font-size:1.05rem;color:var(--ink)}
+.brandmark .name span{color:var(--ink-soft);display:block;font-size:.7rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase}
+
+.hero h1{
+  font-size:clamp(3rem,8.5vw,7.5rem);font-weight:400;
+  margin:0 0 28px;max-width:16ch;
+}
+.hero h1 em{font-style:italic;color:var(--oro-ink);font-weight:300}
+.hero .lead{font-size:clamp(1.05rem,1.8vw,1.4rem);max-width:52ch;font-weight:300;color:var(--ink-soft)}
+.hero-meta{display:flex;gap:40px;flex-wrap:wrap;margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
+.hero-meta div{min-width:130px}
+.hero-meta .k{font-family:var(--grotesk);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-meta .v{font-family:var(--serif);font-size:1.35rem;color:var(--ink);margin-top:6px}
+
+/* ============================================================
+   SECCIÓN GENÉRICA
+   ============================================================ */
+.section{padding:110px 0}
+.section-head{max-width:64ch;margin-bottom:64px}
+.section-head h2{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:400;margin:22px 0 20px}
+.section-head p{font-size:1.1rem;color:var(--ink-soft)}
+
+.on-light{background:var(--bg-2)}
+.on-light .eyebrow{color:var(--vino)}
+
+/* ============================================================
+   PROBLEMA / SOLUCIÓN
+   ============================================================ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;
+  box-shadow:0 20px 50px -40px rgba(34,28,23,.4);
+}
+.card.prob{border-color:rgba(126,44,57,.28)}
+.card h3{font-size:1.5rem;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.tag{font-family:var(--grotesk);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;border-radius:100px}
+.tag.bad{background:rgba(126,44,57,.12);color:var(--vino)}
+.tag.good{background:rgba(152,116,31,.14);color:var(--oro-ink)}
+.issue{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line-soft)}
+.issue:last-child{border-bottom:0}
+.issue .ic{color:var(--vino);font-weight:700;flex-shrink:0}
+.card.sol .issue .ic{color:var(--oro-ink)}
+.issue b{color:var(--ink);font-weight:600;display:block;font-size:.98rem}
+.issue small{color:var(--ink-soft);font-size:.86rem;line-height:1.5}
+
+/* ============================================================
+   PERSONALIDAD (atributos)
+   ============================================================ */
+.attrs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.attr{padding:28px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.attr .n{font-family:var(--grotesk);font-size:.7rem;color:var(--vino);letter-spacing:.14em}
+.attr h4{font-size:1.35rem;margin:12px 0 8px}
+.attr p{font-size:.9rem}
+
+/* ============================================================
+   PALETA DE COLOR
+   ============================================================ */
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.swatch{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.swatch .chip{height:130px;display:flex;align-items:flex-end;padding:14px}
+.swatch .meta{padding:16px 18px;background:var(--card)}
+.swatch .meta .nm{font-weight:600;color:var(--ink);font-size:.98rem}
+.swatch .meta .hx{font-family:var(--grotesk);font-size:.82rem;color:var(--oro-ink);letter-spacing:.05em}
+.swatch .meta .use{font-size:.8rem;color:var(--ink-soft);margin-top:8px;line-height:1.45}
+.chip .role{font-family:var(--grotesk);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;border-radius:100px;background:rgba(0,0,0,.4);color:#fff;backdrop-filter:blur(4px)}
+
+/* ============================================================
+   TIPOGRAFÍA
+   ============================================================ */
+.type-specimen{border:1px solid var(--line);border-radius:18px;padding:44px;background:var(--card);margin-bottom:24px}
+.type-specimen .label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.type-specimen .label .fn{font-family:var(--grotesk);color:var(--oro-ink);letter-spacing:.06em;font-size:.9rem}
+.type-specimen .label .role{color:var(--ink-soft);font-size:.82rem;font-family:var(--grotesk)}
+.big-serif{font-family:var(--serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:400;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.big-serif em{font-style:italic;color:var(--oro-ink)}
+.alphabet{font-family:var(--serif);font-size:1.5rem;color:var(--ink-soft);margin-top:18px;letter-spacing:.02em}
+.body-sample{font-family:var(--sans);font-size:1.05rem;max-width:60ch;color:var(--ink)}
+.grotesk-sample{font-family:var(--grotesk);font-size:1.4rem;letter-spacing:.02em;color:var(--oro-ink)}
+.weights{display:flex;gap:24px;flex-wrap:wrap;margin-top:18px;font-family:var(--sans)}
+.weights span{color:var(--ink-soft);font-size:.85rem}
+
+/* ============================================================
+   ARQUITECTURA / MAPA DEL SITIO
+   ============================================================ */
+.sitemap{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.page-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;position:relative}
+.page-card .num{font-family:var(--grotesk);font-size:.72rem;color:var(--oro-ink);letter-spacing:.1em}
+.page-card h4{font-size:1.2rem;margin:10px 0 10px}
+.page-card ul{list-style:none;font-size:.84rem;color:var(--ink-soft)}
+.page-card ul li{padding:4px 0 4px 16px;position:relative}
+.page-card ul li::before{content:"›";position:absolute;left:0;color:var(--oro-ink)}
+.page-card.dynamic{border:1.5px dashed var(--vino);background:linear-gradient(180deg,#fff,rgba(126,44,57,.05))}
+
+.extra-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.extra{padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.extra h4{font-size:1.1rem;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.extra .pri{font-size:.6rem;font-family:var(--grotesk);letter-spacing:.12em;padding:3px 8px;border-radius:100px;text-transform:uppercase}
+.pri.must{background:var(--vino);color:#fff}
+.pri.rec{background:var(--oro);color:#231b0a}
+.pri.opt{background:var(--bg-2);color:var(--ink-soft);border:1px solid var(--line)}
+.extra p{font-size:.86rem}
+
+/* ============================================================
+   STACK TÉCNICO
+   ============================================================ */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stack .t{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+.stack .t .k{font-family:var(--grotesk);color:var(--oro-ink);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
+.stack .t h4{font-size:1.4rem;margin:10px 0}
+.stack .t p{font-size:.9rem}
+.stack .t .why{margin-top:14px;font-size:.82rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:14px}
+
+/* ============================================================
+   SEO
+   ============================================================ */
+.seo-list{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;margin-top:20px}
+.seo-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.seo-item .n{font-family:var(--serif);font-size:1.6rem;color:var(--oro-ink);line-height:1;flex-shrink:0}
+.seo-item b{display:block;color:var(--ink);font-size:1rem;margin-bottom:3px}
+.seo-item small{color:var(--ink-soft);font-size:.86rem;line-height:1.5}
+
+/* ============================================================
+   ROADMAP
+   ============================================================ */
+.timeline{position:relative;padding-left:36px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--oro),rgba(199,154,71,0))}
+.phase{position:relative;padding:0 0 40px 24px}
+.phase::before{content:"";position:absolute;left:-31px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--oro);box-shadow:0 0 0 5px rgba(199,154,71,.18)}
+.phase .ph{font-family:var(--grotesk);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--oro-ink)}
+.phase h4{font-size:1.5rem;margin:8px 0 12px}
+.phase p{font-size:.95rem;max-width:60ch}
+.phase .items{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.phase .items span{font-size:.78rem;font-family:var(--grotesk);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:100px;border:1px solid var(--line)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot{padding:70px 0 60px;border-top:1px solid var(--line);text-align:center}
+.foot .q{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--ink);max-width:20ch;margin:0 auto 24px;line-height:1.15}
+.foot .q b{color:var(--oro-ink);font-style:normal;font-weight:400}
+.foot small{color:var(--ink-soft);font-family:var(--grotesk);letter-spacing:.1em;font-size:.75rem;text-transform:uppercase}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:960px){
+  .split,.attrs,.palette,.stack,.seo-list{grid-template-columns:1fr 1fr}
+  .sitemap{grid-template-columns:1fr 1fr}
+  .extra-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .split,.attrs,.palette,.stack,.seo-list,.sitemap{grid-template-columns:1fr}
+  .section{padding:70px 0}
+  .hero{padding:100px 0 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brandmark">
+      <div class="logo">M</div>
+      <div class="name">GRUPO MILKASA<span>Asesoría & Venta Inmobiliaria</span></div>
+    </div>
+    <div class="eyebrow">Documento de personalidad · Estrategia de rediseño</div>
+    <h1 style="margin-top:20px">Del template<br>al <em>patrimonio</em>.</h1>
+    <p class="lead">La guía de marca, diseño y arquitectura que convierte el sitio actual en una plataforma inmobiliaria seria, memorable y encontrable en Google.</p>
+    <div class="hero-meta">
+      <div><div class="k">Cliente</div><div class="v">Grupo Milkasa</div></div>
+      <div><div class="k">Sector</div><div class="v">Inmobiliario</div></div>
+      <div><div class="k">Plataforma</div><div class="v">Next.js + CMS</div></div>
+      <div><div class="k">Tono</div><div class="v">Sobrio · Serio</div></div>
+      <div><div class="k">Fecha</div><div class="v">2026</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ RESUMEN ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">01 · Resumen ejecutivo</div>
+      <h2>Vendemos patrimonio. La web debe sentirse igual de valiosa.</h2>
+      <p>Grupo Milkasa es una inmobiliaria de Uruapan, Michoacán que asesora en compra, venta y renta de casas, departamentos, terrenos, locales, bodegas y oficinas. El sitio actual es una plantilla genérica de colores estridentes que no transmite confianza y, algo crítico, <strong style="color:var(--vino)">no está indexada en Google</strong>, por lo que hoy es prácticamente invisible.</p>
+      <p style="margin-top:16px">Este documento define <strong>quién es la marca</strong>, <strong>cómo se ve y se siente</strong>, y <strong>cómo se construye</strong>: un sitio multipágina en Next.js, con un CMS para administrar propiedades, páginas personalizadas por inmueble, y una estética editorial y maximalista al nivel de referentes como Framer, pero al servicio de la sobriedad y la seriedad que exige el patrimonio de un cliente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROBLEMA / SOLUCIÓN ============================ -->
+<section class="section on-light">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">02 · Diagnóstico</div>
+      <h2>El problema y la solución</h2>
+      <p>Un antes y después honesto de lo que hoy frena al negocio y de la dirección que corrige cada punto.</p>
+    </div>
+    <div class="split">
+      <div class="card prob">
+        <h3><span class="tag bad">Hoy</span> Lo que nos frena</h3>
+        <div class="issue"><span class="ic">✕</span><div><b>Invisible en Google</b><small>El sitio no está indexado: no aparece al buscar "inmobiliaria Uruapan" ni por marca. Cero tráfico orgánico.</small></div></div>
+        <div class="issue"><span class="ic">✕</span><div><b>Aspecto de plantilla</b><small>Colores saturados (magenta + naranja + morado) y layout genérico que restan credibilidad y seriedad.</small></div></div>
+        <div class="issue"><span class="ic">✕</span><div><b>Sin páginas por propiedad</b><small>No hay una URL propia por inmueble; imposible compartir, posicionar o dar seguimiento a un lead específico.</small></div></div>
+        <div class="issue"><span class="ic">✕</span><div><b>Contenido rígido</b><small>Cargar o editar propiedades depende de tocar código; el equipo no puede autogestionar el catálogo.</small></div></div>
+        <div class="issue"><span class="ic">✕</span><div><b>Jerarquía plana</b><small>Sin narrativa ni heros que guíen; todo pesa igual y nada convence.</small></div></div>
+      </div>
+      <div class="card sol">
+        <h3><span class="tag good">Solución</span> Hacia dónde vamos</h3>
+        <div class="issue"><span class="ic">→</span><div><b>SEO técnico desde la base</b><small>Next.js con renderizado del lado servidor, sitemap, metadatos, datos estructurados y Google Search Console. Encontrable por marca y por búsquedas locales.</small></div></div>
+        <div class="issue"><span class="ic">→</span><div><b>Identidad sobria y premium</b><small>Paleta de obsidiana, oro y vino; tipografía editorial. Se ve serio, cálido y confiable.</small></div></div>
+        <div class="issue"><span class="ic">→</span><div><b>Página dedicada por inmueble</b><small>Cada propiedad con su URL, galería, ficha, mapa y formulario. Lista para compartir y posicionar.</small></div></div>
+        <div class="issue"><span class="ic">→</span><div><b>CMS para el equipo</b><small>Altas, bajas y edición de propiedades sin programar, con fotos, precios y categorías.</small></div></div>
+        <div class="issue"><span class="ic">→</span><div><b>Narrativa maximalista</b><small>Heros amplios, tipografía grande e imágenes con atmósfera que conducen la mirada hacia la acción.</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PERSONALIDAD ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">03 · Personalidad de marca</div>
+      <h2>Sobria, seria, cálida y experta.</h2>
+      <p>Cuatro atributos que gobiernan cada decisión de diseño, redacción y fotografía. Si algo no encaja con ellos, se descarta.</p>
+    </div>
+    <div class="attrs">
+      <div class="attr"><div class="n">01</div><h4>Sobria</h4><p>Espacio en blanco, pocos colores, cero estridencia. La sobriedad comunica solvencia.</p></div>
+      <div class="attr"><div class="n">02</div><h4>Seria</h4><p>Datos claros, promesas cumplibles, tono profesional. Se maneja patrimonio, no impulsos.</p></div>
+      <div class="attr"><div class="n">03</div><h4>Cálida</h4><p>Los tonos oro y tierra humanizan. Detrás de cada casa hay una familia y un asesor cercano.</p></div>
+      <div class="attr"><div class="n">04</div><h4>Experta</h4><p>Guía, no vende a presión. Contenido útil que posiciona a Milkasa como autoridad local.</p></div>
+    </div>
+    <p style="margin-top:36px;font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--vino);max-width:26ch">"Mi prioridad, tu patrimonio": la sobriedad es la forma visual de esa promesa.</p>
+  </div>
+</section>
+
+<!-- ============================ PALETA ============================ -->
+<section class="section on-light">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">04 · Paleta de color</div>
+      <h2>Obsidiana, oro y vino.</h2>
+      <p>Se abandona el trío magenta/naranja/morado. La nueva paleta parte de un neutro profundo y cálido, con oro como acento de lujo y vino como acción seria. El fondo manda; el color acentúa, nunca grita.</p>
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--ink-soft);font-family:var(--grotesk);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px">Neutros base</h3>
+    <div class="palette">
+      <div class="swatch"><div class="chip" style="background:#14110F"><span class="role">Fondo · 60%</span></div><div class="meta"><div class="nm">Obsidiana</div><div class="hx">#14110F</div><div class="use">Fondos principales de la web, heros, footer.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#1E1A17"><span class="role">Superficie</span></div><div class="meta"><div class="nm">Grafito</div><div class="hx">#1E1A17</div><div class="use">Tarjetas y bloques elevados sobre oscuro.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F7F2E9"><span class="role" style="background:rgba(0,0,0,.5)">Fondo claro</span></div><div class="meta"><div class="nm">Marfil</div><div class="hx">#F7F2E9</div><div class="use">Secciones claras, respiro, contraste de ritmo.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#6B6157"><span class="role">Texto muted</span></div><div class="meta"><div class="nm">Arena</div><div class="hx">#6B6157</div><div class="use">Texto secundario, etiquetas, detalles.</div></div></div>
+    </div>
+
+    <h3 style="font-size:1.1rem;color:var(--ink-soft);font-family:var(--grotesk);letter-spacing:.1em;text-transform:uppercase;margin:44px 0 18px">Acentos de marca</h3>
+    <div class="palette">
+      <div class="swatch"><div class="chip" style="background:#C79A47"><span class="role" style="background:rgba(0,0,0,.5)">Acento · 30%</span></div><div class="meta"><div class="nm">Oro Milkasa</div><div class="hx">#C79A47</div><div class="use">Acento principal, subrayados, íconos, hover.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#E0BC6E"><span class="role" style="background:rgba(0,0,0,.5)">Oro claro</span></div><div class="meta"><div class="nm">Oro Luz</div><div class="hx">#E0BC6E</div><div class="use">Enlaces sobre oscuro, brillos, gradientes.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#7E2C39"><span class="role">Acción · 10%</span></div><div class="meta"><div class="nm">Vino</div><div class="hx">#7E2C39</div><div class="use">Botones primarios (CTA), estados de venta.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#2F4A3C"><span class="role">Apoyo</span></div><div class="meta"><div class="nm">Verde Patrimonio</div><div class="hx">#2F4A3C</div><div class="use">Confianza, "renta", etiquetas de estatus.</div></div></div>
+    </div>
+    <p style="margin-top:28px;font-size:.9rem;color:var(--ink-soft)">Regla 60/30/10 → 60% neutros (obsidiana/marfil), 30% oro como firma de marca, 10% vino para la acción. Nunca invertir la proporción.</p>
+  </div>
+</section>
+
+<!-- ============================ TIPOGRAFÍA ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">05 · Tipografía</div>
+      <h2>Serif editorial + sans neutra.</h2>
+      <p>Un contraste alto que define el estilo "framer" sobrio: display serif con carácter para los heros, y una sans limpia para leerlo todo. Espacio grande, tamaños generosos, maximalismo controlado.</p>
+    </div>
+
+    <div class="type-specimen">
+      <div class="label"><span class="fn">Fraunces</span><span class="role">Display · Títulos · Heros</span></div>
+      <div class="big-serif">Compra o renta<br>tu <em>departamento</em>.</div>
+      <div class="alphabet">Aa Bb Cc Dd · 0123456789 · & ? !</div>
+      <div class="weights"><span>Light 300</span><span>Regular 400</span><span>Medium 500</span><span>Semibold 600</span><span>Black 900 · italic</span></div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="label"><span class="fn">Inter</span><span class="role">Texto · Interfaz · Fichas</span></div>
+      <p class="body-sample">Somos profesionales en el ramo inmobiliario; brindamos resultados reales y honestos. Cada propiedad incluye su ficha completa, galería, ubicación y un asesor asignado para acompañarte en cada paso de tu inversión.</p>
+      <div class="weights"><span>Light 300</span><span>Regular 400</span><span>Medium 500</span><span>Semibold 600</span><span>Bold 700</span></div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="label"><span class="fn">Space Grotesk</span><span class="role">Detalles · Etiquetas · Datos</span></div>
+      <div class="grotesk-sample">PROPIEDADES · $2,450,000 MXN · 3 REC · 2.5 BAÑOS</div>
+      <p style="color:var(--ink-soft);font-size:.9rem;margin-top:14px">Reservada para eyebrows, precios, metadatos y microtexto técnico. Aporta un toque contemporáneo sin restar seriedad.</p>
+    </div>
+    <p style="margin-top:8px;font-size:.9rem;color:var(--ink-soft)"><strong>Alternativa 100% sans</strong> (más moderna, menos editorial): Space Grotesk para display + Inter para texto. Se decide en la fase de dirección de arte.</p>
+  </div>
+</section>
+
+<!-- ============================ ARQUITECTURA ============================ -->
+<section class="section on-light">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">06 · Arquitectura del sitio</div>
+      <h2>Cinco páginas núcleo + fichas por propiedad.</h2>
+      <p>Estructura multipágina pensada para convertir y para posicionar. Cada propiedad genera su propia página dinámica desde el CMS.</p>
+    </div>
+    <div class="sitemap">
+      <div class="page-card"><div class="num">01</div><h4>Inicio</h4><ul><li>Hero con propuesta</li><li>Propiedades destacadas</li><li>Razón de ser</li><li>CTA venta / renta</li><li>Prueba social</li></ul></div>
+      <div class="page-card"><div class="num">02</div><h4>Propiedades</h4><ul><li>Catálogo con filtros</li><li>Tipo, precio, zona</li><li>Venta / renta</li><li>Buscador</li><li>Grid de fichas</li></ul></div>
+      <div class="page-card"><div class="num">03</div><h4>Servicios</h4><ul><li>Asesoría</li><li>Avalúos</li><li>Trámites / crédito</li><li>Administración</li><li>Proceso paso a paso</li></ul></div>
+      <div class="page-card"><div class="num">04</div><h4>Nosotros</h4><ul><li>Historia y valores</li><li>Equipo asesor</li><li>Confianza</li><li>Zonas que cubrimos</li><li>Testimonios</li></ul></div>
+      <div class="page-card"><div class="num">05</div><h4>Contacto</h4><ul><li>Formulario</li><li>WhatsApp directo</li><li>Mapa / oficina</li><li>Teléfono 452</li><li>Horarios</li></ul></div>
+    </div>
+    <div style="margin-top:16px" class="page-card dynamic">
+      <div class="num" style="color:var(--vino)">Dinámica · generada por el CMS</div>
+      <h4 style="margin-top:8px">Página de propiedad · <span style="color:var(--vino)">/propiedades/[slug]</span></h4>
+      <p style="max-width:70ch;font-size:.92rem">Una URL única por inmueble: galería a pantalla, precio, características, descripción, ubicación en mapa, propiedades similares, asesor asignado y formulario de interés. Es la unidad que se comparte, se indexa y convierte.</p>
+    </div>
+
+    <h3 style="font-size:1.3rem;margin:52px 0 6px;color:var(--ink)">La quinta página + lo que conviene sumar</h3>
+    <p style="max-width:60ch;font-size:.95rem">Recomiendo <strong>"Nosotros"</strong> como quinta página (construye la confianza que exige el sector). Estos son los complementos que elevan una inmobiliaria seria, ordenados por prioridad:</p>
+    <div class="extra-grid">
+      <div class="extra"><h4><span class="pri must">Imprescindible</span></h4><p><strong>Aviso de privacidad y términos.</strong> Obligatorio en México (LFPDPPP) al captar datos por formularios. Da seriedad legal.</p></div>
+      <div class="extra"><h4><span class="pri must">Imprescindible</span></h4><p><strong>WhatsApp flotante + formulario por propiedad.</strong> El lead inmobiliario se cierra por conversación directa e inmediata.</p></div>
+      <div class="extra"><h4><span class="pri rec">Recomendado</span></h4><p><strong>Blog / Guías inmobiliarias.</strong> Motor de SEO: "cómo comprar en Uruapan", "renta vs. compra". Posiciona a Milkasa como experto.</p></div>
+      <div class="extra"><h4><span class="pri rec">Recomendado</span></h4><p><strong>Buscador con filtros.</strong> Tipo, operación, zona, precio y recámaras. Reduce fricción y mejora la experiencia.</p></div>
+      <div class="extra"><h4><span class="pri rec">Recomendado</span></h4><p><strong>Testimonios y casos de éxito.</strong> Prueba social real; el patrimonio se confía a quien ya cumplió.</p></div>
+      <div class="extra"><h4><span class="pri opt">Opcional</span></h4><p><strong>Preguntas frecuentes (FAQ).</strong> Resuelve dudas y habilita fragmentos enriquecidos en Google.</p></div>
+      <div class="extra"><h4><span class="pri opt">Opcional</span></h4><p><strong>Portal de asesores / vende con nosotros.</strong> Captación de nuevas propiedades y de talento.</p></div>
+      <div class="extra"><h4><span class="pri opt">Opcional</span></h4><p><strong>Comparador y favoritos.</strong> Guardar propiedades y compararlas; ideal para inversionistas.</p></div>
+      <div class="extra"><h4><span class="pri opt">Opcional</span></h4><p><strong>Multi-idioma.</strong> El sitio ya saluda en varios idiomas; formalizarlo (ES/EN) amplía alcance a compradores extranjeros.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STACK ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">07 · Stack técnico</div>
+      <h2>Next.js + un CMS que el equipo pueda manejar.</h2>
+      <p>La base tecnológica que hace posible el SEO, las páginas por propiedad y la autogestión del catálogo.</p>
+    </div>
+    <div class="stack">
+      <div class="t"><div class="k">Framework</div><h4>Next.js (App Router)</h4><p>React con renderizado en servidor y generación estática. Rutas dinámicas para cada propiedad.</p><div class="why">Por qué: SEO real, velocidad, y páginas <em>[slug]</em> generadas desde el CMS.</div></div>
+      <div class="t"><div class="k">Contenido</div><h4>CMS headless</h4><p>Sanity o Payload para administrar propiedades, fotos, precios y categorías sin tocar código.</p><div class="why">Por qué: el equipo Milkasa da altas/bajas solo; estructura ideal para catálogos.</div></div>
+      <div class="t"><div class="k">Entrega</div><h4>Vercel + dominio</h4><p>Despliegue continuo, HTTPS, imágenes optimizadas y analítica. Revalidación al publicar.</p><div class="why">Por qué: rendimiento y estabilidad que Google premia en el ranking.</div></div>
+    </div>
+    <p style="margin-top:24px;font-size:.9rem;color:var(--ink-soft)">Recomendación de CMS: <strong style="color:var(--oro-ink)">Sanity</strong> (editor amigable, potente para catálogos y multi-idioma) o <strong style="color:var(--oro-ink)">Payload</strong> (nativo de Next, todo en un mismo proyecto). Se define según presupuesto y quién administrará el contenido.</p>
+  </div>
+</section>
+
+<!-- ============================ SEO ============================ -->
+<section class="section on-light">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">08 · Visibilidad en Google</div>
+      <h2>De invisible a encontrable.</h2>
+      <p>El sitio actual no aparece en Google. Este es el plan técnico para que Milkasa se posicione por su marca y por búsquedas locales de la zona.</p>
+    </div>
+    <div class="seo-list">
+      <div class="seo-item"><span class="n">1</span><div><b>Indexación y Search Console</b><small>Alta en Google Search Console, sitemap.xml, robots.txt y solicitud de indexación. La base que hoy no existe.</small></div></div>
+      <div class="seo-item"><span class="n">2</span><div><b>Renderizado en servidor</b><small>Next.js entrega HTML completo a Google (el sitio actual en React puro dificulta el rastreo).</small></div></div>
+      <div class="seo-item"><span class="n">3</span><div><b>Metadatos por página</b><small>Títulos, descripciones y Open Graph únicos por página y por propiedad, para búsqueda y para compartir.</small></div></div>
+      <div class="seo-item"><span class="n">4</span><div><b>Datos estructurados</b><small>Schema.org RealEstateListing y LocalBusiness → fichas enriquecidas y mejor comprensión de Google.</small></div></div>
+      <div class="seo-item"><span class="n">5</span><div><b>SEO local</b><small>Google Business Profile, NAP consistente y contenido con la zona (Uruapan / Michoacán).</small></div></div>
+      <div class="seo-item"><span class="n">6</span><div><b>Rendimiento (Core Web Vitals)</b><small>Imágenes optimizadas y carga veloz; señales que impactan directamente el ranking.</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ROADMAP ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">09 · Roadmap por pasos</div>
+      <h2>El plan, en fases.</h2>
+      <p>De la definición a la publicación, en orden de dependencia. Cada fase entrega algo tangible.</p>
+    </div>
+    <div class="timeline">
+      <div class="phase"><div class="ph">Fase 0 · Base</div><h4>Personalidad y dirección de arte</h4><p>Aprobar este documento: paleta, tipografías, tono y referencias. Definir logo/isotipo final y biblioteca de imágenes con la atmósfera sobria buscada.</p><div class="items"><span>Este documento</span><span>Moodboard</span><span>Logo</span><span>Guía visual</span></div></div>
+      <div class="phase"><div class="ph">Fase 1 · Estructura</div><h4>Wireframes y modelo de contenido</h4><p>Bocetos de las 5 páginas + ficha de propiedad. Definir el esquema del CMS: campos de cada propiedad (tipo, operación, precio, fotos, zona, características).</p><div class="items"><span>Wireframes</span><span>Sitemap</span><span>Esquema CMS</span></div></div>
+      <div class="phase"><div class="ph">Fase 2 · Diseño UI</div><h4>Diseño de alta fidelidad</h4><p>Maquetación en Figma de cada plantilla con heros grandes, tipografía maximalista y componentes reutilizables. Versión escritorio y móvil.</p><div class="items"><span>Figma</span><span>Componentes</span><span>Responsive</span></div></div>
+      <div class="phase"><div class="ph">Fase 3 · Desarrollo</div><h4>Next.js + CMS conectados</h4><p>Montar el proyecto, integrar el CMS, construir las 5 páginas y la ruta dinámica de propiedades. Buscador, filtros, formularios y WhatsApp.</p><div class="items"><span>Next.js</span><span>Sanity/Payload</span><span>Rutas [slug]</span><span>Formularios</span></div></div>
+      <div class="phase"><div class="ph">Fase 4 · SEO + Lanzamiento</div><h4>Publicación e indexación</h4><p>Metadatos, datos estructurados, sitemap, Search Console y Google Business Profile. Despliegue en dominio, pruebas y carga del catálogo real.</p><div class="items"><span>Search Console</span><span>Schema.org</span><span>Deploy</span><span>Catálogo</span></div></div>
+      <div class="phase"><div class="ph">Fase 5 · Crecimiento</div><h4>Contenido y optimización</h4><p>Blog/guías para SEO, medición de resultados, ajustes de conversión y publicación continua de nuevas propiedades por el propio equipo.</p><div class="items"><span>Blog</span><span>Analítica</span><span>Iteración</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="q">Mi prioridad,<br><b>tu patrimonio.</b></div>
+    <small>Grupo Milkasa · Documento de personalidad y estrategia · 2026</small>
+  </div>
+</footer>
+
+</body>
+</html>

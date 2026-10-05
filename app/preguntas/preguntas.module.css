@@ -1,0 +1,215 @@
+.cuerpo {
+  padding-top: 30px;
+}
+.buscador {
+  max-width: 900px;
+}
+.controles {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.campoBusqueda {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.etiqueta {
+  font-family: var(--font-data);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+.campoBusqueda input {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--hueso);
+  background: var(--grafito);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 14px;
+  padding: 15px 18px;
+  min-height: 54px;
+  width: 100%;
+}
+.campoBusqueda input::placeholder {
+  color: var(--arena);
+  opacity: 0.85;
+}
+.campoBusqueda input:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 1px;
+  border-color: var(--oro);
+}
+.chipsWrap {
+  position: relative;
+  overflow-x: auto;
+  margin: 0 -22px;
+  padding: 0 22px 4px;
+  scrollbar-width: none;
+}
+.chipsWrap::-webkit-scrollbar {
+  display: none;
+}
+.chips {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 100px;
+  border: 1px solid var(--linea-fuerte);
+  background: transparent;
+  color: var(--hueso);
+  font-family: var(--font-data);
+  font-size: 0.92rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.chip:hover {
+  border-color: var(--oro);
+}
+.chip:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 2px;
+}
+.chipActivo {
+  background: var(--oro);
+  border-color: var(--oro);
+  color: var(--obsidiana);
+}
+.chipN {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+.estado {
+  margin: 28px 0 8px;
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  color: var(--arena);
+}
+.lista {
+  border-top: 1px solid var(--linea);
+}
+.item {
+  border-bottom: 1px solid var(--linea);
+}
+.pregunta {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+}
+.pregunta button {
+  width: 100%;
+  min-height: 56px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 4px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.25;
+  color: var(--hueso);
+  transition: color 0.3s var(--ease);
+}
+.pregunta button:hover {
+  color: var(--oro-claro);
+}
+.pregunta button:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 2px;
+}
+.itemAbierto .pregunta button {
+  color: var(--oro);
+}
+.preguntaTexto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.cat {
+  font-family: var(--font-data);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+.icono {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--linea-fuerte);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  color: var(--oro);
+}
+.itemAbierto .icono {
+  background: var(--oro);
+  color: var(--obsidiana);
+}
+.respuesta p {
+  padding: 0 60px 28px 4px;
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: var(--arena);
+  max-width: 68ch;
+}
+.sinResultados {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  color: var(--arena);
+}
+.cierre {
+  margin-top: 70px;
+  padding-top: 40px;
+  border-top: 1px solid var(--linea);
+}
+.cierre p {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+}
+.cierreBotones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 721px) {
+  .chipsWrap {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+  .chips {
+    flex-wrap: wrap;
+    width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .respuesta p {
+    padding-right: 4px;
+  }
+  .cierreBotones :global(.btn) {
+    width: 100%;
+    justify-content: center;
+  }
+}

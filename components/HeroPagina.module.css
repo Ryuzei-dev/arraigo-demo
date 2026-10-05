@@ -1,0 +1,43 @@
+.hero {
+  position: relative;
+  padding: 170px 0 80px;
+  overflow: hidden;
+  background: radial-gradient(90% 100% at 20% 0%, rgba(199, 154, 71, 0.1), transparent 55%);
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--linea) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+  background-size: 90px 90px;
+  -webkit-mask-image: radial-gradient(60% 80% at 30% 0%, #000, transparent 80%);
+  mask-image: radial-gradient(60% 80% at 30% 0%, #000, transparent 80%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.titulo {
+  margin: 26px 0 24px;
+  position: relative;
+  overflow-wrap: break-word;
+}
+.entrada {
+  max-width: 54ch;
+  font-size: 1.25rem;
+  color: var(--arena);
+  position: relative;
+}
+.extra {
+  position: relative;
+  margin-top: 36px;
+}
+.compacta {
+  padding-bottom: 60px;
+}
+@media (max-width: 720px) {
+  .hero {
+    padding: 120px 0 56px;
+  }
+  .entrada {
+    font-size: 1.1rem;
+  }
+}

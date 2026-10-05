@@ -1,0 +1,298 @@
+.head {
+  position: relative;
+  padding: 130px 0 24px;
+  background: radial-gradient(100% 100% at 80% 0%, rgba(199, 154, 71, 0.1), transparent 55%);
+}
+.navegacion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-bottom: 28px;
+}
+.title {
+  margin-bottom: 18px;
+}
+.sub {
+  color: var(--arena);
+  font-size: 1.1rem;
+  max-width: 52ch;
+}
+.cuerpo {
+  padding-top: 32px;
+}
+.indicacion {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-family: var(--font-data);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--oro-claro);
+}
+/* Mejor cifra de la fila */
+.tabla td.mejor {
+  background: color-mix(in srgb, var(--oro) 10%, transparent);
+  color: var(--oro-claro);
+}
+.sello {
+  display: block;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--oro);
+  color: var(--obsidiana);
+  font-family: var(--font-data);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.asesor {
+  color: var(--hueso);
+  text-decoration: underline;
+  text-decoration-color: var(--linea-fuerte);
+  text-underline-offset: 4px;
+}
+.asesor:hover {
+  color: var(--oro-claro);
+}
+.asesor:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 2px;
+}
+.siguiente {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+.accionesVacio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  margin-bottom: 22px;
+}
+.conteo {
+  font-family: var(--font-data);
+  font-size: 0.95rem;
+  color: var(--arena);
+}
+.accionesBarra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+}
+.enlace {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-data);
+  font-size: 0.92rem;
+  color: var(--hueso);
+  text-decoration: underline;
+  text-decoration-color: var(--linea-fuerte);
+  text-underline-offset: 4px;
+}
+.enlace:hover {
+  color: var(--oro-claro);
+}
+
+/* Contenedor con desplazamiento horizontal */
+.desliza {
+  position: relative;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  background: var(--grafito);
+  scrollbar-width: thin;
+  scrollbar-color: var(--linea-fuerte) transparent;
+}
+.desliza:focus-visible,
+.enlace:focus-visible,
+.quitar:focus-visible,
+.ver:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 2px;
+}
+.tabla {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 640px;
+  table-layout: fixed;
+}
+.tabla th,
+.tabla td {
+  padding: 16px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--linea);
+  font-size: 0.98rem;
+  color: var(--hueso);
+}
+.tabla tbody tr:last-child th,
+.tabla tbody tr:last-child td {
+  border-bottom: 0;
+}
+.esquina,
+.etiqueta {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: 170px;
+  background: var(--grafito);
+  border-right: 1px solid var(--linea);
+}
+.etiqueta {
+  font-family: var(--font-data);
+  font-size: 0.78rem !important;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--arena) !important;
+}
+.cabeza {
+  font-weight: 400;
+}
+.foto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--grafito-2);
+  margin-bottom: 12px;
+}
+.img {
+  object-fit: cover;
+}
+.quitar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 233, 223, 0.25);
+  background: rgba(20, 17, 15, 0.72);
+  color: var(--marfil);
+  cursor: pointer;
+}
+.quitar:hover {
+  border-color: var(--oro);
+  color: var(--oro-claro);
+}
+.nombre {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.15;
+  color: var(--hueso);
+  text-wrap: balance;
+}
+.precio {
+  font-family: var(--font-data);
+  font-weight: 500;
+  color: var(--oro-claro);
+  font-size: 1.1rem;
+}
+.amenidades {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 0.92rem;
+}
+.amenidades li::before {
+  content: "· ";
+  color: var(--oro);
+}
+.sinDato {
+  color: var(--arena);
+  font-size: 0.9rem;
+}
+.ver {
+  padding: 0.7rem 1.2rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 50px 34px;
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  background: var(--grafito);
+}
+.vacio p {
+  color: var(--arena);
+  max-width: 48ch;
+}
+
+@media (max-width: 720px) {
+  .head {
+    padding: 110px 0 16px;
+  }
+  .navegacion {
+    margin-bottom: 20px;
+  }
+  .siguiente > * {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .tabla {
+    min-width: 560px;
+  }
+  .esquina,
+  .etiqueta {
+    width: 112px;
+  }
+  .tabla th,
+  .tabla td {
+    padding: 12px 12px;
+    font-size: 0.92rem;
+  }
+  .etiqueta {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+    letter-spacing: 0.04em;
+    font-size: 0.7rem !important;
+  }
+  .nombre {
+    font-size: 1.02rem;
+  }
+  .vacio {
+    padding: 34px 22px;
+  }
+}

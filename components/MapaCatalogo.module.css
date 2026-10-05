@@ -1,0 +1,229 @@
+.marco {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--grafito);
+}
+.mapa {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: min(68vh, 620px);
+  min-height: 380px;
+  background: var(--obsidiana-2);
+  /* Teselas algo más cálidas para que no brillen tanto sobre el fondo oscuro */
+}
+.mapa :global(.leaflet-tile-pane) {
+  filter: saturate(0.75) sepia(0.12) brightness(0.92);
+}
+.vacio {
+  padding: 40px 26px;
+  color: var(--arena);
+  text-align: center;
+}
+
+/* Pin con precio */
+.pinCaja {
+  background: none;
+  border: 0;
+}
+.pin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, calc(-100% - 8px));
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 100px;
+  background: var(--obsidiana);
+  border: 1px solid var(--oro);
+  color: var(--oro-claro);
+  font-family: var(--font-data);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.7);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  border-right: 1px solid var(--oro);
+  border-bottom: 1px solid var(--oro);
+  transform: translateX(-50%) rotate(45deg);
+}
+.mapa :global(.leaflet-marker-icon):hover .pin,
+.mapa :global(.leaflet-marker-icon):focus-visible .pin {
+  background: var(--oro);
+  color: var(--obsidiana);
+}
+.mapa :global(.leaflet-marker-icon):focus-visible {
+  outline: none;
+}
+.mapa :global(.leaflet-marker-icon):focus-visible .pin {
+  outline: 2px solid var(--marfil);
+  outline-offset: 2px;
+}
+
+/* Ventana emergente */
+.mapa :global(.leaflet-popup-content-wrapper) {
+  background: var(--grafito);
+  color: var(--hueso);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden;
+}
+.mapa :global(.leaflet-popup-content) {
+  margin: 0;
+  width: 240px;
+}
+.mapa :global(.leaflet-popup-tip) {
+  background: var(--grafito);
+}
+.mapa :global(.leaflet-popup-close-button) {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 20px !important;
+  line-height: 30px !important;
+  color: var(--marfil) !important;
+  background: rgba(20, 17, 15, 0.7) !important;
+  border-radius: 50%;
+  top: 6px !important;
+  right: 6px !important;
+  z-index: 2;
+}
+.popup {
+  display: block;
+  color: var(--hueso) !important;
+  text-decoration: none;
+}
+.popup img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.popupTexto {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px 14px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+.popupTexto strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--hueso);
+}
+.popupTexto span {
+  color: var(--arena);
+}
+.popupTexto em {
+  font-style: normal;
+  font-family: var(--font-data);
+  color: var(--oro-claro);
+}
+.popupVer {
+  margin-top: 4px;
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  color: var(--hueso) !important;
+}
+.popup:hover .popupVer,
+.popup:focus-visible .popupVer {
+  color: var(--oro-claro) !important;
+}
+.popup:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: -2px;
+}
+
+/* Controles de Leaflet en tono oscuro */
+.mapa :global(.leaflet-bar) {
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.mapa :global(.leaflet-bar a) {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: var(--grafito);
+  color: var(--hueso);
+  border-bottom-color: var(--linea);
+}
+.mapa :global(.leaflet-bar a:hover) {
+  background: var(--grafito-2);
+  color: var(--oro-claro);
+}
+.mapa :global(.leaflet-control-attribution) {
+  background: rgba(20, 17, 15, 0.8);
+  color: var(--arena);
+  font-size: 0.7rem;
+}
+.mapa :global(.leaflet-control-attribution a) {
+  color: var(--hueso);
+}
+
+/* Lista alternativa */
+.lista {
+  border-top: 1px solid var(--linea);
+}
+.lista summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  cursor: pointer;
+  font-family: var(--font-data);
+  font-size: 0.9rem;
+  color: var(--hueso);
+}
+.lista summary:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: -2px;
+}
+.lista ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 20px 18px;
+  display: grid;
+  gap: 10px;
+}
+.lista li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  min-width: 0;
+}
+.lista a {
+  color: var(--oro-claro);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lista li span {
+  color: var(--arena);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 600px) {
+  .mapa {
+    height: 62vh;
+    min-height: 340px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pin {
+    transition: none;
+  }
+}

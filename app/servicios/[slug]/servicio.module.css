@@ -1,0 +1,307 @@
+/* ===================== HERO ===================== */
+.hero {
+  position: relative;
+  padding: 150px 0 70px;
+  overflow: hidden;
+  background: radial-gradient(
+    90% 100% at 85% 0%,
+    rgba(199, 154, 71, 0.1),
+    transparent 55%
+  );
+}
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--linea) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+  background-size: 90px 90px;
+  -webkit-mask-image: radial-gradient(60% 80% at 75% 0%, #000, transparent 80%);
+  mask-image: radial-gradient(60% 80% at 75% 0%, #000, transparent 80%);
+  opacity: 0.35;
+}
+.heroLayout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+  margin-top: 30px;
+  position: relative;
+}
+.serviceNum {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oro);
+}
+.title {
+  margin: 16px 0 22px;
+}
+.intro {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--hueso);
+  opacity: 0.86;
+  max-width: 48ch;
+}
+.heroBtns {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+.heroImg {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--linea);
+}
+.img {
+  object-fit: cover;
+}
+
+/* ===================== BODY ===================== */
+.bodyGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 56px;
+  align-items: start;
+}
+.desc .par {
+  font-size: 1.18rem;
+  line-height: 1.7;
+  color: var(--hueso);
+  opacity: 0.85;
+  margin-top: 20px;
+  max-width: 58ch;
+}
+.beneficios {
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  padding: 34px 32px;
+  position: sticky;
+  top: 110px;
+}
+.beneTitle {
+  font-size: 1.5rem;
+  margin-bottom: 22px;
+  color: var(--hueso);
+}
+.beneficios ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.beneficios li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--hueso);
+  opacity: 0.85;
+  font-size: 1rem;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--linea);
+}
+.beneficios li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.check {
+  color: var(--oro);
+  font-size: 0.7rem;
+  margin-top: 4px;
+}
+
+/* ===================== PROCESO ===================== */
+.proceso {
+  background: var(--marfil);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.step {
+  border-top: 2px solid var(--vino);
+  padding-top: 24px;
+}
+.stepN {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: 2.4rem;
+  color: var(--vino);
+}
+.step h4 {
+  font-size: 1.5rem;
+  margin: 12px 0 10px;
+  color: var(--obsidiana);
+}
+.step p {
+  color: #4a423a;
+  font-size: 0.98rem;
+}
+
+/* ===================== OTROS SERVICIOS ===================== */
+.otrosHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+}
+.otrosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.otroCard {
+  display: block;
+  height: 100%;
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+  padding: 30px 28px;
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.otroCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--linea-fuerte);
+}
+.otroCard:active {
+  transform: translateY(-2px) scale(0.99);
+  transition-duration: 0.1s;
+}
+.otroN {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--oro);
+}
+.otroCard h3 {
+  font-size: 1.5rem;
+  margin: 14px 0 12px;
+  color: var(--hueso);
+}
+.otroCard p {
+  font-size: 0.95rem;
+  color: var(--arena);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.otroGo {
+  font-size: 0.9rem;
+  color: var(--oro-claro);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.otroCard:hover .otroGo .arrow {
+  transform: translateX(4px);
+}
+.otroGo .arrow {
+  transition: transform 0.4s var(--ease);
+}
+
+/* ===================== PAGER ===================== */
+.pager {
+  padding: 20px 0 10px;
+  border-top: 1px solid var(--linea);
+}
+.pagerGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.pagerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 26px 30px;
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 16px;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.pagerItem:hover {
+  border-color: var(--oro);
+  transform: translateY(-3px);
+}
+.pagerNext {
+  text-align: right;
+  align-items: flex-end;
+}
+.pagerLabel {
+  font-family: var(--font-data);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+.pagerTitle {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--hueso);
+}
+
+/* ===================== CTA ===================== */
+.cta {
+  text-align: center;
+  background: radial-gradient(
+    110% 90% at 50% 100%,
+    rgba(126, 44, 57, 0.16),
+    transparent 60%
+  );
+}
+.ctaBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+  .heroLayout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .heroImg {
+    aspect-ratio: 16 / 10;
+    order: -1;
+  }
+  .bodyGrid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .beneficios {
+    position: static;
+  }
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .otrosGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .steps,
+  .otrosGrid,
+  .pagerGrid {
+    grid-template-columns: 1fr;
+  }
+  .pagerNext {
+    text-align: left;
+    align-items: flex-start;
+  }
+  .hero {
+    padding: 130px 0 50px;
+  }
+}

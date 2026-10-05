@@ -1,0 +1,174 @@
+.head {
+  position: relative;
+  padding: 200px 0 90px;
+  overflow: hidden;
+  background: radial-gradient(
+    90% 100% at 20% 0%,
+    rgba(199, 154, 71, 0.1),
+    transparent 55%
+  );
+}
+.headGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--linea) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+  background-size: 90px 90px;
+  -webkit-mask-image: radial-gradient(60% 80% at 30% 0%, #000, transparent 80%);
+  mask-image: radial-gradient(60% 80% at 30% 0%, #000, transparent 80%);
+  opacity: 0.4;
+}
+.title {
+  margin: 22px 0 24px;
+  position: relative;
+}
+.sub {
+  max-width: 54ch;
+  font-size: 1.25rem;
+  color: var(--arena);
+  position: relative;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  padding: 38px 34px 40px;
+  height: 100%;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.card:hover {
+  border-color: var(--linea-fuerte);
+  transform: translateY(-5px);
+}
+.card:active {
+  transform: translateY(-2px) scale(0.99);
+  transition-duration: 0.1s;
+}
+.cardGo {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--linea);
+  font-size: 0.92rem;
+  color: var(--oro-claro);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.card:hover .cardGo .arrow {
+  transform: translateX(4px);
+}
+.cardGo .arrow {
+  transition: transform 0.4s var(--ease);
+}
+.cardN {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--oro);
+}
+.card h3 {
+  font-size: 1.75rem;
+  margin: 20px 0 14px;
+  color: var(--hueso);
+}
+.card p {
+  color: var(--arena);
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+.card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--linea);
+  padding-top: 22px;
+  margin-top: auto;
+}
+.card ul li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 0.92rem;
+  color: var(--hueso);
+  opacity: 0.8;
+}
+.card ul li span {
+  color: var(--oro);
+  font-size: 0.65rem;
+}
+
+.process {
+  background: var(--marfil);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.step {
+  border-top: 2px solid var(--vino);
+  padding-top: 24px;
+}
+.stepN {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: 2.4rem;
+  color: var(--vino);
+}
+.step h4 {
+  font-size: 1.6rem;
+  margin: 12px 0 10px;
+  color: var(--obsidiana);
+}
+.step p {
+  color: #4a423a;
+  font-size: 0.98rem;
+}
+
+.faq {
+  border-top: 1px solid var(--linea);
+  background: var(--obsidiana-2);
+}
+
+.cta {
+  text-align: center;
+  background: radial-gradient(
+    110% 90% at 50% 100%,
+    rgba(126, 44, 57, 0.16),
+    transparent 60%
+  );
+}
+.cta h2 {
+  margin: 0 auto;
+}
+.ctaBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 980px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 620px) {
+  .cards,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}

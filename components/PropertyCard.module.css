@@ -1,0 +1,269 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+/* Efectos de hover solo con ratón: en táctil se quedaban "pegados" y estorbaban al deslizar */
+@media (hover: hover) and (pointer: fine) {
+  /* La sombra entra sin transición: se pinta una vez (animarla repinta en cada cuadro) */
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--linea-fuerte);
+    box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.8);
+  }
+  .card:hover .img {
+    transform: scale(1.05);
+  }
+  .card:hover .go {
+    opacity: 1;
+    color: var(--oro-claro);
+  }
+  .card:hover .go .arrow {
+    transform: translateX(4px);
+  }
+}
+.card:focus-within {
+  border-color: var(--oro);
+}
+.card:has(.enlace:active) {
+  transform: scale(0.99);
+  transition-duration: 0.1s;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.img {
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+  pointer-events: none;
+}
+.op,
+.estado {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 100px;
+  color: var(--marfil);
+  white-space: nowrap;
+}
+.op[data-op="venta"] {
+  background: rgba(126, 44, 57, 0.9);
+}
+.op[data-op="renta"] {
+  background: rgba(47, 74, 60, 0.92);
+}
+.estado {
+  background: rgba(20, 17, 15, 0.82);
+  border: 1px solid var(--linea-fuerte);
+  color: var(--oro-claro);
+}
+.estado[data-estado="rebajada"],
+.estado[data-estado="nueva"] {
+  background: var(--oro);
+  border-color: var(--oro);
+  color: var(--obsidiana);
+}
+.acciones {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+.acciones :global(button):focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 2px;
+}
+
+.body {
+  padding: 26px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.cat {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--oro);
+}
+.loc {
+  font-size: 0.85rem;
+  color: var(--arena);
+}
+/* Título, resumen y datos con alto fijo: todas las tarjetas miden lo mismo y sus filas se alinean */
+.title {
+  font-size: 1.5rem;
+  text-wrap: balance;
+  line-height: 1.1;
+  color: var(--hueso);
+  margin-bottom: 10px;
+  min-height: 2.2em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.summary {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--arena);
+  opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3.2em;
+  margin-bottom: 18px;
+}
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  min-height: 3.1rem;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid var(--linea);
+  margin-top: auto;
+}
+.specs span {
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  color: var(--hueso);
+  opacity: 0.75;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px 14px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--linea);
+}
+.price {
+  font-family: var(--font-data);
+  font-size: 1.35rem;
+  color: var(--oro-claro);
+  white-space: nowrap;
+  line-height: 1.1;
+}
+.go {
+  font-family: var(--font-data);
+  font-size: 0.9rem;
+  color: var(--hueso);
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.3s var(--ease), color 0.3s var(--ease);
+}
+.go .arrow {
+  transition: transform 0.4s var(--ease);
+}
+
+/* Enlace del título: su ::after cubre toda la tarjeta */
+.enlace {
+  color: inherit;
+}
+.enlace::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 20px;
+}
+.enlace:focus-visible {
+  outline: none;
+}
+.enlace:focus-visible::after {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: -2px;
+}
+.precios {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  min-width: 0;
+  min-height: 4.7rem;
+}
+.antes {
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  color: var(--arena);
+  text-decoration-color: var(--vino-claro);
+}
+.m2 {
+  font-family: var(--font-data);
+  font-size: 0.8rem;
+  color: var(--arena);
+}
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 680px) {
+  .body {
+    padding: 20px 20px 22px;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .img,
+  .go .arrow {
+    transition: none;
+  }
+  .card:hover,
+  .card:hover .img {
+    transform: none !important;
+  }
+}
+/* 320 a 359px: precio y "Ver ficha" siempre en dos renglones, para que todas las tarjetas midan igual */
+@media (max-width: 359px) {
+  .foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

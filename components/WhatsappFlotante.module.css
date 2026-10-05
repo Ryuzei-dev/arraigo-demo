@@ -1,0 +1,24 @@
+.flotante {
+  position: fixed;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--oro);
+  color: var(--obsidiana);
+  box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s var(--ease);
+}
+.flotante:active {
+  transform: scale(0.94);
+}
+@media (max-width: 900px) {
+  .flotante {
+    display: inline-flex;
+  }
+}

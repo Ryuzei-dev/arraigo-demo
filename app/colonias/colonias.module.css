@@ -1,0 +1,179 @@
+.lista {
+  padding-top: 40px;
+}
+.rejilla {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.rejilla > li,
+.rejilla > li > div {
+  height: 100%;
+}
+.colonia {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  padding: 30px 28px;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.colonia:hover {
+  border-color: var(--linea-fuerte);
+  transform: translateY(-4px);
+}
+.colonia:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 3px;
+}
+.colonia h2 {
+  font-size: 1.9rem;
+  color: var(--hueso);
+}
+.conteo {
+  font-family: var(--font-data);
+  font-size: 0.88rem;
+  color: var(--arena);
+}
+.datos {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid var(--linea);
+  padding-top: 16px;
+}
+.datos dt {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+.datos dd {
+  font-family: var(--font-data);
+  color: var(--oro-claro);
+  font-size: 1rem;
+}
+.ir {
+  margin-top: auto;
+  padding-top: 8px;
+  font-family: var(--font-data);
+  font-size: 0.92rem;
+  color: var(--oro-claro);
+}
+.aviso {
+  margin-top: 40px;
+  max-width: 70ch;
+  color: var(--arena);
+  font-size: 0.95rem;
+}
+.vacio {
+  color: var(--arena);
+}
+.vacio a {
+  color: var(--oro-claro);
+  text-decoration: underline;
+}
+
+/* Detalle */
+.cifras {
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  background: var(--obsidiana-2);
+  padding: 36px 0 28px;
+}
+.cifrasRejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 26px;
+}
+.cifrasRejilla dt {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+  margin-bottom: 6px;
+}
+.cifrasRejilla dd {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  line-height: 1.1;
+  color: var(--oro);
+}
+.cifrasRejilla dd.cifraTexto {
+  font-family: var(--font-data);
+  font-size: 1.05rem;
+  color: var(--hueso);
+}
+.avisoCifras {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--arena);
+}
+.propiedades {
+  padding-top: 90px;
+}
+.cabeceraLista {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.rejillaPropiedades {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.cierre {
+  margin-top: 70px;
+  padding-top: 40px;
+  border-top: 1px solid var(--linea);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cierre p {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  max-width: 32ch;
+}
+.cierreBotones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+  .rejilla,
+  .rejillaPropiedades {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .rejilla,
+  .rejillaPropiedades {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cabeceraLista :global(.btn),
+  .cierreBotones :global(.btn) {
+    width: 100%;
+    justify-content: center;
+  }
+  .cierreBotones {
+    width: 100%;
+  }
+  .propiedades {
+    padding-top: 64px;
+  }
+  .cifrasRejilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,128 @@
+.footer {
+  background: var(--obsidiana-2);
+  border-top: 1px solid var(--linea);
+}
+
+.cta {
+  padding: 120px 0 100px;
+  text-align: center;
+  border-bottom: 1px solid var(--linea);
+  background: radial-gradient(
+    110% 90% at 50% 0%,
+    rgba(199, 154, 71, 0.1),
+    transparent 60%
+  );
+}
+.ctaBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 44px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  gap: 40px;
+  padding: 80px 0 50px;
+}
+.brandCol {
+  max-width: 260px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--hueso);
+}
+.mark {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--oro);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: var(--oro);
+  font-weight: 600;
+}
+.tagline {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  color: var(--arena);
+  margin-top: 20px;
+  font-size: 1.15rem;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.col h2 {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oro);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.col a,
+.col span {
+  color: var(--hueso);
+  opacity: 0.66;
+  font-size: 0.98rem;
+  transition: opacity 0.3s var(--ease), color 0.3s var(--ease);
+}
+.col a:hover {
+  opacity: 1;
+  color: var(--oro-claro);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0 50px;
+  border-top: 1px solid var(--linea);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.bottom span {
+  color: var(--arena);
+  font-size: 0.86rem;
+}
+.legal {
+  display: flex;
+  gap: 24px;
+}
+.legal a {
+  color: var(--arena);
+  font-size: 0.86rem;
+}
+.legal a:hover {
+  color: var(--oro-claro);
+}
+
+@media (max-width: 820px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cta {
+    padding: 80px 0 70px;
+  }
+}
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Áreas táctiles de 44px en celular */
+@media (max-width: 820px) {
+  .col a { display: inline-flex; align-items: center; min-height: 44px; }
+  .bottom a { display: inline-flex; align-items: center; min-height: 44px; }
+}

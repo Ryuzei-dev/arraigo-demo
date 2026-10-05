@@ -1,0 +1,50 @@
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--hueso);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.15s var(--ease);
+}
+.boton:active:not(:disabled) {
+  transform: scale(0.94);
+}
+.boton:disabled,
+.boton[data-lleno] {
+  opacity: 0.45;
+}
+/* Círculo sobre la foto */
+.icono {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 233, 223, 0.25);
+  background: rgba(20, 17, 15, 0.62);
+}
+.icono:hover:not(:disabled) {
+  border-color: var(--oro);
+}
+/* Botón con texto en la ficha */
+.texto {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 100px;
+  border: 1px solid var(--linea-fuerte);
+  background: transparent;
+  font-family: var(--font-data);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.texto:hover:not(:disabled) {
+  border-color: var(--oro);
+}
+.activo {
+  color: var(--obsidiana);
+  background: var(--oro);
+  border-color: var(--oro);
+}
+.icono.activo {
+  color: var(--oro);
+  background: rgba(20, 17, 15, 0.82);
+}

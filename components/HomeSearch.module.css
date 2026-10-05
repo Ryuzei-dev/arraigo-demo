@@ -1,0 +1,175 @@
+.buscador {
+  margin-top: 34px;
+  max-width: 980px;
+}
+.desplegar {
+  display: none;
+}
+.form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  align-items: stretch;
+  gap: 0;
+  padding: 8px;
+  background: rgba(20, 17, 15, 0.82);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 100px;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+.campo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 6px 22px;
+  border-radius: 100px;
+  transition: background 0.25s var(--ease);
+}
+.campo + .campo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22%;
+  bottom: 22%;
+  width: 1px;
+  background: var(--linea-fuerte);
+}
+.campo:hover {
+  background: rgba(239, 233, 223, 0.05);
+}
+.campo:focus-within {
+  background: rgba(199, 154, 71, 0.1);
+}
+.campo label {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oro-claro);
+}
+.campo select {
+  width: 100%;
+  min-height: 30px;
+  padding: 0 22px 0 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-data);
+  font-size: 0.98rem;
+  color: var(--hueso);
+  appearance: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  background-image: linear-gradient(45deg, transparent 50%, var(--oro) 50%),
+    linear-gradient(135deg, var(--oro) 50%, transparent 50%);
+  background-position: calc(100% - 9px) 55%, calc(100% - 4px) 55%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+.campo select:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.campo option,
+.campo optgroup {
+  background: var(--grafito);
+  color: var(--hueso);
+}
+.buscar {
+  justify-content: center;
+  padding: 0 2rem;
+  min-height: 56px;
+}
+.buscar:focus-visible,
+.desplegar:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 3px;
+}
+
+/* Tableta: dos filas */
+@media (max-width: 980px) {
+  .form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: 22px;
+    gap: 4px;
+  }
+  .campo {
+    border-radius: 14px;
+    padding: 10px 16px;
+  }
+  .campo + .campo::before {
+    display: none;
+  }
+  .buscar {
+    grid-column: 1 / -1;
+    min-height: 50px;
+  }
+}
+
+/* Celular: un solo botón que despliega el formulario */
+@media (max-width: 680px) {
+  .buscador {
+    margin-top: 22px;
+  }
+  .desplegar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 50px;
+    padding: 0 20px;
+    border: 1px solid var(--linea-fuerte);
+    border-radius: 100px;
+    background: rgba(20, 17, 15, 0.78);
+    color: var(--hueso);
+    font-family: var(--font-data);
+    font-size: 0.98rem;
+    cursor: pointer;
+  }
+  .desplegar svg:first-child {
+    color: var(--oro);
+  }
+  .flecha {
+    margin-left: auto;
+    color: var(--oro);
+    transition: transform 0.3s var(--ease);
+  }
+  .abierto .flecha {
+    transform: rotate(180deg);
+  }
+  .abierto .desplegar {
+    border-radius: 22px 22px 0 0;
+    border-bottom-color: transparent;
+  }
+  .form {
+    display: none;
+    border-radius: 0 0 22px 22px;
+    border-top: 0;
+    padding: 4px 8px 10px;
+    background: rgba(20, 17, 15, 0.86);
+  }
+  .abierto .form {
+    display: grid;
+  }
+  .campo {
+    padding: 6px 14px;
+  }
+  .campo select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 340px) {
+  .form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .campo,
+  .flecha {
+    transition: none;
+  }
+}

@@ -1,0 +1,103 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  height: 100%;
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  padding: 32px 30px;
+  transition: border-color 0.4s var(--ease);
+}
+.card:hover,
+.card:focus-within {
+  border-color: var(--linea-fuerte);
+}
+.cabeza {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+.avatar {
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--oro);
+  background: rgba(199, 154, 71, 0.1);
+  border: 1px solid var(--linea-fuerte);
+}
+.quien {
+  min-width: 0;
+}
+.nombre {
+  font-size: 1.7rem;
+  color: var(--hueso);
+}
+.nombre a:hover {
+  color: var(--oro-claro);
+}
+.rol {
+  margin-top: 6px;
+  font-family: var(--font-data);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--arena);
+}
+.datos {
+  display: grid;
+  gap: 14px;
+  border-top: 1px solid var(--linea);
+  padding-top: 20px;
+}
+.datos dt {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+.datos dd {
+  color: var(--hueso);
+  margin-top: 2px;
+}
+.acciones {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  margin-top: auto;
+}
+.boton {
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  min-height: 48px;
+}
+.perfil {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-family: var(--font-data);
+  font-size: 0.92rem;
+  color: var(--oro-claro);
+  align-self: flex-start;
+}
+.perfil:hover {
+  color: var(--oro);
+}
+.perfil:focus-visible,
+.nombre a:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+@media (max-width: 360px) {
+  .acciones {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

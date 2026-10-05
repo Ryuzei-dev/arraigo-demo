@@ -1,0 +1,309 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background 0.5s var(--ease), border-color 0.5s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.scrolled {
+  background: rgba(20, 17, 15, 0.92);
+  border-bottom-color: var(--linea);
+}
+@media (hover: hover) and (pointer: fine) {
+  .scrolled {
+    background: rgba(20, 17, 15, 0.72);
+    backdrop-filter: blur(18px) saturate(1.2);
+  }
+}
+
+.inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.mark {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid var(--oro);
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--oro);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+.brand:hover .mark {
+  background: var(--oro);
+  color: var(--obsidiana);
+}
+.name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--hueso);
+  letter-spacing: -0.01em;
+}
+.name small {
+  display: block;
+  font-family: var(--font-data);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--arena);
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+  margin: 0 auto;
+}
+.link {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  padding: 8px 15px;
+  white-space: nowrap;
+  border-radius: 100px;
+  color: var(--hueso);
+  opacity: 0.72;
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease), opacity 0.3s var(--ease), transform 0.2s var(--ease);
+}
+.link:hover {
+  opacity: 1;
+  color: var(--oro-claro);
+}
+.link:focus-visible,
+.brand:focus-visible,
+.phone:focus-visible,
+.fav:focus-visible,
+.burger:focus-visible,
+.mobileLink:focus-visible,
+.mobileSec:focus-visible,
+.mobilePhone:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.link:active {
+  transform: scale(0.94);
+  color: var(--oro);
+}
+.brand:active {
+  transform: scale(0.97);
+}
+.active {
+  opacity: 1;
+  color: var(--oro);
+  background: rgba(199, 154, 71, 0.1);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.phone {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--oro-claro);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.phone:hover {
+  color: var(--oro);
+}
+
+/* Favoritos */
+.fav {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--hueso);
+  border: 1px solid var(--linea-fuerte);
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.fav:hover {
+  color: var(--oro-claro);
+  border-color: var(--oro);
+}
+.favActivo {
+  color: var(--oro);
+  background: rgba(199, 154, 71, 0.1);
+}
+.favN {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--oro);
+  color: var(--obsidiana);
+  font-family: var(--font-data);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 6px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+}
+.burger span {
+  width: 26px;
+  height: 1.5px;
+  background: var(--hueso);
+  transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
+  transform-origin: center;
+}
+.burgerOpen span:first-child {
+  transform: translateY(4.25px) rotate(45deg);
+}
+.burgerOpen span:last-child {
+  transform: translateY(-4.25px) rotate(-45deg);
+}
+
+.mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--obsidiana);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.mobileInner {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 96px 28px 40px;
+}
+.mobileOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.mobileLink {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 7vw, 2.1rem);
+  line-height: 1.15;
+  padding: 12px 0;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--linea);
+  color: var(--hueso);
+  transition: color 0.3s var(--ease);
+}
+.mobileLink:active,
+.mobileSec:active {
+  color: var(--oro);
+}
+.mobileActivo {
+  color: var(--oro);
+}
+.mobileSecundarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  margin-top: 18px;
+}
+.mobileSec {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-family: var(--font-data);
+  font-size: 0.95rem;
+  color: var(--hueso);
+  opacity: 0.85;
+}
+.mobileN {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--oro);
+  color: var(--obsidiana);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.mobilePhone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 20px;
+  color: var(--oro);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 1240px) {
+  .phone {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile {
+    transform: none;
+    transition: opacity 0.2s linear;
+  }
+}
+
+@media (max-width: 1080px) {
+  .nav,
+  .phone,
+  .fav {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+  .mobile {
+    display: block;
+  }
+  .inner {
+    padding: 16px 22px;
+    position: relative;
+    z-index: 2;
+  }
+}

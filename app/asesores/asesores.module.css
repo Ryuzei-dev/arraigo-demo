@@ -1,0 +1,118 @@
+.lista {
+  padding-top: 40px;
+}
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.nota {
+  margin-top: 44px;
+  color: var(--arena);
+}
+.nota a,
+.vacio a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--oro-claro);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--linea-fuerte);
+}
+.nota a:hover,
+.vacio a:hover {
+  color: var(--oro);
+}
+.vacio {
+  color: var(--arena);
+  font-size: 1.1rem;
+}
+
+/* Perfil */
+.tituloPerfil {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.avatarGrande {
+  flex-shrink: 0;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.55em;
+  letter-spacing: 0;
+  color: var(--oro);
+  background: rgba(199, 154, 71, 0.1);
+  border: 1px solid var(--linea-fuerte);
+}
+.perfilAcciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ficha {
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  background: var(--obsidiana-2);
+}
+.fichaDatos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+  padding: 40px 0;
+}
+.fichaDatos dt {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+  margin-bottom: 6px;
+}
+.fichaDatos dd {
+  color: var(--hueso);
+  overflow-wrap: anywhere;
+}
+.fichaDatos a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+.fichaDatos a:hover {
+  color: var(--oro-claro);
+}
+.propiedades {
+  padding-top: 100px;
+}
+
+@media (max-width: 1000px) {
+  .rejilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fichaDatos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .rejilla,
+  .fichaDatos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .fichaDatos {
+    gap: 20px;
+  }
+  .perfilAcciones :global(.btn) {
+    width: 100%;
+    justify-content: center;
+  }
+  .tituloPerfil {
+    gap: 16px;
+  }
+  .propiedades {
+    padding-top: 70px;
+  }
+}

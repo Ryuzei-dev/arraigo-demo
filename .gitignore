@@ -1,0 +1,19 @@
+# Dependencias y build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Variables de entorno: nunca se suben (solo .env.example)
+.env
+.env.*
+!.env.example
+
+# Vercel y sistema
+.vercel/
+.DS_Store
+npm-debug.log*
+
+# Configuración local de herramientas
+.claude/settings.local.json

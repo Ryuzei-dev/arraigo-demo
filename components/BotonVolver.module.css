@@ -1,0 +1,21 @@
+.volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px 0 12px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 100px;
+  font-family: var(--font-data);
+  font-size: 0.88rem;
+  color: var(--hueso);
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+.volver:hover {
+  border-color: var(--oro);
+  color: var(--oro-claro);
+}
+.volver:focus-visible {
+  outline: 2px solid var(--oro-claro);
+  outline-offset: 2px;
+}

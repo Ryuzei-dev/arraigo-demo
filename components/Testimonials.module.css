@@ -1,0 +1,113 @@
+.wrap {
+  position: relative;
+}
+.viewport {
+  overflow: hidden;
+}
+.container {
+  display: flex;
+}
+.slide {
+  flex: 0 0 clamp(320px, 46%, 560px);
+  min-width: 0;
+  margin-right: 26px;
+  background: var(--grafito);
+  border: 1px solid var(--linea);
+  border-radius: 22px;
+  padding: 44px 40px 36px;
+  display: flex;
+  flex-direction: column;
+}
+.mark {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  line-height: 0.6;
+  color: var(--oro);
+  opacity: 0.6;
+  height: 40px;
+}
+.cita {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  line-height: 1.4;
+  color: var(--hueso);
+  margin: 18px 0 30px;
+  flex: 1;
+}
+.author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 22px;
+  border-top: 1px solid var(--linea);
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(199, 154, 71, 0.14);
+  border: 1px solid var(--linea-fuerte);
+  color: var(--oro);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.author strong {
+  display: block;
+  color: var(--hueso);
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+.author small {
+  color: var(--arena);
+  font-size: 0.88rem;
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 40px;
+}
+.dots { gap: 2px; }
+/* El botón mide 24px (área táctil); el punto visible se dibuja con ::before */
+.dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.dot::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 100px;
+  background: var(--grafito-2);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease), opacity 0.3s var(--ease), transform 0.2s var(--ease);
+}
+.dot:hover::before {
+  background: var(--arena-2);
+}
+.dotActive {
+  width: 36px;
+}
+.dotActive::before {
+  background: var(--oro);
+  width: 26px;
+}
+
+@media (max-width: 680px) {
+  .slide {
+    flex: 0 0 86%;
+    padding: 32px 26px 28px;
+  }
+}

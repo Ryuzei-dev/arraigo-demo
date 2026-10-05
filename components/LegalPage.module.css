@@ -1,0 +1,64 @@
+.head {
+  position: relative;
+  padding: 200px 0 60px;
+  overflow: hidden;
+  background: radial-gradient(
+    90% 100% at 25% 0%,
+    rgba(199, 154, 71, 0.09),
+    transparent 55%
+  );
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--linea) 1px, transparent 1px),
+    linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+  background-size: 90px 90px;
+  -webkit-mask-image: radial-gradient(55% 80% at 30% 0%, #000, transparent 80%);
+  mask-image: radial-gradient(55% 80% at 30% 0%, #000, transparent 80%);
+  opacity: 0.35;
+}
+.title {
+  margin: 20px 0 16px;
+  position: relative;
+}
+.updated {
+  color: var(--arena);
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.doc {
+  max-width: 760px;
+}
+.intro {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--hueso);
+  opacity: 0.9;
+  margin-bottom: 50px;
+}
+.block {
+  margin-bottom: 44px;
+}
+.h {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 1.7rem;
+  color: var(--hueso);
+  margin-bottom: 18px;
+}
+.n {
+  font-family: var(--font-display-italic);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--oro);
+}
+.block p {
+  color: var(--arena);
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}

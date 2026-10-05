@@ -1,0 +1,237 @@
+/* Índice */
+.indice {
+  padding-top: 30px;
+}
+.lista {
+  list-style: none;
+  border-top: 1px solid var(--linea);
+}
+.lista > li {
+  border-bottom: 1px solid var(--linea);
+}
+.guia {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) 48px;
+  gap: 24px;
+  align-items: center;
+  padding: 40px 4px;
+  transition: background 0.4s var(--ease);
+}
+.guia:hover {
+  background: rgba(199, 154, 71, 0.04);
+}
+.guia:hover h2 {
+  color: var(--oro-claro);
+}
+.guia:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 2px;
+}
+.numero {
+  font-family: var(--font-data);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--oro);
+  align-self: start;
+  padding-top: 10px;
+}
+.guiaTexto {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.guiaTexto h2 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  color: var(--hueso);
+  transition: color 0.3s var(--ease);
+}
+.guiaTexto p {
+  color: var(--arena);
+  max-width: 60ch;
+}
+.para {
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  color: var(--hueso);
+  opacity: 0.8;
+}
+.flecha {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--linea-fuerte);
+  display: grid;
+  place-items: center;
+  color: var(--oro);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.guia:hover .flecha {
+  background: var(--oro);
+  color: var(--obsidiana);
+}
+
+/* Artículo */
+.meta {
+  font-family: var(--font-data);
+  font-size: 0.85rem;
+  color: var(--arena);
+  max-width: 60ch;
+}
+.articulo {
+  padding-top: 50px;
+}
+.columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  gap: 70px;
+  align-items: start;
+}
+.contenido {
+  position: sticky;
+  top: 110px;
+}
+.contenido h2 {
+  font-family: var(--font-data);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--arena);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.contenido ol {
+  list-style: none;
+  border-left: 1px solid var(--linea);
+}
+.contenido a {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 6px 0 6px 16px;
+  color: var(--hueso);
+  opacity: 0.75;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.contenido a:hover {
+  opacity: 1;
+  color: var(--oro-claro);
+}
+.texto {
+  max-width: 65ch;
+}
+.seccion {
+  scroll-margin-top: 110px;
+  margin-bottom: 52px;
+}
+.seccion h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 18px;
+}
+.seccion p {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--hueso);
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+.seccion ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 0 16px;
+}
+.seccion li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--hueso);
+  opacity: 0.9;
+}
+.seccion li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  font-size: 0.75rem;
+  color: var(--oro);
+}
+.cta {
+  margin-top: 20px;
+  padding: 36px;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 20px;
+  background: var(--grafito);
+}
+.cta p {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+.ctaBotones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.otras {
+  margin-top: 90px;
+  padding-top: 40px;
+  border-top: 1px solid var(--linea);
+}
+.otras h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+.otras ul {
+  list-style: none;
+}
+.otras a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  color: var(--oro-claro);
+  font-size: 1.1rem;
+}
+.otras a:hover {
+  color: var(--oro);
+}
+
+@media (max-width: 900px) {
+  .columnas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .contenido {
+    position: static;
+  }
+}
+@media (max-width: 640px) {
+  .guia {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 30px 0;
+  }
+  .numero {
+    padding-top: 0;
+  }
+  .flecha {
+    display: none;
+  }
+  .seccion p {
+    font-size: 1.08rem;
+  }
+  .cta {
+    padding: 26px 20px;
+  }
+  .cta p {
+    font-size: 1.35rem;
+  }
+  .ctaBotones :global(.btn) {
+    width: 100%;
+    justify-content: center;
+  }
+}

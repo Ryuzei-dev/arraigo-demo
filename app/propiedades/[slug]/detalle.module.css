@@ -1,0 +1,568 @@
+.top {
+  padding: 150px 0 40px;
+  background: radial-gradient(
+    90% 100% at 100% 0%,
+    rgba(199, 154, 71, 0.08),
+    transparent 55%
+  );
+}
+.crumbs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--arena);
+  margin-bottom: 34px;
+}
+.crumbs a:hover {
+  color: var(--oro-claro);
+}
+.crumbCurrent {
+  color: var(--hueso);
+  opacity: 0.7;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.op {
+  font-family: var(--font-data);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.op[data-op="venta"] {
+  background: rgba(126, 44, 57, 0.24);
+  color: #d4848c;
+}
+.op[data-op="renta"] {
+  background: rgba(47, 74, 60, 0.28);
+  color: #6fae8f;
+}
+.title {
+  max-width: 18ch;
+}
+.loc {
+  color: var(--arena);
+  font-size: 1.15rem;
+  margin-top: 14px;
+}
+.priceBox {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.priceLabel {
+  font-family: var(--font-data);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+.price {
+  font-family: var(--font-data);
+  font-size: 2.4rem;
+  color: var(--oro);
+  line-height: 1;
+}
+
+/* Galería */
+.gallery {
+  padding-bottom: 20px;
+}
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  height: 62vh;
+  min-height: 440px;
+}
+.galleryMain {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+}
+.gallerySide {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+}
+.galleryThumb {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.gimg {
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+.galleryMain:hover .gimg,
+.galleryThumb:hover .gimg {
+  transform: scale(1.05);
+}
+
+/* Cuerpo */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 60px;
+  align-items: start;
+}
+.par {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--hueso);
+  opacity: 0.85;
+  margin-bottom: 20px;
+  max-width: 60ch;
+}
+.specGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1px;
+  background: var(--linea);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 46px 0;
+}
+.spec {
+  background: var(--grafito);
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.specV {
+  font-family: var(--font-data);
+  font-size: 2rem;
+  color: var(--oro);
+  line-height: 1;
+}
+.specK {
+  font-family: var(--font-data);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+
+.amenTitle {
+  font-size: 1.7rem;
+  margin: 10px 0 22px;
+}
+.amenities {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 30px;
+  margin-bottom: 50px;
+}
+.amenities li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--hueso);
+  opacity: 0.85;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--linea);
+}
+.amenDot {
+  color: var(--oro);
+  font-size: 0.7rem;
+}
+
+.map {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+  background: var(--grafito);
+  flex-wrap: wrap;
+}
+.mapPin {
+  font-size: 2rem;
+  color: var(--oro);
+}
+.map strong {
+  display: block;
+  color: var(--hueso);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+.map span {
+  color: var(--arena);
+  font-size: 0.95rem;
+}
+/* nota del mapa sobre oscuro: texto apagado legible */
+.mapNote {
+  margin-left: auto;
+  font-size: 0.82rem;
+  color: var(--arena);
+  max-width: 22ch;
+  text-align: right;
+}
+
+/* Aside: sin sticky porque asesor y formularios juntos son más altos que la pantalla */
+.aside {
+  min-width: 0;
+}
+.contactCard {
+  background: var(--grafito);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: 22px;
+  padding: 34px;
+}
+.contactLabel {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--oro);
+}
+.contactTitle {
+  font-size: 1.7rem;
+  margin: 14px 0 12px;
+  color: var(--hueso);
+}
+.contactText {
+  color: var(--arena);
+  font-size: 0.98rem;
+  margin-bottom: 26px;
+}
+.contactPhone {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  color: var(--arena);
+  font-size: 0.92rem;
+}
+.contactPhone:hover {
+  color: var(--oro-claro);
+}
+
+/* Similares */
+.similar {
+  background: var(--obsidiana-2);
+  border-top: 1px solid var(--linea);
+}
+.similarGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .aside {
+    position: static;
+  }
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .gallerySide {
+    grid-template-rows: none;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .galleryMain {
+    height: 46vh;
+  }
+  .similarGrid {
+    grid-template-columns: 1fr;
+  }
+  .priceBox {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 620px) {
+  .amenities {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Barra fija de contacto en celular */
+.barraMovil {
+  display: none;
+}
+@media (max-width: 900px) {
+  .barraMovil {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+    background: var(--obsidiana-2);
+    border-top: 1px solid var(--linea-fuerte);
+    box-shadow: 0 -10px 30px -12px rgba(0, 0, 0, 0.7);
+  }
+  :global(body):has(.barraMovil) {
+    padding-bottom: 76px;
+  }
+  .barraPrecio {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--oro-claro);
+    white-space: nowrap;
+  }
+}
+
+/* ---------- Ficha: precio, estado y bloques nuevos ---------- */
+.headerTexto {
+  min-width: 0;
+}
+.title {
+  overflow-wrap: break-word;
+}
+.priceTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.estado {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--linea-fuerte);
+  color: var(--oro-claro);
+  background: rgba(199, 154, 71, 0.1);
+}
+.estado[data-estado="nueva"] {
+  color: #8cc5a8;
+  border-color: rgba(111, 174, 143, 0.4);
+  background: rgba(47, 74, 60, 0.35);
+}
+.estado[data-estado="rebajada"] {
+  color: #e8a0a8;
+  border-color: rgba(163, 69, 79, 0.5);
+  background: rgba(126, 44, 57, 0.28);
+}
+.estado[data-estado="apartada"],
+.estado[data-estado="vendida"],
+.estado[data-estado="rentada"] {
+  color: var(--hueso);
+  border-color: var(--linea-fuerte);
+  background: var(--grafito-2);
+}
+.precioAnterior {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.05rem;
+  color: var(--arena);
+}
+.precioAnterior s {
+  text-decoration-thickness: 1px;
+}
+.price {
+  font-variant-numeric: tabular-nums;
+}
+.precioM2 {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95rem;
+  color: var(--arena);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.body {
+  padding-top: 70px;
+}
+.sobre {
+  margin: 16px 0 24px;
+}
+.bloque {
+  margin-bottom: 56px;
+}
+.bloqueTexto {
+  color: var(--arena);
+  font-size: 1.02rem;
+  margin: -10px 0 22px;
+  max-width: 56ch;
+}
+.ubicacion {
+  margin-bottom: 0;
+}
+.soloImpresion {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .body {
+    padding-top: 44px;
+  }
+  .aside {
+    margin-top: 56px;
+  }
+  .gallerySide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .similarGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .top {
+    padding: 120px 0 28px;
+  }
+  .crumbs {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    margin-bottom: 24px;
+  }
+  .price {
+    font-size: 2rem;
+  }
+  .specGrid {
+    grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+  }
+  .bloque {
+    margin-bottom: 44px;
+  }
+}
+
+/* ---------- Ficha imprimible ---------- */
+@media print {
+  @page {
+    size: letter;
+    margin: 14mm;
+  }
+  .top {
+    padding: 0 0 12px;
+    background: none;
+  }
+  .crumbs,
+  .aside,
+  .barraMovil,
+  .similar,
+  .ubicacion,
+  .bloque {
+    display: none !important;
+  }
+  .header {
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 20px;
+  }
+  .op {
+    margin-bottom: 8px;
+    padding: 0;
+    background: none !important;
+    color: #5a5047 !important;
+  }
+  .title {
+    font-size: 26pt;
+    max-width: none;
+  }
+  .loc {
+    font-size: 11pt;
+    margin-top: 6px;
+  }
+  .priceBox {
+    align-items: flex-end;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .price {
+    font-size: 20pt;
+  }
+  .estado {
+    background: none !important;
+    color: #1d1916 !important;
+  }
+  .gallery {
+    padding: 0 0 10px;
+    break-inside: avoid;
+  }
+  .body {
+    padding: 6px 0 0 !important;
+  }
+  .layout {
+    display: block;
+  }
+  .sobre {
+    font-size: 15pt;
+    margin: 0 0 6px;
+  }
+  .par {
+    font-size: 10.5pt;
+    line-height: 1.45;
+    margin-bottom: 6px;
+    opacity: 1;
+    max-width: none;
+  }
+  .specGrid {
+    margin: 10px 0;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    border-radius: 8px;
+    break-inside: avoid;
+  }
+  .spec {
+    padding: 8px 10px;
+    gap: 2px;
+  }
+  .specV {
+    font-size: 14pt;
+  }
+  .specK {
+    font-size: 7pt;
+  }
+  .amenTitle {
+    font-size: 13pt;
+    margin: 6px 0 6px;
+  }
+  .amenities {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 18px;
+    margin-bottom: 10px;
+    font-size: 10pt;
+  }
+  .amenities li {
+    padding: 3px 0;
+    opacity: 1;
+  }
+  .soloImpresion {
+    display: block;
+    border-top: 1px solid #c9bda9;
+    padding-top: 8px;
+    font-size: 10pt;
+    line-height: 1.5;
+    break-inside: avoid;
+  }
+  .impresionUrl {
+    font-family: var(--font-data);
+    color: #5a5047;
+    word-break: break-all;
+  }
+}
