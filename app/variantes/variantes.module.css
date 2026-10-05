@@ -1,0 +1,740 @@
+/* Página de revisión: se esconde el encabezado, pie y chat del sitio para ver cada identidad sola */
+:global(body):has(.pagina) > :global(header),
+:global(body):has(.pagina) :global(footer),
+:global(body):has(.pagina) :global([class*="Chatbot"]),
+:global(body):has(.pagina) :global([class*="Whatsapp"]) {
+  display: none !important;
+}
+:global(body):has(.pagina) {
+  background: #fff;
+}
+:global(body):has(.pagina)::before {
+  display: none;
+}
+
+.pagina {
+  --oro: #b8862e;
+  --oro-claro: #e0b45e;
+  --vino: #7e2c39;
+  --vino-claro: #a3454f;
+}
+
+.barra {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 90;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: #fff;
+  box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.5);
+  font: 600 14px/1 system-ui, sans-serif;
+}
+.barra a,
+.barra button {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  color: #111;
+  text-decoration: none;
+  cursor: pointer;
+}
+.barra a:hover,
+.barra button:hover {
+  background: #111;
+  color: #fff;
+}
+
+.var {
+  position: relative;
+  padding-bottom: 96px;
+  border-bottom: 6px solid var(--vino);
+}
+.var img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.etiquetaVar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 10px 24px;
+  background: #111;
+  color: #fff;
+  font: 600 13px/1.3 system-ui, sans-serif;
+}
+
+/* =====================================================================
+   A · EXPEDIENTE
+   Gris piedra frío + tinta casi negra; oro como tinta de sello, vino en
+   la sección oscura. Grotesca sobria + mono para folios y cifras.
+   ===================================================================== */
+.a {
+  --fondo: #f1f0ed;
+  --papel: #fbfbf9;
+  --tinta: #191816;
+  --suave: #5c5853;
+  --regla: rgb(25 24 22 / 0.14);
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--v-schibsted), system-ui, sans-serif;
+}
+:global([data-var-tema="oscuro"]) .a {
+  --fondo: #141312;
+  --papel: #1c1b19;
+  --tinta: #f0eee9;
+  --suave: #a39e96;
+  --regla: rgb(240 238 233 / 0.14);
+}
+.aHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 56px;
+}
+@media (min-width: 960px) {
+  .aHero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 64px;
+  }
+}
+.aTitulo {
+  margin: 0;
+  font-family: var(--v-schibsted), system-ui, sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.aEntrada {
+  max-width: 46ch;
+  margin: 24px 0 0;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--suave);
+}
+.aAcciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+.aBtn,
+.aBtnLinea {
+  display: inline-flex;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 22px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aBtn {
+  background: var(--tinta);
+  color: var(--fondo);
+}
+.aBtn:hover {
+  background: var(--vino);
+  color: #fff;
+}
+.aBtnLinea {
+  border: 1px solid var(--tinta);
+  color: var(--tinta);
+}
+.aBtnLinea:hover {
+  background: var(--tinta);
+  color: var(--fondo);
+}
+.aBtn:active,
+.aBtnLinea:active {
+  transform: scale(0.97);
+}
+.aFoto {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.aFoto figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--papel);
+  color: var(--tinta);
+  font-size: 0.9rem;
+}
+.aFolio {
+  font-family: var(--v-mono), monospace;
+  color: var(--oro);
+}
+/* Registro de propiedades: filas como un libro de folios */
+.aLista {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  list-style: none;
+  border-top: 1px solid var(--regla);
+}
+.aFila {
+  display: grid;
+  grid-template-columns: 56px 72px minmax(0, 2fr) repeat(3, minmax(0, 1fr)) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--regla);
+  transition: background-color 0.25s;
+}
+.aFila:hover {
+  background: var(--papel);
+}
+.aNum {
+  font-family: var(--v-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--oro);
+}
+.aMini {
+  width: 72px !important;
+  height: 52px !important;
+  filter: grayscale(0.6);
+  transition: filter 0.4s;
+}
+.aFila:hover .aMini {
+  filter: none;
+}
+.aNombre {
+  font-weight: 600;
+}
+.aDato {
+  font-family: var(--v-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--suave);
+  text-transform: capitalize;
+}
+.aPrecio {
+  font-family: var(--v-mono), monospace;
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .aFila {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+  .aNum,
+  .aDato {
+    display: none;
+  }
+  .aPrecio {
+    grid-column: 2;
+  }
+}
+.aOscura {
+  max-width: 1280px;
+  margin: 72px auto 0;
+  padding: 56px 32px;
+  background: #1a1210;
+  color: #f2ede6;
+  box-shadow: inset 0 3px 0 var(--vino);
+}
+.aOscura h2 {
+  margin: 0 0 28px;
+  font-family: var(--v-schibsted), system-ui, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.aOscura ol {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.aOscura li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgb(242 237 230 / 0.12);
+  font-size: 1.1rem;
+}
+.aCheck {
+  position: relative;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--oro-claro);
+}
+.aCheck::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border-right: 2px solid var(--oro-claro);
+  border-bottom: 2px solid var(--oro-claro);
+  transform: rotate(45deg) scale(0);
+  animation: palomear 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-timeline: view();
+  animation-range: entry 40% cover 40%;
+}
+@keyframes palomear {
+  to {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+/* =====================================================================
+   B · VITRINA
+   Blanco limpio y gris claro; foto protagonista; vino como color de
+   acción, oro en cifras. Grotesca amable de producto.
+   ===================================================================== */
+.b {
+  --fondo: #ffffff;
+  --fondo-2: #f4f3f1;
+  --tinta: #141414;
+  --suave: #626262;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--v-onest), system-ui, sans-serif;
+}
+:global([data-var-tema="oscuro"]) .b {
+  --fondo: #0f0f10;
+  --fondo-2: #19191b;
+  --tinta: #f2f2f2;
+  --suave: #a5a5a8;
+}
+.bHero {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: 78svh;
+  padding: 24px;
+  overflow: hidden;
+}
+.bFondo {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+  transform: scale(1.04);
+  animation: asentar 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes asentar {
+  from {
+    transform: scale(1.12);
+  }
+}
+.bCaja {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 720px);
+  padding: 32px;
+  background: var(--fondo);
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.45);
+  animation: subir 0.9s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+.bTitulo {
+  margin: 0;
+  font-family: var(--v-familjen), sans-serif;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.bBuscador {
+  margin-top: 24px;
+}
+.bTabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.bTabs button {
+  position: relative;
+  padding: 8px 12px;
+  border: 0;
+  background: none;
+  color: var(--suave);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.bTabs button[aria-selected="true"] {
+  color: var(--tinta);
+}
+.bTabs button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  background: var(--vino);
+}
+.bCampo {
+  display: flex;
+  border: 1px solid var(--tinta);
+}
+.bCampo input {
+  flex: 1;
+  min-width: 0;
+  min-height: 54px;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+  color: var(--tinta);
+  font: inherit;
+  font-size: 1rem;
+}
+.bCampo input:focus {
+  outline: none;
+}
+.bCampo:focus-within {
+  box-shadow: 0 0 0 3px rgb(126 44 57 / 0.25);
+}
+.bCampo button {
+  padding: 0 24px;
+  border: 0;
+  background: var(--vino);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.bCampo button:hover {
+  background: var(--vino-claro);
+}
+.bTarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 1280px;
+  margin: 56px auto 0;
+  padding: 0 24px;
+}
+.bTarjeta {
+  display: grid;
+  gap: 4px;
+  color: inherit;
+  text-decoration: none;
+}
+.bImg {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.bImg img {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bTarjeta:hover .bImg img {
+  transform: scale(1.05);
+}
+.bOp {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 4px 10px;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.bPrecio {
+  font-family: var(--v-familjen), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.bNombre {
+  font-weight: 500;
+}
+.bMeta {
+  color: var(--suave);
+  font-size: 0.92rem;
+}
+.bOscura {
+  display: grid;
+  gap: 32px;
+  max-width: 1280px;
+  margin: 72px auto 0;
+  padding: 56px 32px;
+  background: var(--vino);
+  color: #fff;
+}
+@media (min-width: 900px) {
+  .bOscura {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+}
+.bOscura h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--v-familjen), sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+.bOscura p {
+  margin: 10px 0 0;
+  color: rgb(255 255 255 / 0.82);
+}
+.bCifras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.bCifras p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.bCifras strong {
+  display: block;
+  font-family: var(--v-familjen), sans-serif;
+  font-size: 2.2rem;
+  color: var(--oro-claro);
+}
+
+/* =====================================================================
+   C · ESCRITURA
+   Blanco hueso frío + tinta; Caslon de documento para titulares, Public
+   Sans (la de los sitios de gobierno) para texto. Oro en numerales,
+   vino en la sección oscura. Narración fija con el scroll.
+   ===================================================================== */
+.c {
+  --fondo: #f6f5f2;
+  --tinta: #1a1714;
+  --suave: #5e5750;
+  --regla: rgb(26 23 20 / 0.16);
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--v-public), system-ui, sans-serif;
+}
+:global([data-var-tema="oscuro"]) .c {
+  --fondo: #13110f;
+  --tinta: #efeae2;
+  --suave: #a69d92;
+  --regla: rgb(239 234 226 / 0.16);
+}
+.cHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 40px;
+}
+@media (min-width: 960px) {
+  .cHero {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: end;
+  }
+}
+.cTitulo {
+  margin: 0;
+  font-family: var(--v-caslon), Georgia, serif;
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.cTitulo span {
+  color: var(--vino);
+}
+:global([data-var-tema="oscuro"]) .cTitulo span {
+  color: var(--oro-claro);
+}
+.cLado p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--suave);
+}
+.cBtn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 50px;
+  margin-top: 20px;
+  padding: 0 22px;
+  border-bottom: 2px solid var(--oro);
+  background: var(--tinta);
+  color: var(--fondo);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.25s;
+}
+.cBtn:hover {
+  background: var(--vino);
+  color: #fff;
+}
+.cFoto {
+  max-width: 1280px;
+  height: 56svh;
+  margin: 0 auto;
+  padding: 0 24px;
+  overflow: hidden;
+}
+.cFoto img {
+  animation: revelar linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 50%;
+}
+@keyframes revelar {
+  from {
+    clip-path: inset(18% 10% 18% 10%);
+    transform: scale(1.15);
+  }
+}
+/* Narración: el título queda fijo y los pasos pasan a su lado */
+.cNarra {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  max-width: 1280px;
+  margin: 96px auto 0;
+  padding: 0 24px;
+}
+@media (min-width: 900px) {
+  .cNarra {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  }
+  .cFijo {
+    position: sticky;
+    top: 80px;
+    align-self: start;
+  }
+}
+.cFijo {
+  margin: 0;
+  font-family: var(--v-caslon), Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+}
+.cNarra ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cNarra li {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  padding: 40px 0;
+  border-top: 1px solid var(--regla);
+  animation: paso linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+@keyframes paso {
+  from {
+    opacity: 0.15;
+    transform: translateY(30px);
+  }
+}
+.cNum {
+  grid-row: span 2;
+  font-family: var(--v-caslon), Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--oro);
+}
+.cNarra h3 {
+  margin: 0;
+  font-family: var(--v-caslon), Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.cNarra p {
+  margin: 8px 0 0;
+  color: var(--suave);
+  font-size: 1.05rem;
+}
+.cTarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2px;
+  max-width: 1280px;
+  margin: 96px auto 0;
+  padding: 0 24px;
+}
+.cTarjeta {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  color: #f4efe8;
+  text-decoration: none;
+  background: #1a1210;
+}
+.cTarjeta img {
+  opacity: 0.85;
+  transition:
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s;
+}
+.cTarjeta:hover img {
+  transform: scale(1.06);
+  opacity: 0.6;
+}
+.cTexto {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 6px;
+  padding: 20px;
+  background: linear-gradient(to top, rgb(26 18 16 / 0.92), transparent);
+  transform: translateY(18px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cTarjeta:hover .cTexto {
+  transform: none;
+}
+.cNombre {
+  font-family: var(--v-caslon), Georgia, serif;
+  font-size: 1.6rem;
+}
+.cFila {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: rgb(244 239 232 / 0.8);
+}
+.cFila strong {
+  color: var(--oro-claro);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pagina *,
+  .pagina *::before,
+  .pagina *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .aCheck::after {
+    transform: rotate(45deg) scale(1);
+  }
+}
